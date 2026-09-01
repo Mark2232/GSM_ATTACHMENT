@@ -1,0 +1,2729 @@
+{
+  "config": {
+    "gatewayIp": "192.168.8.190",
+    "username": "admin",
+    "password": "admin",
+    "line": 1,
+    "useMockGateway": false,
+    "minDelaySec": 1,
+    "maxDelaySec": 2,
+    "enableJitter": false,
+    "maxDailyLimit": 200,
+    "carrierName": "Globe Postpaid (PH)",
+    "simNumber": "09173079499",
+    "webhookUrl": "",
+    "apiKey": "tb_live_goip_admin_master"
+  },
+  "apiKeys": [
+    {
+      "id": "key_1788154650581",
+      "businessId": "biz_1788154650580",
+      "name": "Jarvis Auto Supply Webhook Key",
+      "key": "tb_live_goip_biz1788154650580_31373838",
+      "createdAt": "2026-08-31T05:37:30.581Z"
+    },
+    {
+      "id": "key_1788154299370",
+      "businessId": "biz_1788154299370",
+      "name": "Golden Horizon Realty Webhook Key",
+      "key": "tb_live_goip_biz1788154299370_31373838",
+      "createdAt": "2026-08-31T05:31:39.370Z"
+    },
+    {
+      "id": "key_default",
+      "name": "Default Production API Key",
+      "key": "tb_live_goip_88f9104c9e31a",
+      "createdAt": "2026-08-31T02:54:42.253Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "cnt_1788159636366",
+      "businessId": "biz_1788154650580",
+      "name": "Mark Joseph Borantes",
+      "phone": "09368504167",
+      "group": "General",
+      "notes": "",
+      "createdAt": "2026-08-31T07:00:36.366Z"
+    },
+    {
+      "id": "cnt_1788157023212",
+      "businessId": "biz_1788154650580",
+      "name": "Macky Melgar",
+      "phone": "+639700452584",
+      "group": "General",
+      "notes": "",
+      "createdAt": "2026-08-31T06:17:03.212Z"
+    }
+  ],
+  "groups": [
+    "VIP Clients",
+    "Subscribers",
+    "Staff",
+    "General",
+    "Clients"
+  ],
+  "templates": [
+    {
+      "id": "tmpl_1788154650581_1",
+      "businessId": "biz_1788154650580",
+      "title": "Appointment Reminder",
+      "category": "Appointment",
+      "content": "Hello {{name}}! This is a reminder of your appointment at Jarvis Auto Supply on {{date}} at {{time}}. Please reply YES to confirm."
+    },
+    {
+      "id": "tmpl_1788154650581_2",
+      "businessId": "biz_1788154650580",
+      "title": "Service Follow-up",
+      "category": "Follow-up",
+      "content": "Hi {{name}}, thank you for visiting Jarvis Auto Supply today. Let us know if you need any further assistance!"
+    },
+    {
+      "id": "tmpl_1788154299370_1",
+      "businessId": "biz_1788154299370",
+      "title": "Appointment Reminder",
+      "category": "Appointment",
+      "content": "Hello {{name}}! This is a reminder of your appointment at Golden Horizon Realty on {{date}} at {{time}}. Please reply YES to confirm."
+    },
+    {
+      "id": "tmpl_1788154299370_2",
+      "businessId": "biz_1788154299370",
+      "title": "Service Follow-up",
+      "category": "Follow-up",
+      "content": "Hi {{name}}, thank you for visiting Golden Horizon Realty today. Let us know if you need any further assistance!"
+    },
+    {
+      "id": "tmpl_default",
+      "name": "Standard Appointment Reminder",
+      "text": "Hi {{clientName}}, this is an advance reminder for your {{serviceName}} scheduled on {{appointmentDate}}. Please be ready 15 mins prior. Thank you!"
+    },
+    {
+      "id": "tmpl_urgent",
+      "name": "2-Hour Final Notice",
+      "text": "Reminder: Hello {{clientName}}, your appointment for {{serviceName}} starts in 2 hours ({{appointmentTime}}). See you soon!"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "apt_1788165506655",
+      "businessId": "biz_1788154650580",
+      "clientName": "Mark Joseph Borantes",
+      "clientPhone": "09368504167",
+      "serviceType": "PMS & Oil Change",
+      "date": "2026-09-01",
+      "time": "10:00 AM",
+      "status": "CONFIRMED",
+      "reminderSent": false,
+      "notes": "in the robinsons mall comfort room level 3",
+      "createdAt": "2026-08-31T08:38:26.655Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "sms_1788223770628_372",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! This is an automated update from our service.",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-09-01T00:49:30.628Z",
+      "updatedAt": "2026-09-01T00:49:31.919Z",
+      "metadata": {},
+      "error": null,
+      "rawResponse": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Tue, 01 Sep 2026 00:49:30 GMT\nConnection: close\nContent-Type: text/html\n\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<html>\r\n\r\n<head>\r\n<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\r\n<meta http-equiv=\"Content-Language\" content=\"en-us\">\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<title>GoIP</title>\r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/default.css?4\">\r\n<style type=\"text/css\">\r\n.visible{\r\ndisplay:block;\r\n}\r\n</style>\r\n<script lang=\"javascript\" src=\"/script/dynamic.js?4\"></script>\r\n<script lang=\"javascript\">\r\nvar uptime_s=\"1034.91\";\r\nif(uptime_s!=\"\") uptime_s=parseInt(uptime_s);\r\nif (document.getElementById){\r\n\r\n\tdocument.write('<style type=\"text/css\">\\n');\r\n\tdocument.write('.invisible{display:none;}\\n');\r\n\tdocument.write('</style>\\n');\r\n}\r\n\r\nfunction set_uptime(second)\r\n{\r\n\tdocument.getElementById('uptime').innerHTML=[parseInt(second / 60 / 60), parseInt(second / 60 % 60), second % 60].join(\":\").replace(/\\b(\\d)\\b/g, \"0$1\");\r\n}\r\n\r\nfunction set_current_time()\r\n{\r\n\tvar d=new Date(Date.parse(document.getElementById('time_text').innerHTML.slice(-19).replace(/-/g, \"/\")));\r\n\td.setSeconds(d.getSeconds()+1);\r\n\r\n\ts = (d.getFullYear())+\"-\"+((d.getMonth()+1)<10?\"0\"+(d.getMonth()+1):(d.getMonth()+1))+\"-\"+(d.getDate()<10?\"0\"+d.getDate():d.getDate()) +\" \"\r\n\ts += (d.getHours()<10?\"0\"+(d.getHours()):d.getHours()) + \":\"\r\n\ts += (d.getMinutes()<10?\"0\"+(d.getMinutes()):d.getMinutes()) + \":\"\r\n\ts += (d.getSeconds()<10?\"0\"+(d.getSeconds()):d.getSeconds())\r\n\tdocument.getElementById('time_text').innerHTML = s;\r\n\r\n\tif(uptime_s!=\"\") set_uptime(parseInt(++uptime_s))\r\n\r\n\tsetTimeout('set_current_time()', 1000)\r\n}\r\nsetTimeout('set_current_time()', 1000)\r\n</script>\r\n</head>\r\n\r\n<body>\r\n<table id=\"mainframe\" height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"768\" border=\"0\">\r\n<tr>\r\n<td width=\"314\" class=\"banner\" height=\"124\">\r\n<img height=\"134\" src=\"/images/title.jpg\" width=\"312\" border=\"0\">\r\n\t\t</td>\r\n\t\t<td class=\"banner\" height=\"124\" valign=\"bottom\" width=\"454\">\r\n\t\t\t<table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" height=\"100%\"border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"24\" width=\"324\">\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"95\" align=\"right\">\r\n\t\t\t\t\t\t<a href=\"../zh_CN/status.html\"><image height=\"20\" width=\"60\" border=\"0\" src=\"/images/chs.gif\"></a>&nbsp;&nbsp;<br><a href=\"logout.html\" width=\"60\"><span class=\"time_text\">Logout</span></a>&nbsp;&nbsp;&nbsp;\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"100\" valign=\"bottom\">\r\n\t\t\t\t\t\t<span class=\"subtitle\">GoIP</span>\r\n\t\t\t\t\t</td>\r\n                                        <td valign=\"bottom\" align=\"right\" class=\"time_text\">\r\n                                                <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >SN(Serial Number):</td>\r\n                                                  <td class=\"time_text\">GOIP1M5RMOS26041730</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >Firmware Version:&nbsp;&nbsp;</td>\r\n                                                  <td class=\"time_text\">GHSFVT-1.1-68-9\n</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Module Version:</td>\r\n                                                  <td class=\"time_text\">M25MAR01A01_RSIM</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Uptime:</td>\r\n                                                  <td class=\"time_text\" id=\"uptime\"></td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Last Login Time:</td>\r\n                                                  <td class=\"time_text\">2026-08-31 10:26:05</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Current Time:</td>\r\n                                                  <td class=\"time_text\" id=\"time_text\">2026-09-01 08:49:30</td>\r\n                                                 </tr>\r\n                                                </table>\r\n                                        </td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colSpan=\"2\">\r\n\t\t\t<table height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" bgColor=\"#ffffff\" border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td vAlign=\"top\" width=\"196\" class=\"sidebar\">\r\n\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"828\" vAlign=\"top\" class=\"content\">\r\n<script lang=\"javascript\" src=\"/script/ajaxroutine.js\"></script>\n<script lang=\"javascript\" src=\"/script/progress_bar.js\"></script>\n<script lang=\"javascript\">\n\nfunction getElementText(elem)\n{\n\tif(elem.childNodes.length > 0){\n\t\tif(elem.childNodes.length > 1){\n\t\t\treturn elem.childNodes[1].nodeValue\n\t\t}\n\t\telse {\n\t\t\treturn elem.firstChild.nodeValue\n\t\t}\n\t}\n\treturn \"\"\n}\n\nfunction sms_return(msg, i, ok_flag)\n{\n\tstageobj=document.getElementById(\"send\"+i);\n\tif(stageobj){\n\t\tif(!ok_flag) stageobj.innerHTML = \" Line \"+i+\" Send Error: \"+msg;\n\t\telse stageobj.innerHTML = \" Line \"+i+\" Return: \"+msg;\n\t}\n}\n\nvar trycount = 0\nvar sms_key=\"6a96211a\"\n\nfunction processGetPost(){\n\tvar myajax=ajaxpack.ajaxobj,line_min,line_max,i;\n\tif (myajax.readyState == 4){ //if request of file completed\n\t\tif (myajax.status==200){ \n\t\t\tvar errors,error,stagetags,stage,keys,key;\n\n\t\t\tfor(i=1;i<=1;i++){\n\t\t\t\terrors=myajax.responseXML.getElementsByTagName(\"error\"+i);\n\t\t\t\tif(errors.length){\n\t\t\t\t\terror = getElementText(errors[0])\n\t\t\t\t}\n\t\t\t\tstagetags=myajax.responseXML.getElementsByTagName(\"status\"+i);\n\t\t\t\tif(stagetags.length){\n\t\t\t\t\tstage = getElementText(stagetags[0])\n\t\t\t\t}\n\t\t\t\tif(error != \"\"){\n\t\t\t\t\tsms_return(error, i);\n\t\t\t\t}\n\t\t\t\telse if(stage == \"DONE\"){\n\t\t\t\t\tsms_return(\"Send successful!\", i, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\ttrycount++;\n\t\tfor(i=1;i<=1;i++){\n\t\t\tvar stageobj=document.getElementById(\"send\"+i);\n\t\t\tif(stageobj && stageobj.innerText == \"Line \"+i+\" Sending...\") {\n\t\t\t\tif(trycount > 10) sms_return(\"Can not get response from line\", i);\n\t\t\t\telse break;\n\t\t\t}\n\t\t}\n\t\tif(i<=1) setTimeout('getSmsInfo()', 3000);\n\t}\n}\n\nfunction getSmsInfo()\n{\n\tajaxpack.getAjaxRequest(\"send_sms_status.xml\", \"line=\", processGetPost, \"text/xml\")\n}\nsetTimeout('getSmsInfo()', 3000);\n</script>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n                <td colspan=\"2\" class=\"title2\" height=\"25\">Send SMS</td>\n        </tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Line</td>\n\t\t<td width=\"180\" class=\"text\"></td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Number</td>\n\t\t<td width=\"180\" class=\"text\">09368504167</td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Content</td>\n\t\t<td width=\"180\" class=\"text\" style=\"word-break : break-all; \">Hello Mark Joseph Borantes! This is an automated update from our service.</td>\n\t</tr>\n\n</table>\n        <table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" border=\"0\">\n\n\n        <tr>\n        <td height=\"30\" class=\"title1\" id=\"send1\"><img src=\"/images/progress.gif\" border=\"0\">Line 1 Sending...</td>\n        </tr>\n\n\n\n\n\n\n\n\n\n                <tr>\n                        <td height=\"30\">\n                                <input type=\"button\" value=\"Back\" class=\"button\" onclick=javascript:window.location='tools.html?type=sms&line='>\n                        </td>\n                </tr>\n        </table>\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n</body>\r\n\r\n</html>\r\n\r\n"
+    },
+    {
+      "id": "sms_1788165506657_422",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! Your appointment for PMS & Oil Change at Jarvis Auto Supply is scheduled on 2026-09-01 at 10:00 AM. Notes: in the robinsons mall comfort room level 3.",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-08-31T08:38:26.657Z",
+      "updatedAt": "2026-08-31T08:38:27.693Z",
+      "metadata": {
+        "appointmentId": "apt_1788165506655",
+        "businessId": "biz_1788154650580"
+      },
+      "error": null,
+      "rawResponse": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Mon, 31 Aug 2026 08:38:27 GMT\nConnection: close\nContent-Type: text/html\n\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<html>\r\n\r\n<head>\r\n<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\r\n<meta http-equiv=\"Content-Language\" content=\"en-us\">\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<title>GoIP</title>\r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/default.css?4\">\r\n<style type=\"text/css\">\r\n.visible{\r\ndisplay:block;\r\n}\r\n</style>\r\n<script lang=\"javascript\" src=\"/script/dynamic.js?4\"></script>\r\n<script lang=\"javascript\">\r\nvar uptime_s=\"6395.82\";\r\nif(uptime_s!=\"\") uptime_s=parseInt(uptime_s);\r\nif (document.getElementById){\r\n\r\n\tdocument.write('<style type=\"text/css\">\\n');\r\n\tdocument.write('.invisible{display:none;}\\n');\r\n\tdocument.write('</style>\\n');\r\n}\r\n\r\nfunction set_uptime(second)\r\n{\r\n\tdocument.getElementById('uptime').innerHTML=[parseInt(second / 60 / 60), parseInt(second / 60 % 60), second % 60].join(\":\").replace(/\\b(\\d)\\b/g, \"0$1\");\r\n}\r\n\r\nfunction set_current_time()\r\n{\r\n\tvar d=new Date(Date.parse(document.getElementById('time_text').innerHTML.slice(-19).replace(/-/g, \"/\")));\r\n\td.setSeconds(d.getSeconds()+1);\r\n\r\n\ts = (d.getFullYear())+\"-\"+((d.getMonth()+1)<10?\"0\"+(d.getMonth()+1):(d.getMonth()+1))+\"-\"+(d.getDate()<10?\"0\"+d.getDate():d.getDate()) +\" \"\r\n\ts += (d.getHours()<10?\"0\"+(d.getHours()):d.getHours()) + \":\"\r\n\ts += (d.getMinutes()<10?\"0\"+(d.getMinutes()):d.getMinutes()) + \":\"\r\n\ts += (d.getSeconds()<10?\"0\"+(d.getSeconds()):d.getSeconds())\r\n\tdocument.getElementById('time_text').innerHTML = s;\r\n\r\n\tif(uptime_s!=\"\") set_uptime(parseInt(++uptime_s))\r\n\r\n\tsetTimeout('set_current_time()', 1000)\r\n}\r\nsetTimeout('set_current_time()', 1000)\r\n</script>\r\n</head>\r\n\r\n<body>\r\n<table id=\"mainframe\" height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"768\" border=\"0\">\r\n<tr>\r\n<td width=\"314\" class=\"banner\" height=\"124\">\r\n<img height=\"134\" src=\"/images/title.jpg\" width=\"312\" border=\"0\">\r\n\t\t</td>\r\n\t\t<td class=\"banner\" height=\"124\" valign=\"bottom\" width=\"454\">\r\n\t\t\t<table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" height=\"100%\"border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"24\" width=\"324\">\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"95\" align=\"right\">\r\n\t\t\t\t\t\t<a href=\"../zh_CN/status.html\"><image height=\"20\" width=\"60\" border=\"0\" src=\"/images/chs.gif\"></a>&nbsp;&nbsp;<br><a href=\"logout.html\" width=\"60\"><span class=\"time_text\">Logout</span></a>&nbsp;&nbsp;&nbsp;\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"100\" valign=\"bottom\">\r\n\t\t\t\t\t\t<span class=\"subtitle\">GoIP</span>\r\n\t\t\t\t\t</td>\r\n                                        <td valign=\"bottom\" align=\"right\" class=\"time_text\">\r\n                                                <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >SN(Serial Number):</td>\r\n                                                  <td class=\"time_text\">GOIP1M5RMOS26041730</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >Firmware Version:&nbsp;&nbsp;</td>\r\n                                                  <td class=\"time_text\">GHSFVT-1.1-68-9\n</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Module Version:</td>\r\n                                                  <td class=\"time_text\">M25MAR01A01_RSIM</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Uptime:</td>\r\n                                                  <td class=\"time_text\" id=\"uptime\"></td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Last Login Time:</td>\r\n                                                  <td class=\"time_text\">2026-08-31 10:26:05</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Current Time:</td>\r\n                                                  <td class=\"time_text\" id=\"time_text\">2026-08-31 16:38:27</td>\r\n                                                 </tr>\r\n                                                </table>\r\n                                        </td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colSpan=\"2\">\r\n\t\t\t<table height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" bgColor=\"#ffffff\" border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td vAlign=\"top\" width=\"196\" class=\"sidebar\">\r\n\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"828\" vAlign=\"top\" class=\"content\">\r\n<script lang=\"javascript\" src=\"/script/ajaxroutine.js\"></script>\n<script lang=\"javascript\" src=\"/script/progress_bar.js\"></script>\n<script lang=\"javascript\">\n\nfunction getElementText(elem)\n{\n\tif(elem.childNodes.length > 0){\n\t\tif(elem.childNodes.length > 1){\n\t\t\treturn elem.childNodes[1].nodeValue\n\t\t}\n\t\telse {\n\t\t\treturn elem.firstChild.nodeValue\n\t\t}\n\t}\n\treturn \"\"\n}\n\nfunction sms_return(msg, i, ok_flag)\n{\n\tstageobj=document.getElementById(\"send\"+i);\n\tif(stageobj){\n\t\tif(!ok_flag) stageobj.innerHTML = \" Line \"+i+\" Send Error: \"+msg;\n\t\telse stageobj.innerHTML = \" Line \"+i+\" Return: \"+msg;\n\t}\n}\n\nvar trycount = 0\nvar sms_key=\"6a953d83\"\n\nfunction processGetPost(){\n\tvar myajax=ajaxpack.ajaxobj,line_min,line_max,i;\n\tif (myajax.readyState == 4){ //if request of file completed\n\t\tif (myajax.status==200){ \n\t\t\tvar errors,error,stagetags,stage,keys,key;\n\n\t\t\tfor(i=1;i<=1;i++){\n\t\t\t\terrors=myajax.responseXML.getElementsByTagName(\"error\"+i);\n\t\t\t\tif(errors.length){\n\t\t\t\t\terror = getElementText(errors[0])\n\t\t\t\t}\n\t\t\t\tstagetags=myajax.responseXML.getElementsByTagName(\"status\"+i);\n\t\t\t\tif(stagetags.length){\n\t\t\t\t\tstage = getElementText(stagetags[0])\n\t\t\t\t}\n\t\t\t\tif(error != \"\"){\n\t\t\t\t\tsms_return(error, i);\n\t\t\t\t}\n\t\t\t\telse if(stage == \"DONE\"){\n\t\t\t\t\tsms_return(\"Send successful!\", i, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\ttrycount++;\n\t\tfor(i=1;i<=1;i++){\n\t\t\tvar stageobj=document.getElementById(\"send\"+i);\n\t\t\tif(stageobj && stageobj.innerText == \"Line \"+i+\" Sending...\") {\n\t\t\t\tif(trycount > 10) sms_return(\"Can not get response from line\", i);\n\t\t\t\telse break;\n\t\t\t}\n\t\t}\n\t\tif(i<=1) setTimeout('getSmsInfo()', 3000);\n\t}\n}\n\nfunction getSmsInfo()\n{\n\tajaxpack.getAjaxRequest(\"send_sms_status.xml\", \"line=\", processGetPost, \"text/xml\")\n}\nsetTimeout('getSmsInfo()', 3000);\n</script>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n                <td colspan=\"2\" class=\"title2\" height=\"25\">Send SMS</td>\n        </tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Line</td>\n\t\t<td width=\"180\" class=\"text\"></td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Number</td>\n\t\t<td width=\"180\" class=\"text\">09368504167</td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Content</td>\n\t\t<td width=\"180\" class=\"text\" style=\"word-break : break-all; \">Hello Mark Joseph Borantes! Your appointment for PMS & Oil Change at Jarvis Auto Supply is scheduled on 2026-09-01 at 10:00 AM. Notes: in the robinsons mall comfort room level 3.</td>\n\t</tr>\n\n</table>\n        <table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" border=\"0\">\n\n\n        <tr>\n        <td height=\"30\" class=\"title1\" id=\"send1\"><img src=\"/images/progress.gif\" border=\"0\">Line 1 Sending...</td>\n        </tr>\n\n\n\n\n\n\n\n\n\n                <tr>\n                        <td height=\"30\">\n                                <input type=\"button\" value=\"Back\" class=\"button\" onclick=javascript:window.location='tools.html?type=sms&line='>\n                        </td>\n                </tr>\n        </table>\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n</body>\r\n\r\n</html>\r\n\r\n"
+    },
+    {
+      "id": "sms_1788164539166_222",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! This is an automated update from our service.",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-08-31T08:22:19.166Z",
+      "updatedAt": "2026-08-31T08:22:20.206Z",
+      "metadata": {
+        "businessId": "biz_1788154650580"
+      },
+      "error": null,
+      "rawResponse": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Mon, 31 Aug 2026 08:22:19 GMT\nConnection: close\nContent-Type: text/html\n\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<html>\r\n\r\n<head>\r\n<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\r\n<meta http-equiv=\"Content-Language\" content=\"en-us\">\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<title>GoIP</title>\r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/default.css?4\">\r\n<style type=\"text/css\">\r\n.visible{\r\ndisplay:block;\r\n}\r\n</style>\r\n<script lang=\"javascript\" src=\"/script/dynamic.js?4\"></script>\r\n<script lang=\"javascript\">\r\nvar uptime_s=\"5428.34\";\r\nif(uptime_s!=\"\") uptime_s=parseInt(uptime_s);\r\nif (document.getElementById){\r\n\r\n\tdocument.write('<style type=\"text/css\">\\n');\r\n\tdocument.write('.invisible{display:none;}\\n');\r\n\tdocument.write('</style>\\n');\r\n}\r\n\r\nfunction set_uptime(second)\r\n{\r\n\tdocument.getElementById('uptime').innerHTML=[parseInt(second / 60 / 60), parseInt(second / 60 % 60), second % 60].join(\":\").replace(/\\b(\\d)\\b/g, \"0$1\");\r\n}\r\n\r\nfunction set_current_time()\r\n{\r\n\tvar d=new Date(Date.parse(document.getElementById('time_text').innerHTML.slice(-19).replace(/-/g, \"/\")));\r\n\td.setSeconds(d.getSeconds()+1);\r\n\r\n\ts = (d.getFullYear())+\"-\"+((d.getMonth()+1)<10?\"0\"+(d.getMonth()+1):(d.getMonth()+1))+\"-\"+(d.getDate()<10?\"0\"+d.getDate():d.getDate()) +\" \"\r\n\ts += (d.getHours()<10?\"0\"+(d.getHours()):d.getHours()) + \":\"\r\n\ts += (d.getMinutes()<10?\"0\"+(d.getMinutes()):d.getMinutes()) + \":\"\r\n\ts += (d.getSeconds()<10?\"0\"+(d.getSeconds()):d.getSeconds())\r\n\tdocument.getElementById('time_text').innerHTML = s;\r\n\r\n\tif(uptime_s!=\"\") set_uptime(parseInt(++uptime_s))\r\n\r\n\tsetTimeout('set_current_time()', 1000)\r\n}\r\nsetTimeout('set_current_time()', 1000)\r\n</script>\r\n</head>\r\n\r\n<body>\r\n<table id=\"mainframe\" height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"768\" border=\"0\">\r\n<tr>\r\n<td width=\"314\" class=\"banner\" height=\"124\">\r\n<img height=\"134\" src=\"/images/title.jpg\" width=\"312\" border=\"0\">\r\n\t\t</td>\r\n\t\t<td class=\"banner\" height=\"124\" valign=\"bottom\" width=\"454\">\r\n\t\t\t<table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" height=\"100%\"border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"24\" width=\"324\">\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"95\" align=\"right\">\r\n\t\t\t\t\t\t<a href=\"../zh_CN/status.html\"><image height=\"20\" width=\"60\" border=\"0\" src=\"/images/chs.gif\"></a>&nbsp;&nbsp;<br><a href=\"logout.html\" width=\"60\"><span class=\"time_text\">Logout</span></a>&nbsp;&nbsp;&nbsp;\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"100\" valign=\"bottom\">\r\n\t\t\t\t\t\t<span class=\"subtitle\">GoIP</span>\r\n\t\t\t\t\t</td>\r\n                                        <td valign=\"bottom\" align=\"right\" class=\"time_text\">\r\n                                                <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >SN(Serial Number):</td>\r\n                                                  <td class=\"time_text\">GOIP1M5RMOS26041730</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >Firmware Version:&nbsp;&nbsp;</td>\r\n                                                  <td class=\"time_text\">GHSFVT-1.1-68-9\n</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Module Version:</td>\r\n                                                  <td class=\"time_text\">M25MAR01A01_RSIM</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Uptime:</td>\r\n                                                  <td class=\"time_text\" id=\"uptime\"></td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Last Login Time:</td>\r\n                                                  <td class=\"time_text\">2026-08-31 10:26:05</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Current Time:</td>\r\n                                                  <td class=\"time_text\" id=\"time_text\">2026-08-31 16:22:19</td>\r\n                                                 </tr>\r\n                                                </table>\r\n                                        </td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colSpan=\"2\">\r\n\t\t\t<table height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" bgColor=\"#ffffff\" border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td vAlign=\"top\" width=\"196\" class=\"sidebar\">\r\n\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"828\" vAlign=\"top\" class=\"content\">\r\n<script lang=\"javascript\" src=\"/script/ajaxroutine.js\"></script>\n<script lang=\"javascript\" src=\"/script/progress_bar.js\"></script>\n<script lang=\"javascript\">\n\nfunction getElementText(elem)\n{\n\tif(elem.childNodes.length > 0){\n\t\tif(elem.childNodes.length > 1){\n\t\t\treturn elem.childNodes[1].nodeValue\n\t\t}\n\t\telse {\n\t\t\treturn elem.firstChild.nodeValue\n\t\t}\n\t}\n\treturn \"\"\n}\n\nfunction sms_return(msg, i, ok_flag)\n{\n\tstageobj=document.getElementById(\"send\"+i);\n\tif(stageobj){\n\t\tif(!ok_flag) stageobj.innerHTML = \" Line \"+i+\" Send Error: \"+msg;\n\t\telse stageobj.innerHTML = \" Line \"+i+\" Return: \"+msg;\n\t}\n}\n\nvar trycount = 0\nvar sms_key=\"6a9539bb\"\n\nfunction processGetPost(){\n\tvar myajax=ajaxpack.ajaxobj,line_min,line_max,i;\n\tif (myajax.readyState == 4){ //if request of file completed\n\t\tif (myajax.status==200){ \n\t\t\tvar errors,error,stagetags,stage,keys,key;\n\n\t\t\tfor(i=1;i<=1;i++){\n\t\t\t\terrors=myajax.responseXML.getElementsByTagName(\"error\"+i);\n\t\t\t\tif(errors.length){\n\t\t\t\t\terror = getElementText(errors[0])\n\t\t\t\t}\n\t\t\t\tstagetags=myajax.responseXML.getElementsByTagName(\"status\"+i);\n\t\t\t\tif(stagetags.length){\n\t\t\t\t\tstage = getElementText(stagetags[0])\n\t\t\t\t}\n\t\t\t\tif(error != \"\"){\n\t\t\t\t\tsms_return(error, i);\n\t\t\t\t}\n\t\t\t\telse if(stage == \"DONE\"){\n\t\t\t\t\tsms_return(\"Send successful!\", i, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\ttrycount++;\n\t\tfor(i=1;i<=1;i++){\n\t\t\tvar stageobj=document.getElementById(\"send\"+i);\n\t\t\tif(stageobj && stageobj.innerText == \"Line \"+i+\" Sending...\") {\n\t\t\t\tif(trycount > 10) sms_return(\"Can not get response from line\", i);\n\t\t\t\telse break;\n\t\t\t}\n\t\t}\n\t\tif(i<=1) setTimeout('getSmsInfo()', 3000);\n\t}\n}\n\nfunction getSmsInfo()\n{\n\tajaxpack.getAjaxRequest(\"send_sms_status.xml\", \"line=\", processGetPost, \"text/xml\")\n}\nsetTimeout('getSmsInfo()', 3000);\n</script>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n                <td colspan=\"2\" class=\"title2\" height=\"25\">Send SMS</td>\n        </tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Line</td>\n\t\t<td width=\"180\" class=\"text\"></td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Number</td>\n\t\t<td width=\"180\" class=\"text\">09368504167</td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Content</td>\n\t\t<td width=\"180\" class=\"text\" style=\"word-break : break-all; \">Hello Mark Joseph Borantes! This is an automated update from our service.</td>\n\t</tr>\n\n</table>\n        <table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" border=\"0\">\n\n\n        <tr>\n        <td height=\"30\" class=\"title1\" id=\"send1\"><img src=\"/images/progress.gif\" border=\"0\">Line 1 Sending...</td>\n        </tr>\n\n\n\n\n\n\n\n\n\n                <tr>\n                        <td height=\"30\">\n                                <input type=\"button\" value=\"Back\" class=\"button\" onclick=javascript:window.location='tools.html?type=sms&line='>\n                        </td>\n                </tr>\n        </table>\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n</body>\r\n\r\n</html>\r\n\r\n"
+    },
+    {
+      "id": "sms_1788159709092_84",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! This is Jarvis SMS gateway",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-08-31T07:01:49.092Z",
+      "updatedAt": "2026-08-31T07:01:49.859Z",
+      "metadata": {
+        "businessId": "biz_1788154650580"
+      },
+      "error": null,
+      "rawResponse": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Mon, 31 Aug 2026 07:01:49 GMT\nConnection: close\nContent-Type: text/html\n\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<html>\r\n\r\n<head>\r\n<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\r\n<meta http-equiv=\"Content-Language\" content=\"en-us\">\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<title>GoIP</title>\r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/default.css?4\">\r\n<style type=\"text/css\">\r\n.visible{\r\ndisplay:block;\r\n}\r\n</style>\r\n<script lang=\"javascript\" src=\"/script/dynamic.js?4\"></script>\r\n<script lang=\"javascript\">\r\nvar uptime_s=\"598.03\";\r\nif(uptime_s!=\"\") uptime_s=parseInt(uptime_s);\r\nif (document.getElementById){\r\n\r\n\tdocument.write('<style type=\"text/css\">\\n');\r\n\tdocument.write('.invisible{display:none;}\\n');\r\n\tdocument.write('</style>\\n');\r\n}\r\n\r\nfunction set_uptime(second)\r\n{\r\n\tdocument.getElementById('uptime').innerHTML=[parseInt(second / 60 / 60), parseInt(second / 60 % 60), second % 60].join(\":\").replace(/\\b(\\d)\\b/g, \"0$1\");\r\n}\r\n\r\nfunction set_current_time()\r\n{\r\n\tvar d=new Date(Date.parse(document.getElementById('time_text').innerHTML.slice(-19).replace(/-/g, \"/\")));\r\n\td.setSeconds(d.getSeconds()+1);\r\n\r\n\ts = (d.getFullYear())+\"-\"+((d.getMonth()+1)<10?\"0\"+(d.getMonth()+1):(d.getMonth()+1))+\"-\"+(d.getDate()<10?\"0\"+d.getDate():d.getDate()) +\" \"\r\n\ts += (d.getHours()<10?\"0\"+(d.getHours()):d.getHours()) + \":\"\r\n\ts += (d.getMinutes()<10?\"0\"+(d.getMinutes()):d.getMinutes()) + \":\"\r\n\ts += (d.getSeconds()<10?\"0\"+(d.getSeconds()):d.getSeconds())\r\n\tdocument.getElementById('time_text').innerHTML = s;\r\n\r\n\tif(uptime_s!=\"\") set_uptime(parseInt(++uptime_s))\r\n\r\n\tsetTimeout('set_current_time()', 1000)\r\n}\r\nsetTimeout('set_current_time()', 1000)\r\n</script>\r\n</head>\r\n\r\n<body>\r\n<table id=\"mainframe\" height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"768\" border=\"0\">\r\n<tr>\r\n<td width=\"314\" class=\"banner\" height=\"124\">\r\n<img height=\"134\" src=\"/images/title.jpg\" width=\"312\" border=\"0\">\r\n\t\t</td>\r\n\t\t<td class=\"banner\" height=\"124\" valign=\"bottom\" width=\"454\">\r\n\t\t\t<table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" height=\"100%\"border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"24\" width=\"324\">\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"95\" align=\"right\">\r\n\t\t\t\t\t\t<a href=\"../zh_CN/status.html\"><image height=\"20\" width=\"60\" border=\"0\" src=\"/images/chs.gif\"></a>&nbsp;&nbsp;<br><a href=\"logout.html\" width=\"60\"><span class=\"time_text\">Logout</span></a>&nbsp;&nbsp;&nbsp;\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"100\" valign=\"bottom\">\r\n\t\t\t\t\t\t<span class=\"subtitle\">GoIP</span>\r\n\t\t\t\t\t</td>\r\n                                        <td valign=\"bottom\" align=\"right\" class=\"time_text\">\r\n                                                <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >SN(Serial Number):</td>\r\n                                                  <td class=\"time_text\">GOIP1M5RMOS26041730</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >Firmware Version:&nbsp;&nbsp;</td>\r\n                                                  <td class=\"time_text\">GHSFVT-1.1-68-9\n</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Module Version:</td>\r\n                                                  <td class=\"time_text\">M25MAR01A01_RSIM</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Uptime:</td>\r\n                                                  <td class=\"time_text\" id=\"uptime\"></td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Last Login Time:</td>\r\n                                                  <td class=\"time_text\">2026-08-31 10:26:05</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Current Time:</td>\r\n                                                  <td class=\"time_text\" id=\"time_text\">2026-08-31 15:01:49</td>\r\n                                                 </tr>\r\n                                                </table>\r\n                                        </td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colSpan=\"2\">\r\n\t\t\t<table height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" bgColor=\"#ffffff\" border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td vAlign=\"top\" width=\"196\" class=\"sidebar\">\r\n\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"828\" vAlign=\"top\" class=\"content\">\r\n<script lang=\"javascript\" src=\"/script/ajaxroutine.js\"></script>\n<script lang=\"javascript\" src=\"/script/progress_bar.js\"></script>\n<script lang=\"javascript\">\n\nfunction getElementText(elem)\n{\n\tif(elem.childNodes.length > 0){\n\t\tif(elem.childNodes.length > 1){\n\t\t\treturn elem.childNodes[1].nodeValue\n\t\t}\n\t\telse {\n\t\t\treturn elem.firstChild.nodeValue\n\t\t}\n\t}\n\treturn \"\"\n}\n\nfunction sms_return(msg, i, ok_flag)\n{\n\tstageobj=document.getElementById(\"send\"+i);\n\tif(stageobj){\n\t\tif(!ok_flag) stageobj.innerHTML = \" Line \"+i+\" Send Error: \"+msg;\n\t\telse stageobj.innerHTML = \" Line \"+i+\" Return: \"+msg;\n\t}\n}\n\nvar trycount = 0\nvar sms_key=\"6a9526dd\"\n\nfunction processGetPost(){\n\tvar myajax=ajaxpack.ajaxobj,line_min,line_max,i;\n\tif (myajax.readyState == 4){ //if request of file completed\n\t\tif (myajax.status==200){ \n\t\t\tvar errors,error,stagetags,stage,keys,key;\n\n\t\t\tfor(i=1;i<=1;i++){\n\t\t\t\terrors=myajax.responseXML.getElementsByTagName(\"error\"+i);\n\t\t\t\tif(errors.length){\n\t\t\t\t\terror = getElementText(errors[0])\n\t\t\t\t}\n\t\t\t\tstagetags=myajax.responseXML.getElementsByTagName(\"status\"+i);\n\t\t\t\tif(stagetags.length){\n\t\t\t\t\tstage = getElementText(stagetags[0])\n\t\t\t\t}\n\t\t\t\tif(error != \"\"){\n\t\t\t\t\tsms_return(error, i);\n\t\t\t\t}\n\t\t\t\telse if(stage == \"DONE\"){\n\t\t\t\t\tsms_return(\"Send successful!\", i, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\ttrycount++;\n\t\tfor(i=1;i<=1;i++){\n\t\t\tvar stageobj=document.getElementById(\"send\"+i);\n\t\t\tif(stageobj && stageobj.innerText == \"Line \"+i+\" Sending...\") {\n\t\t\t\tif(trycount > 10) sms_return(\"Can not get response from line\", i);\n\t\t\t\telse break;\n\t\t\t}\n\t\t}\n\t\tif(i<=1) setTimeout('getSmsInfo()', 3000);\n\t}\n}\n\nfunction getSmsInfo()\n{\n\tajaxpack.getAjaxRequest(\"send_sms_status.xml\", \"line=\", processGetPost, \"text/xml\")\n}\nsetTimeout('getSmsInfo()', 3000);\n</script>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n                <td colspan=\"2\" class=\"title2\" height=\"25\">Send SMS</td>\n        </tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Line</td>\n\t\t<td width=\"180\" class=\"text\"></td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Number</td>\n\t\t<td width=\"180\" class=\"text\">09368504167</td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Content</td>\n\t\t<td width=\"180\" class=\"text\" style=\"word-break : break-all; \">Hello Mark Joseph Borantes! This is Jarvis SMS gateway</td>\n\t</tr>\n\n</table>\n        <table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" border=\"0\">\n\n\n        <tr>\n        <td height=\"30\" class=\"title1\" id=\"send1\"><img src=\"/images/progress.gif\" border=\"0\">Line 1 Sending...</td>\n        </tr>\n\n\n\n\n\n\n\n\n\n                <tr>\n                        <td height=\"30\">\n                                <input type=\"button\" value=\"Back\" class=\"button\" onclick=javascript:window.location='tools.html?type=sms&line='>\n                        </td>\n                </tr>\n        </table>\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n</body>\r\n\r\n</html>\r\n\r\n"
+    },
+    {
+      "id": "sms_1788159657246_352",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! This is an automated update from our service.",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-08-31T07:00:57.246Z",
+      "updatedAt": "2026-08-31T07:00:58.308Z",
+      "metadata": {
+        "businessId": "biz_1788154650580"
+      },
+      "error": null,
+      "rawResponse": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Mon, 31 Aug 2026 07:00:57 GMT\nConnection: close\nContent-Type: text/html\n\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<html>\r\n\r\n<head>\r\n<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\r\n<meta http-equiv=\"Content-Language\" content=\"en-us\">\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<title>GoIP</title>\r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/default.css?4\">\r\n<style type=\"text/css\">\r\n.visible{\r\ndisplay:block;\r\n}\r\n</style>\r\n<script lang=\"javascript\" src=\"/script/dynamic.js?4\"></script>\r\n<script lang=\"javascript\">\r\nvar uptime_s=\"546.47\";\r\nif(uptime_s!=\"\") uptime_s=parseInt(uptime_s);\r\nif (document.getElementById){\r\n\r\n\tdocument.write('<style type=\"text/css\">\\n');\r\n\tdocument.write('.invisible{display:none;}\\n');\r\n\tdocument.write('</style>\\n');\r\n}\r\n\r\nfunction set_uptime(second)\r\n{\r\n\tdocument.getElementById('uptime').innerHTML=[parseInt(second / 60 / 60), parseInt(second / 60 % 60), second % 60].join(\":\").replace(/\\b(\\d)\\b/g, \"0$1\");\r\n}\r\n\r\nfunction set_current_time()\r\n{\r\n\tvar d=new Date(Date.parse(document.getElementById('time_text').innerHTML.slice(-19).replace(/-/g, \"/\")));\r\n\td.setSeconds(d.getSeconds()+1);\r\n\r\n\ts = (d.getFullYear())+\"-\"+((d.getMonth()+1)<10?\"0\"+(d.getMonth()+1):(d.getMonth()+1))+\"-\"+(d.getDate()<10?\"0\"+d.getDate():d.getDate()) +\" \"\r\n\ts += (d.getHours()<10?\"0\"+(d.getHours()):d.getHours()) + \":\"\r\n\ts += (d.getMinutes()<10?\"0\"+(d.getMinutes()):d.getMinutes()) + \":\"\r\n\ts += (d.getSeconds()<10?\"0\"+(d.getSeconds()):d.getSeconds())\r\n\tdocument.getElementById('time_text').innerHTML = s;\r\n\r\n\tif(uptime_s!=\"\") set_uptime(parseInt(++uptime_s))\r\n\r\n\tsetTimeout('set_current_time()', 1000)\r\n}\r\nsetTimeout('set_current_time()', 1000)\r\n</script>\r\n</head>\r\n\r\n<body>\r\n<table id=\"mainframe\" height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"768\" border=\"0\">\r\n<tr>\r\n<td width=\"314\" class=\"banner\" height=\"124\">\r\n<img height=\"134\" src=\"/images/title.jpg\" width=\"312\" border=\"0\">\r\n\t\t</td>\r\n\t\t<td class=\"banner\" height=\"124\" valign=\"bottom\" width=\"454\">\r\n\t\t\t<table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" height=\"100%\"border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"24\" width=\"324\">\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"95\" align=\"right\">\r\n\t\t\t\t\t\t<a href=\"../zh_CN/status.html\"><image height=\"20\" width=\"60\" border=\"0\" src=\"/images/chs.gif\"></a>&nbsp;&nbsp;<br><a href=\"logout.html\" width=\"60\"><span class=\"time_text\">Logout</span></a>&nbsp;&nbsp;&nbsp;\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"100\" valign=\"bottom\">\r\n\t\t\t\t\t\t<span class=\"subtitle\">GoIP</span>\r\n\t\t\t\t\t</td>\r\n                                        <td valign=\"bottom\" align=\"right\" class=\"time_text\">\r\n                                                <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >SN(Serial Number):</td>\r\n                                                  <td class=\"time_text\">GOIP1M5RMOS26041730</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >Firmware Version:&nbsp;&nbsp;</td>\r\n                                                  <td class=\"time_text\">GHSFVT-1.1-68-9\n</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Module Version:</td>\r\n                                                  <td class=\"time_text\">M25MAR01A01_RSIM</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Uptime:</td>\r\n                                                  <td class=\"time_text\" id=\"uptime\"></td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Last Login Time:</td>\r\n                                                  <td class=\"time_text\">2026-08-31 10:26:05</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Current Time:</td>\r\n                                                  <td class=\"time_text\" id=\"time_text\">2026-08-31 15:00:58</td>\r\n                                                 </tr>\r\n                                                </table>\r\n                                        </td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colSpan=\"2\">\r\n\t\t\t<table height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" bgColor=\"#ffffff\" border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td vAlign=\"top\" width=\"196\" class=\"sidebar\">\r\n\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"828\" vAlign=\"top\" class=\"content\">\r\n<script lang=\"javascript\" src=\"/script/ajaxroutine.js\"></script>\n<script lang=\"javascript\" src=\"/script/progress_bar.js\"></script>\n<script lang=\"javascript\">\n\nfunction getElementText(elem)\n{\n\tif(elem.childNodes.length > 0){\n\t\tif(elem.childNodes.length > 1){\n\t\t\treturn elem.childNodes[1].nodeValue\n\t\t}\n\t\telse {\n\t\t\treturn elem.firstChild.nodeValue\n\t\t}\n\t}\n\treturn \"\"\n}\n\nfunction sms_return(msg, i, ok_flag)\n{\n\tstageobj=document.getElementById(\"send\"+i);\n\tif(stageobj){\n\t\tif(!ok_flag) stageobj.innerHTML = \" Line \"+i+\" Send Error: \"+msg;\n\t\telse stageobj.innerHTML = \" Line \"+i+\" Return: \"+msg;\n\t}\n}\n\nvar trycount = 0\nvar sms_key=\"6a9526a9\"\n\nfunction processGetPost(){\n\tvar myajax=ajaxpack.ajaxobj,line_min,line_max,i;\n\tif (myajax.readyState == 4){ //if request of file completed\n\t\tif (myajax.status==200){ \n\t\t\tvar errors,error,stagetags,stage,keys,key;\n\n\t\t\tfor(i=1;i<=1;i++){\n\t\t\t\terrors=myajax.responseXML.getElementsByTagName(\"error\"+i);\n\t\t\t\tif(errors.length){\n\t\t\t\t\terror = getElementText(errors[0])\n\t\t\t\t}\n\t\t\t\tstagetags=myajax.responseXML.getElementsByTagName(\"status\"+i);\n\t\t\t\tif(stagetags.length){\n\t\t\t\t\tstage = getElementText(stagetags[0])\n\t\t\t\t}\n\t\t\t\tif(error != \"\"){\n\t\t\t\t\tsms_return(error, i);\n\t\t\t\t}\n\t\t\t\telse if(stage == \"DONE\"){\n\t\t\t\t\tsms_return(\"Send successful!\", i, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\ttrycount++;\n\t\tfor(i=1;i<=1;i++){\n\t\t\tvar stageobj=document.getElementById(\"send\"+i);\n\t\t\tif(stageobj && stageobj.innerText == \"Line \"+i+\" Sending...\") {\n\t\t\t\tif(trycount > 10) sms_return(\"Can not get response from line\", i);\n\t\t\t\telse break;\n\t\t\t}\n\t\t}\n\t\tif(i<=1) setTimeout('getSmsInfo()', 3000);\n\t}\n}\n\nfunction getSmsInfo()\n{\n\tajaxpack.getAjaxRequest(\"send_sms_status.xml\", \"line=\", processGetPost, \"text/xml\")\n}\nsetTimeout('getSmsInfo()', 3000);\n</script>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n                <td colspan=\"2\" class=\"title2\" height=\"25\">Send SMS</td>\n        </tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Line</td>\n\t\t<td width=\"180\" class=\"text\"></td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Number</td>\n\t\t<td width=\"180\" class=\"text\">09368504167</td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Content</td>\n\t\t<td width=\"180\" class=\"text\" style=\"word-break : break-all; \">Hello Mark Joseph Borantes! This is an automated update from our service.</td>\n\t</tr>\n\n</table>\n        <table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" border=\"0\">\n\n\n        <tr>\n        <td height=\"30\" class=\"title1\" id=\"send1\"><img src=\"/images/progress.gif\" border=\"0\">Line 1 Sending...</td>\n        </tr>\n\n\n\n\n\n\n\n\n\n                <tr>\n                        <td height=\"30\">\n                                <input type=\"button\" value=\"Back\" class=\"button\" onclick=javascript:window.location='tools.html?type=sms&line='>\n                        </td>\n                </tr>\n        </table>\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n</body>\r\n\r\n</html>\r\n\r\n"
+    },
+    {
+      "id": "sms_1788157682199_866",
+      "recipient": "09700452584",
+      "message": "Queue tracking verification SMS.",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-08-31T06:28:02.199Z",
+      "updatedAt": "2026-08-31T06:28:03.282Z",
+      "metadata": {},
+      "error": null,
+      "rawResponse": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Mon, 31 Aug 2026 06:28:03 GMT\nConnection: close\nContent-Type: text/html\n\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<html>\r\n\r\n<head>\r\n<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\r\n<meta http-equiv=\"Content-Language\" content=\"en-us\">\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<title>GoIP</title>\r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/default.css?4\">\r\n<style type=\"text/css\">\r\n.visible{\r\ndisplay:block;\r\n}\r\n</style>\r\n<script lang=\"javascript\" src=\"/script/dynamic.js?4\"></script>\r\n<script lang=\"javascript\">\r\nvar uptime_s=\"4632.46\";\r\nif(uptime_s!=\"\") uptime_s=parseInt(uptime_s);\r\nif (document.getElementById){\r\n\r\n\tdocument.write('<style type=\"text/css\">\\n');\r\n\tdocument.write('.invisible{display:none;}\\n');\r\n\tdocument.write('</style>\\n');\r\n}\r\n\r\nfunction set_uptime(second)\r\n{\r\n\tdocument.getElementById('uptime').innerHTML=[parseInt(second / 60 / 60), parseInt(second / 60 % 60), second % 60].join(\":\").replace(/\\b(\\d)\\b/g, \"0$1\");\r\n}\r\n\r\nfunction set_current_time()\r\n{\r\n\tvar d=new Date(Date.parse(document.getElementById('time_text').innerHTML.slice(-19).replace(/-/g, \"/\")));\r\n\td.setSeconds(d.getSeconds()+1);\r\n\r\n\ts = (d.getFullYear())+\"-\"+((d.getMonth()+1)<10?\"0\"+(d.getMonth()+1):(d.getMonth()+1))+\"-\"+(d.getDate()<10?\"0\"+d.getDate():d.getDate()) +\" \"\r\n\ts += (d.getHours()<10?\"0\"+(d.getHours()):d.getHours()) + \":\"\r\n\ts += (d.getMinutes()<10?\"0\"+(d.getMinutes()):d.getMinutes()) + \":\"\r\n\ts += (d.getSeconds()<10?\"0\"+(d.getSeconds()):d.getSeconds())\r\n\tdocument.getElementById('time_text').innerHTML = s;\r\n\r\n\tif(uptime_s!=\"\") set_uptime(parseInt(++uptime_s))\r\n\r\n\tsetTimeout('set_current_time()', 1000)\r\n}\r\nsetTimeout('set_current_time()', 1000)\r\n</script>\r\n</head>\r\n\r\n<body>\r\n<table id=\"mainframe\" height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"768\" border=\"0\">\r\n<tr>\r\n<td width=\"314\" class=\"banner\" height=\"124\">\r\n<img height=\"134\" src=\"/images/title.jpg\" width=\"312\" border=\"0\">\r\n\t\t</td>\r\n\t\t<td class=\"banner\" height=\"124\" valign=\"bottom\" width=\"454\">\r\n\t\t\t<table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" height=\"100%\"border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"24\" width=\"324\">\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"95\" align=\"right\">\r\n\t\t\t\t\t\t<a href=\"../zh_CN/status.html\"><image height=\"20\" width=\"60\" border=\"0\" src=\"/images/chs.gif\"></a>&nbsp;&nbsp;<br><a href=\"logout.html\" width=\"60\"><span class=\"time_text\">Logout</span></a>&nbsp;&nbsp;&nbsp;\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"100\" valign=\"bottom\">\r\n\t\t\t\t\t\t<span class=\"subtitle\">GoIP</span>\r\n\t\t\t\t\t</td>\r\n                                        <td valign=\"bottom\" align=\"right\" class=\"time_text\">\r\n                                                <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >SN(Serial Number):</td>\r\n                                                  <td class=\"time_text\">GOIP1M5RMOS26041730</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >Firmware Version:&nbsp;&nbsp;</td>\r\n                                                  <td class=\"time_text\">GHSFVT-1.1-68-9\n</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Module Version:</td>\r\n                                                  <td class=\"time_text\">M25MAR01A01_RSIM</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Uptime:</td>\r\n                                                  <td class=\"time_text\" id=\"uptime\"></td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Last Login Time:</td>\r\n                                                  <td class=\"time_text\">2026-08-31 10:26:05</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Current Time:</td>\r\n                                                  <td class=\"time_text\" id=\"time_text\">2026-08-31 14:28:03</td>\r\n                                                 </tr>\r\n                                                </table>\r\n                                        </td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colSpan=\"2\">\r\n\t\t\t<table height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" bgColor=\"#ffffff\" border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td vAlign=\"top\" width=\"196\" class=\"sidebar\">\r\n\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"828\" vAlign=\"top\" class=\"content\">\r\n<script lang=\"javascript\" src=\"/script/ajaxroutine.js\"></script>\n<script lang=\"javascript\" src=\"/script/progress_bar.js\"></script>\n<script lang=\"javascript\">\n\nfunction getElementText(elem)\n{\n\tif(elem.childNodes.length > 0){\n\t\tif(elem.childNodes.length > 1){\n\t\t\treturn elem.childNodes[1].nodeValue\n\t\t}\n\t\telse {\n\t\t\treturn elem.firstChild.nodeValue\n\t\t}\n\t}\n\treturn \"\"\n}\n\nfunction sms_return(msg, i, ok_flag)\n{\n\tstageobj=document.getElementById(\"send\"+i);\n\tif(stageobj){\n\t\tif(!ok_flag) stageobj.innerHTML = \" Line \"+i+\" Send Error: \"+msg;\n\t\telse stageobj.innerHTML = \" Line \"+i+\" Return: \"+msg;\n\t}\n}\n\nvar trycount = 0\nvar sms_key=\"6a951ef2\"\n\nfunction processGetPost(){\n\tvar myajax=ajaxpack.ajaxobj,line_min,line_max,i;\n\tif (myajax.readyState == 4){ //if request of file completed\n\t\tif (myajax.status==200){ \n\t\t\tvar errors,error,stagetags,stage,keys,key;\n\n\t\t\tfor(i=1;i<=1;i++){\n\t\t\t\terrors=myajax.responseXML.getElementsByTagName(\"error\"+i);\n\t\t\t\tif(errors.length){\n\t\t\t\t\terror = getElementText(errors[0])\n\t\t\t\t}\n\t\t\t\tstagetags=myajax.responseXML.getElementsByTagName(\"status\"+i);\n\t\t\t\tif(stagetags.length){\n\t\t\t\t\tstage = getElementText(stagetags[0])\n\t\t\t\t}\n\t\t\t\tif(error != \"\"){\n\t\t\t\t\tsms_return(error, i);\n\t\t\t\t}\n\t\t\t\telse if(stage == \"DONE\"){\n\t\t\t\t\tsms_return(\"Send successful!\", i, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\ttrycount++;\n\t\tfor(i=1;i<=1;i++){\n\t\t\tvar stageobj=document.getElementById(\"send\"+i);\n\t\t\tif(stageobj && stageobj.innerText == \"Line \"+i+\" Sending...\") {\n\t\t\t\tif(trycount > 10) sms_return(\"Can not get response from line\", i);\n\t\t\t\telse break;\n\t\t\t}\n\t\t}\n\t\tif(i<=1) setTimeout('getSmsInfo()', 3000);\n\t}\n}\n\nfunction getSmsInfo()\n{\n\tajaxpack.getAjaxRequest(\"send_sms_status.xml\", \"line=\", processGetPost, \"text/xml\")\n}\nsetTimeout('getSmsInfo()', 3000);\n</script>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n                <td colspan=\"2\" class=\"title2\" height=\"25\">Send SMS</td>\n        </tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Line</td>\n\t\t<td width=\"180\" class=\"text\"></td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Number</td>\n\t\t<td width=\"180\" class=\"text\">09700452584</td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Content</td>\n\t\t<td width=\"180\" class=\"text\" style=\"word-break : break-all; \">Queue tracking verification SMS.</td>\n\t</tr>\n\n</table>\n        <table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" border=\"0\">\n\n\n        <tr>\n        <td height=\"30\" class=\"title1\" id=\"send1\"><img src=\"/images/progress.gif\" border=\"0\">Line 1 Sending...</td>\n        </tr>\n\n\n\n\n\n\n\n\n\n                <tr>\n                        <td height=\"30\">\n                                <input type=\"button\" value=\"Back\" class=\"button\" onclick=javascript:window.location='tools.html?type=sms&line='>\n                        </td>\n                </tr>\n        </table>\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n</body>\r\n\r\n</html>\r\n\r\n"
+    },
+    {
+      "id": "sms_1788157072532_806",
+      "recipient": "+639700452584",
+      "message": "Hello Macky Melgar! Nagkaon kana lab labhag.",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-08-31T06:17:52.532Z",
+      "updatedAt": "2026-08-31T06:17:53.416Z",
+      "metadata": {
+        "businessId": "biz_1788154650580"
+      },
+      "error": null,
+      "rawResponse": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Mon, 31 Aug 2026 06:17:53 GMT\nConnection: close\nContent-Type: text/html\n\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<html>\r\n\r\n<head>\r\n<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\r\n<meta http-equiv=\"Content-Language\" content=\"en-us\">\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<title>GoIP</title>\r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/default.css?4\">\r\n<style type=\"text/css\">\r\n.visible{\r\ndisplay:block;\r\n}\r\n</style>\r\n<script lang=\"javascript\" src=\"/script/dynamic.js?4\"></script>\r\n<script lang=\"javascript\">\r\nvar uptime_s=\"4022.61\";\r\nif(uptime_s!=\"\") uptime_s=parseInt(uptime_s);\r\nif (document.getElementById){\r\n\r\n\tdocument.write('<style type=\"text/css\">\\n');\r\n\tdocument.write('.invisible{display:none;}\\n');\r\n\tdocument.write('</style>\\n');\r\n}\r\n\r\nfunction set_uptime(second)\r\n{\r\n\tdocument.getElementById('uptime').innerHTML=[parseInt(second / 60 / 60), parseInt(second / 60 % 60), second % 60].join(\":\").replace(/\\b(\\d)\\b/g, \"0$1\");\r\n}\r\n\r\nfunction set_current_time()\r\n{\r\n\tvar d=new Date(Date.parse(document.getElementById('time_text').innerHTML.slice(-19).replace(/-/g, \"/\")));\r\n\td.setSeconds(d.getSeconds()+1);\r\n\r\n\ts = (d.getFullYear())+\"-\"+((d.getMonth()+1)<10?\"0\"+(d.getMonth()+1):(d.getMonth()+1))+\"-\"+(d.getDate()<10?\"0\"+d.getDate():d.getDate()) +\" \"\r\n\ts += (d.getHours()<10?\"0\"+(d.getHours()):d.getHours()) + \":\"\r\n\ts += (d.getMinutes()<10?\"0\"+(d.getMinutes()):d.getMinutes()) + \":\"\r\n\ts += (d.getSeconds()<10?\"0\"+(d.getSeconds()):d.getSeconds())\r\n\tdocument.getElementById('time_text').innerHTML = s;\r\n\r\n\tif(uptime_s!=\"\") set_uptime(parseInt(++uptime_s))\r\n\r\n\tsetTimeout('set_current_time()', 1000)\r\n}\r\nsetTimeout('set_current_time()', 1000)\r\n</script>\r\n</head>\r\n\r\n<body>\r\n<table id=\"mainframe\" height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"768\" border=\"0\">\r\n<tr>\r\n<td width=\"314\" class=\"banner\" height=\"124\">\r\n<img height=\"134\" src=\"/images/title.jpg\" width=\"312\" border=\"0\">\r\n\t\t</td>\r\n\t\t<td class=\"banner\" height=\"124\" valign=\"bottom\" width=\"454\">\r\n\t\t\t<table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" height=\"100%\"border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"24\" width=\"324\">\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"95\" align=\"right\">\r\n\t\t\t\t\t\t<a href=\"../zh_CN/status.html\"><image height=\"20\" width=\"60\" border=\"0\" src=\"/images/chs.gif\"></a>&nbsp;&nbsp;<br><a href=\"logout.html\" width=\"60\"><span class=\"time_text\">Logout</span></a>&nbsp;&nbsp;&nbsp;\r\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td height=\"100\" valign=\"bottom\">\r\n\t\t\t\t\t\t<span class=\"subtitle\">GoIP</span>\r\n\t\t\t\t\t</td>\r\n                                        <td valign=\"bottom\" align=\"right\" class=\"time_text\">\r\n                                                <table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >SN(Serial Number):</td>\r\n                                                  <td class=\"time_text\">GOIP1M5RMOS26041730</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\" >Firmware Version:&nbsp;&nbsp;</td>\r\n                                                  <td class=\"time_text\">GHSFVT-1.1-68-9\n</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Module Version:</td>\r\n                                                  <td class=\"time_text\">M25MAR01A01_RSIM</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Uptime:</td>\r\n                                                  <td class=\"time_text\" id=\"uptime\"></td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Last Login Time:</td>\r\n                                                  <td class=\"time_text\">2026-08-31 10:26:05</td>\r\n                                                 </tr>\r\n                                                 <tr>\r\n                                                  <td class=\"time_text\">Current Time:</td>\r\n                                                  <td class=\"time_text\" id=\"time_text\">2026-08-31 14:17:53</td>\r\n                                                 </tr>\r\n                                                </table>\r\n                                        </td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n\t\t<td colSpan=\"2\">\r\n\t\t\t<table height=\"100%\" cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" bgColor=\"#ffffff\" border=\"0\">\r\n\t\t\t\t<tr>\r\n\t\t\t\t\t<td vAlign=\"top\" width=\"196\" class=\"sidebar\">\r\n\r\n\t\t\t\t\t</td>\r\n\t\t\t\t\t<td width=\"828\" vAlign=\"top\" class=\"content\">\r\n<script lang=\"javascript\" src=\"/script/ajaxroutine.js\"></script>\n<script lang=\"javascript\" src=\"/script/progress_bar.js\"></script>\n<script lang=\"javascript\">\n\nfunction getElementText(elem)\n{\n\tif(elem.childNodes.length > 0){\n\t\tif(elem.childNodes.length > 1){\n\t\t\treturn elem.childNodes[1].nodeValue\n\t\t}\n\t\telse {\n\t\t\treturn elem.firstChild.nodeValue\n\t\t}\n\t}\n\treturn \"\"\n}\n\nfunction sms_return(msg, i, ok_flag)\n{\n\tstageobj=document.getElementById(\"send\"+i);\n\tif(stageobj){\n\t\tif(!ok_flag) stageobj.innerHTML = \" Line \"+i+\" Send Error: \"+msg;\n\t\telse stageobj.innerHTML = \" Line \"+i+\" Return: \"+msg;\n\t}\n}\n\nvar trycount = 0\nvar sms_key=\"6a951c90\"\n\nfunction processGetPost(){\n\tvar myajax=ajaxpack.ajaxobj,line_min,line_max,i;\n\tif (myajax.readyState == 4){ //if request of file completed\n\t\tif (myajax.status==200){ \n\t\t\tvar errors,error,stagetags,stage,keys,key;\n\n\t\t\tfor(i=1;i<=1;i++){\n\t\t\t\terrors=myajax.responseXML.getElementsByTagName(\"error\"+i);\n\t\t\t\tif(errors.length){\n\t\t\t\t\terror = getElementText(errors[0])\n\t\t\t\t}\n\t\t\t\tstagetags=myajax.responseXML.getElementsByTagName(\"status\"+i);\n\t\t\t\tif(stagetags.length){\n\t\t\t\t\tstage = getElementText(stagetags[0])\n\t\t\t\t}\n\t\t\t\tif(error != \"\"){\n\t\t\t\t\tsms_return(error, i);\n\t\t\t\t}\n\t\t\t\telse if(stage == \"DONE\"){\n\t\t\t\t\tsms_return(\"Send successful!\", i, 1);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\ttrycount++;\n\t\tfor(i=1;i<=1;i++){\n\t\t\tvar stageobj=document.getElementById(\"send\"+i);\n\t\t\tif(stageobj && stageobj.innerText == \"Line \"+i+\" Sending...\") {\n\t\t\t\tif(trycount > 10) sms_return(\"Can not get response from line\", i);\n\t\t\t\telse break;\n\t\t\t}\n\t\t}\n\t\tif(i<=1) setTimeout('getSmsInfo()', 3000);\n\t}\n}\n\nfunction getSmsInfo()\n{\n\tajaxpack.getAjaxRequest(\"send_sms_status.xml\", \"line=\", processGetPost, \"text/xml\")\n}\nsetTimeout('getSmsInfo()', 3000);\n</script>\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tr>\n                <td colspan=\"2\" class=\"title2\" height=\"25\">Send SMS</td>\n        </tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Line</td>\n\t\t<td width=\"180\" class=\"text\"></td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Number</td>\n\t\t<td width=\"180\" class=\"text\">+639700452584</td>\n\t</tr>\n\t<tr>\n\t\t<td width=\"120\" height=\"25\" class=\"title1\" align=\"right\">Send Content</td>\n\t\t<td width=\"180\" class=\"text\" style=\"word-break : break-all; \">Hello Macky Melgar! Nagkaon kana lab labhag.</td>\n\t</tr>\n\n</table>\n        <table cellSpacing=\"0\" cellPadding=\"0\" width=\"100%\" border=\"0\">\n\n\n        <tr>\n        <td height=\"30\" class=\"title1\" id=\"send1\"><img src=\"/images/progress.gif\" border=\"0\">Line 1 Sending...</td>\n        </tr>\n\n\n\n\n\n\n\n\n\n                <tr>\n                        <td height=\"30\">\n                                <input type=\"button\" value=\"Back\" class=\"button\" onclick=javascript:window.location='tools.html?type=sms&line='>\n                        </td>\n                </tr>\n        </table>\n\t\t\t\t\t</td>\r\n\t\t\t\t</tr>\r\n\t\t\t</table>\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n</body>\r\n\r\n</html>\r\n\r\n"
+    }
+  ],
+  "logs": [
+    {
+      "id": "log_1788224008129_17",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3080",
+      "details": null,
+      "timestamp": "2026-09-01T00:53:28.129Z"
+    },
+    {
+      "id": "log_1788223771921_693",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09368504167",
+      "details": null,
+      "timestamp": "2026-09-01T00:49:31.921Z"
+    },
+    {
+      "id": "log_1788223771916_139",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09368504167",
+      "details": null,
+      "timestamp": "2026-09-01T00:49:31.916Z"
+    },
+    {
+      "id": "log_1788223770978_897",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09368504167 via GoIP at 192.168.8.190",
+      "details": null,
+      "timestamp": "2026-09-01T00:49:30.978Z"
+    },
+    {
+      "id": "log_1788223770636_361",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09368504167...",
+      "details": null,
+      "timestamp": "2026-09-01T00:49:30.636Z"
+    },
+    {
+      "id": "log_1788223770631_958",
+      "type": "info",
+      "message": "Queued SMS for 09368504167 (ID: sms_1788223770628_372)",
+      "details": null,
+      "timestamp": "2026-09-01T00:49:30.631Z"
+    },
+    {
+      "id": "log_1788223616513_670",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3080",
+      "details": null,
+      "timestamp": "2026-09-01T00:46:56.513Z"
+    },
+    {
+      "id": "log_1788223349906_316",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "details": null,
+      "timestamp": "2026-09-01T00:42:29.906Z"
+    },
+    {
+      "id": "log_1788219710526_641",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T23:41:50.526Z"
+    },
+    {
+      "id": "log_1788165507695_891",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09368504167",
+      "timestamp": "2026-08-31T08:38:27.695Z"
+    },
+    {
+      "id": "log_1788165507691_802",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09368504167",
+      "timestamp": "2026-08-31T08:38:27.691Z"
+    },
+    {
+      "id": "log_1788165506863_98",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09368504167 via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T08:38:26.863Z"
+    },
+    {
+      "id": "log_1788165506663_988",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09368504167...",
+      "timestamp": "2026-08-31T08:38:26.663Z"
+    },
+    {
+      "id": "log_1788165506659_228",
+      "type": "info",
+      "message": "Queued SMS for 09368504167 (ID: sms_1788165506657_422)",
+      "timestamp": "2026-08-31T08:38:26.659Z"
+    },
+    {
+      "id": "log_1788164540208_37",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09368504167",
+      "timestamp": "2026-08-31T08:22:20.208Z"
+    },
+    {
+      "id": "log_1788164540204_3",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09368504167",
+      "timestamp": "2026-08-31T08:22:20.204Z"
+    },
+    {
+      "id": "log_1788164539379_291",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09368504167 via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T08:22:19.379Z"
+    },
+    {
+      "id": "log_1788164539173_424",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09368504167...",
+      "timestamp": "2026-08-31T08:22:19.173Z"
+    },
+    {
+      "id": "log_1788164539168_421",
+      "type": "info",
+      "message": "Queued SMS for 09368504167 (ID: sms_1788164539166_222)",
+      "timestamp": "2026-08-31T08:22:19.168Z"
+    },
+    {
+      "id": "log_1788164529137_188",
+      "type": "info",
+      "message": "User test (business) logged in successfully.",
+      "timestamp": "2026-08-31T08:22:09.137Z"
+    },
+    {
+      "id": "log_1788163670475_639",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T08:07:50.475Z"
+    },
+    {
+      "id": "log_1788163536769_948",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T08:05:36.769Z"
+    },
+    {
+      "id": "log_1788163389257_269",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T08:03:09.257Z"
+    },
+    {
+      "id": "log_1788163330359_979",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T08:02:10.359Z"
+    },
+    {
+      "id": "log_1788162529446_25",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T07:48:49.446Z"
+    },
+    {
+      "id": "log_1788162333901_760",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T07:45:33.901Z"
+    },
+    {
+      "id": "log_1788159709861_415",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09368504167",
+      "timestamp": "2026-08-31T07:01:49.861Z"
+    },
+    {
+      "id": "log_1788159709854_756",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09368504167",
+      "timestamp": "2026-08-31T07:01:49.854Z"
+    },
+    {
+      "id": "log_1788159709294_519",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09368504167 via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T07:01:49.294Z"
+    },
+    {
+      "id": "log_1788159709099_371",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09368504167...",
+      "timestamp": "2026-08-31T07:01:49.099Z"
+    },
+    {
+      "id": "log_1788159709094_724",
+      "type": "info",
+      "message": "Queued SMS for 09368504167 (ID: sms_1788159709092_84)",
+      "timestamp": "2026-08-31T07:01:49.094Z"
+    },
+    {
+      "id": "log_1788159658310_49",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09368504167",
+      "timestamp": "2026-08-31T07:00:58.310Z"
+    },
+    {
+      "id": "log_1788159658306_929",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09368504167",
+      "timestamp": "2026-08-31T07:00:58.306Z"
+    },
+    {
+      "id": "log_1788159657451_362",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09368504167 via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T07:00:57.451Z"
+    },
+    {
+      "id": "log_1788159657253_79",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09368504167...",
+      "timestamp": "2026-08-31T07:00:57.253Z"
+    },
+    {
+      "id": "log_1788159657248_837",
+      "type": "info",
+      "message": "Queued SMS for 09368504167 (ID: sms_1788159657246_352)",
+      "timestamp": "2026-08-31T07:00:57.248Z"
+    },
+    {
+      "id": "log_1788159612731_406",
+      "type": "info",
+      "message": "User test (business) logged in successfully.",
+      "timestamp": "2026-08-31T07:00:12.731Z"
+    },
+    {
+      "id": "log_1788159539533_734",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T06:58:59.533Z"
+    },
+    {
+      "id": "log_1788159269828_695",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T06:54:29.828Z"
+    },
+    {
+      "id": "log_1788159153984_496",
+      "type": "success",
+      "message": "[Auto-Discovery] Discovered GoIP-1 hardware at 192.168.8.33",
+      "timestamp": "2026-08-31T06:52:33.984Z"
+    },
+    {
+      "id": "log_1788159149244_989",
+      "type": "info",
+      "message": "[Auto-Discovery] Starting network scan for DBL GoIP-1...",
+      "timestamp": "2026-08-31T06:52:29.244Z"
+    },
+    {
+      "id": "log_1788158815947_634",
+      "type": "success",
+      "message": "[Auto-Discovery] Discovered GoIP-1 hardware at 192.168.8.33",
+      "timestamp": "2026-08-31T06:46:55.948Z"
+    },
+    {
+      "id": "log_1788158811076_431",
+      "type": "info",
+      "message": "[Auto-Discovery] Starting network scan for DBL GoIP-1...",
+      "timestamp": "2026-08-31T06:46:51.076Z"
+    },
+    {
+      "id": "log_1788158175470_356",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Executing USSD: *143# via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T06:36:15.470Z"
+    },
+    {
+      "id": "log_1788158175277_512",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Executing USSD: *143# via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T06:36:15.277Z"
+    },
+    {
+      "id": "log_1788157867124_189",
+      "type": "success",
+      "message": "[Auto-Discovery] Discovered GoIP-1 hardware at 192.168.8.33",
+      "timestamp": "2026-08-31T06:31:07.124Z"
+    },
+    {
+      "id": "log_1788157862355_957",
+      "type": "info",
+      "message": "[Auto-Discovery] Starting network scan for DBL GoIP-1...",
+      "timestamp": "2026-08-31T06:31:02.355Z"
+    },
+    {
+      "id": "log_1788157861386_163",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Executing USSD: *143# via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T06:31:01.386Z"
+    },
+    {
+      "id": "log_1788157857604_764",
+      "type": "info",
+      "message": "User admin (admin) logged in successfully.",
+      "timestamp": "2026-08-31T06:30:57.604Z"
+    },
+    {
+      "id": "log_1788157683286_794",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "timestamp": "2026-08-31T06:28:03.286Z"
+    },
+    {
+      "id": "log_1788157683279_626",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09700452584",
+      "timestamp": "2026-08-31T06:28:03.279Z"
+    },
+    {
+      "id": "log_1788157682400_556",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T06:28:02.400Z"
+    },
+    {
+      "id": "log_1788157682204_254",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "timestamp": "2026-08-31T06:28:02.204Z"
+    },
+    {
+      "id": "log_1788157682200_792",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788157682199_866)",
+      "timestamp": "2026-08-31T06:28:02.200Z"
+    },
+    {
+      "id": "log_1788157073417_199",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639700452584",
+      "timestamp": "2026-08-31T06:17:53.417Z"
+    },
+    {
+      "id": "log_1788157073415_321",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for +639700452584",
+      "timestamp": "2026-08-31T06:17:53.415Z"
+    },
+    {
+      "id": "log_1788157072731_476",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639700452584 via GoIP at 192.168.8.190",
+      "timestamp": "2026-08-31T06:17:52.731Z"
+    },
+    {
+      "id": "log_1788157072536_849",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639700452584...",
+      "timestamp": "2026-08-31T06:17:52.536Z"
+    },
+    {
+      "id": "log_1788157072533_823",
+      "type": "info",
+      "message": "Queued SMS for +639700452584 (ID: sms_1788157072532_806)",
+      "timestamp": "2026-08-31T06:17:52.533Z"
+    },
+    {
+      "id": "log_1788156986180_487",
+      "type": "info",
+      "message": "User test (business) logged in successfully.",
+      "timestamp": "2026-08-31T06:16:26.180Z"
+    },
+    {
+      "id": "log_1788156547853_555",
+      "type": "info",
+      "message": "User admin (admin) logged in successfully.",
+      "timestamp": "2026-08-31T06:09:07.853Z"
+    },
+    {
+      "id": "log_1788156190260_464",
+      "type": "info",
+      "message": "Jarvis GoIP-1 SMS Gateway Server running on port 3000",
+      "timestamp": "2026-08-31T06:03:10.260Z"
+    }
+  ],
+  "ussdLogs": [
+    {
+      "id": "ussd_1788158175483",
+      "command": "*143#",
+      "response": "The request URL was not found!",
+      "timestamp": "2026-08-31T06:36:15.483Z"
+    },
+    {
+      "id": "ussd_1788158175477",
+      "command": "*143#",
+      "response": "The request URL was not found!",
+      "timestamp": "2026-08-31T06:36:15.477Z"
+    },
+    {
+      "id": "ussd_1788157861399",
+      "command": "*143#",
+      "response": "The request URL was not found!",
+      "timestamp": "2026-08-31T06:31:01.399Z"
+    },
+    {
+      "id": "ussd_1788154565108",
+      "command": "*143*1#",
+      "response": "The request URL was not found!",
+      "timestamp": "2026-08-31T05:36:05.108Z"
+    },
+    {
+      "id": "ussd_1788154549290",
+      "command": "*143#",
+      "response": "The request URL was not found!",
+      "timestamp": "2026-08-31T05:35:49.290Z"
+    },
+    {
+      "id": "ussd_1787037579936",
+      "command": "*143#",
+      "response": "[Globe USSD Reply]\nAccount Load: ₱145.50 (GoUNLI350 Active, Exp: 7 Days)\nFree Texts: 842 remaining\nData: 4.2 GB remaining\nRef ID: USD-972681",
+      "timestamp": "2026-08-18T07:19:39.936Z"
+    },
+    {
+      "id": "ussd_1787037579764",
+      "command": "*143#",
+      "response": "[Globe USSD Reply]\nAccount Load: ₱145.50 (GoUNLI350 Active, Exp: 7 Days)\nFree Texts: 842 remaining\nData: 4.2 GB remaining\nRef ID: USD-950154",
+      "timestamp": "2026-08-18T07:19:39.764Z"
+    },
+    {
+      "id": "ussd_1787037579577",
+      "command": "*143#",
+      "response": "[Globe USSD Reply]\nAccount Load: ₱145.50 (GoUNLI350 Active, Exp: 7 Days)\nFree Texts: 842 remaining\nData: 4.2 GB remaining\nRef ID: USD-816419",
+      "timestamp": "2026-08-18T07:19:39.577Z"
+    },
+    {
+      "id": "ussd_1787037578293",
+      "command": "*143#",
+      "response": "[Globe USSD Reply]\nAccount Load: ₱145.50 (GoUNLI350 Active, Exp: 7 Days)\nFree Texts: 842 remaining\nData: 4.2 GB remaining\nRef ID: USD-597292",
+      "timestamp": "2026-08-18T07:19:38.293Z"
+    },
+    {
+      "id": "ussd_1787037339869",
+      "command": "*143#",
+      "response": "[Globe USSD Reply]\nAccount Load: ₱145.50 (GoUNLI350 Active, Exp: 7 Days)\nFree Texts: 842 remaining\nData: 4.2 GB remaining\nRef ID: USD-892565",
+      "timestamp": "2026-08-18T07:15:39.869Z"
+    },
+    {
+      "id": "ussd_1787036915855",
+      "command": "*143#",
+      "response": "[Globe USSD Reply]\nAccount Load: ₱145.50 (GoUNLI350 Active, Exp: 7 Days)\nFree Texts: 842 remaining\nData: 4.2 GB remaining\nRef ID: USD-734351",
+      "timestamp": "2026-08-18T07:08:35.856Z"
+    }
+  ],
+  "businesses": [
+    {
+      "id": "biz_1788154650580",
+      "name": "Jarvis Auto Supply",
+      "category": "Automotive & Repair",
+      "phone": "09367622357",
+      "email": "Test@example.com",
+      "senderName": "JARVIS AUTO",
+      "dailyQuota": 200,
+      "createdAt": "2026-08-31T05:37:30.580Z"
+    },
+    {
+      "id": "biz_1788154299370",
+      "name": "Golden Horizon Realty",
+      "category": "Real Estate & Property",
+      "phone": "09171234567",
+      "email": "gabriel@horizonrealty.ph",
+      "senderName": "GOLDEN HORI",
+      "dailyQuota": 200,
+      "createdAt": "2026-08-31T05:31:39.370Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_admin",
+      "username": "admin",
+      "password": "admin123",
+      "name": "System Administrator",
+      "role": "admin",
+      "businessId": null,
+      "createdAt": "2026-08-31T05:27:14.268Z"
+    },
+    {
+      "id": "usr_1788154299370",
+      "username": "horizon",
+      "password": "password123",
+      "name": "Gabriel Dela Cruz",
+      "role": "business",
+      "businessId": "biz_1788154299370",
+      "createdAt": "2026-08-31T05:31:39.370Z"
+    },
+    {
+      "id": "usr_1788154650580",
+      "username": "test",
+      "password": "test123",
+      "name": "Jerome Villahermosa",
+      "role": "business",
+      "businessId": "biz_1788154650580",
+      "createdAt": "2026-08-31T05:37:30.581Z"
+    }
+  ],
+  "autoResponders": [
+    {
+      "id": "ar_1",
+      "keyword": "HELP",
+      "response": "Hello! Thank you for contacting our automated GoIP SMS gateway. Reply 1 for support, 2 for hours.",
+      "enabled": true
+    },
+    {
+      "id": "ar_2",
+      "keyword": "CONFIRM",
+      "response": "Your confirmation has been received and verified. Thank you!",
+      "enabled": true
+    }
+  ],
+  "queue": [],
+  "systemLogs": [
+    {
+      "id": "log_1788153450048_441",
+      "timestamp": "2026-08-31T05:17:30.048Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639171483396",
+      "details": null
+    },
+    {
+      "id": "log_1788153450043_236",
+      "timestamp": "2026-08-31T05:17:30.043Z",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for +639171483396",
+      "details": null
+    },
+    {
+      "id": "log_1788153448957_839",
+      "timestamp": "2026-08-31T05:17:28.957Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639171483396 via GoIP at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788153448756_47",
+      "timestamp": "2026-08-31T05:17:28.756Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639171483396...",
+      "details": null
+    },
+    {
+      "id": "log_1788153448749_119",
+      "timestamp": "2026-08-31T05:17:28.749Z",
+      "type": "info",
+      "message": "Queued SMS for +639171483396 (ID: sms_1788153448746_826)",
+      "details": null
+    },
+    {
+      "id": "log_1788153179761_966",
+      "timestamp": "2026-08-31T05:12:59.761Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788153179754_546",
+      "timestamp": "2026-08-31T05:12:59.754Z",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for +639700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788153178013_684",
+      "timestamp": "2026-08-31T05:12:58.013Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639700452584 via GoIP at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788153177813_707",
+      "timestamp": "2026-08-31T05:12:57.813Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788153177806_173",
+      "timestamp": "2026-08-31T05:12:57.806Z",
+      "type": "info",
+      "message": "Queued SMS for +639700452584 (ID: sms_1788153177804_690)",
+      "details": null
+    },
+    {
+      "id": "log_1788152774078_97",
+      "timestamp": "2026-08-31T05:06:14.078Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09973781381",
+      "details": null
+    },
+    {
+      "id": "log_1788152774072_906",
+      "timestamp": "2026-08-31T05:06:14.072Z",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09973781381",
+      "details": null
+    },
+    {
+      "id": "log_1788152772699_384",
+      "timestamp": "2026-08-31T05:06:12.699Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09973781381 via GoIP at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788152772410_890",
+      "timestamp": "2026-08-31T05:06:12.410Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09973781381...",
+      "details": null
+    },
+    {
+      "id": "log_1788152772402_642",
+      "timestamp": "2026-08-31T05:06:12.402Z",
+      "type": "info",
+      "message": "Queued SMS for 09973781381 (ID: sms_1788152772399_88)",
+      "details": null
+    },
+    {
+      "id": "log_1788152762275_135",
+      "timestamp": "2026-08-31T05:06:02.275Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788152762267_753",
+      "timestamp": "2026-08-31T05:06:02.267Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788152539498_719",
+      "timestamp": "2026-08-31T05:02:19.498Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788152539494_952",
+      "timestamp": "2026-08-31T05:02:19.494Z",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for +639700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788152539113_745",
+      "timestamp": "2026-08-31T05:02:19.113Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639700452584 via GoIP at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788152539028_739",
+      "timestamp": "2026-08-31T05:02:19.028Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788152539022_749",
+      "timestamp": "2026-08-31T05:02:19.022Z",
+      "type": "info",
+      "message": "Queued SMS for +639700452584 (ID: sms_1788152539019_274)",
+      "details": null
+    },
+    {
+      "id": "log_1788151932008_139",
+      "timestamp": "2026-08-31T04:52:12.008Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788151931999_626",
+      "timestamp": "2026-08-31T04:52:11.999Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788150756064_23",
+      "timestamp": "2026-08-31T04:32:36.064Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788150756052_990",
+      "timestamp": "2026-08-31T04:32:36.052Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788150239459_311",
+      "timestamp": "2026-08-31T04:23:59.459Z",
+      "type": "error",
+      "message": "[FAILED] 09700452584: Failed to connect to physical GoIP gateway at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788150239455_481",
+      "timestamp": "2026-08-31T04:23:59.455Z",
+      "type": "error",
+      "message": "[GoIP-1 Hardware Error] Failed dispatching to 09700452584: Timeout POSTing to GoIP at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788150214439_126",
+      "timestamp": "2026-08-31T04:23:34.439Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788150214435_235",
+      "timestamp": "2026-08-31T04:23:34.435Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788150214430_281",
+      "timestamp": "2026-08-31T04:23:34.430Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788150214426_844)",
+      "details": null
+    },
+    {
+      "id": "log_1788150026402_537",
+      "timestamp": "2026-08-31T04:20:26.402Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788150026395_412",
+      "timestamp": "2026-08-31T04:20:26.395Z",
+      "type": "success",
+      "message": "[GoIP-1 Real Hardware] SMS Delivered to Line 1 for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788150026253_449",
+      "timestamp": "2026-08-31T04:20:26.253Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.190",
+      "details": null
+    },
+    {
+      "id": "log_1788150026250_684",
+      "timestamp": "2026-08-31T04:20:26.250Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788150026246_869",
+      "timestamp": "2026-08-31T04:20:26.246Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788150026244_999)",
+      "details": null
+    },
+    {
+      "id": "log_1788150005352_473",
+      "timestamp": "2026-08-31T04:20:05.352Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788150005343_583",
+      "timestamp": "2026-08-31T04:20:05.343Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788149938511_656",
+      "timestamp": "2026-08-31T04:18:58.511Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788149938502_549",
+      "timestamp": "2026-08-31T04:18:58.502Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788149835276_385",
+      "timestamp": "2026-08-31T04:17:15.276Z",
+      "type": "success",
+      "message": "[Auto-Discovery] Auto-detected GoIP-1 at new IP: 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788149688973_575",
+      "timestamp": "2026-08-31T04:14:48.973Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149688883_203",
+      "timestamp": "2026-08-31T04:14:48.883Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149688880_345",
+      "timestamp": "2026-08-31T04:14:48.880Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149688875_488",
+      "timestamp": "2026-08-31T04:14:48.875Z",
+      "type": "info",
+      "message": "Queued SMS for +63700452584 (ID: sms_1788149688873_685)",
+      "details": null
+    },
+    {
+      "id": "log_1788149688799_382",
+      "timestamp": "2026-08-31T04:14:48.799Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149688715_305",
+      "timestamp": "2026-08-31T04:14:48.715Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149688713_988",
+      "timestamp": "2026-08-31T04:14:48.713Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149688707_641",
+      "timestamp": "2026-08-31T04:14:48.707Z",
+      "type": "info",
+      "message": "Queued SMS for +63700452584 (ID: sms_1788149688706_793)",
+      "details": null
+    },
+    {
+      "id": "log_1788149688619_464",
+      "timestamp": "2026-08-31T04:14:48.619Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149688547_760",
+      "timestamp": "2026-08-31T04:14:48.547Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149688545_766",
+      "timestamp": "2026-08-31T04:14:48.545Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149688539_789",
+      "timestamp": "2026-08-31T04:14:48.539Z",
+      "type": "info",
+      "message": "Queued SMS for +63700452584 (ID: sms_1788149688537_11)",
+      "details": null
+    },
+    {
+      "id": "log_1788149688442_214",
+      "timestamp": "2026-08-31T04:14:48.442Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149688371_707",
+      "timestamp": "2026-08-31T04:14:48.371Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149688369_139",
+      "timestamp": "2026-08-31T04:14:48.369Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149688364_930",
+      "timestamp": "2026-08-31T04:14:48.364Z",
+      "type": "info",
+      "message": "Queued SMS for +63700452584 (ID: sms_1788149688362_721)",
+      "details": null
+    },
+    {
+      "id": "log_1788149688317_528",
+      "timestamp": "2026-08-31T04:14:48.317Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149688185_473",
+      "timestamp": "2026-08-31T04:14:48.185Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149688183_15",
+      "timestamp": "2026-08-31T04:14:48.183Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149688179_779",
+      "timestamp": "2026-08-31T04:14:48.179Z",
+      "type": "info",
+      "message": "Queued SMS for +63700452584 (ID: sms_1788149688177_812)",
+      "details": null
+    },
+    {
+      "id": "log_1788149687607_529",
+      "timestamp": "2026-08-31T04:14:47.607Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149687434_277",
+      "timestamp": "2026-08-31T04:14:47.434Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149687432_585",
+      "timestamp": "2026-08-31T04:14:47.432Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149687427_435",
+      "timestamp": "2026-08-31T04:14:47.427Z",
+      "type": "info",
+      "message": "Queued SMS for +63700452584 (ID: sms_1788149687425_102)",
+      "details": null
+    },
+    {
+      "id": "log_1788149679366_740",
+      "timestamp": "2026-08-31T04:14:39.366Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149679204_265",
+      "timestamp": "2026-08-31T04:14:39.204Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149679202_208",
+      "timestamp": "2026-08-31T04:14:39.202Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149679197_645",
+      "timestamp": "2026-08-31T04:14:39.197Z",
+      "type": "info",
+      "message": "Queued SMS for +63700452584 (ID: sms_1788149679195_409)",
+      "details": null
+    },
+    {
+      "id": "log_1788149587721_36",
+      "timestamp": "2026-08-31T04:13:07.721Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788149587712_275",
+      "timestamp": "2026-08-31T04:13:07.712Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788149345133_687",
+      "timestamp": "2026-08-31T04:09:05.133Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149345086_878",
+      "timestamp": "2026-08-31T04:09:05.086Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149345083_808",
+      "timestamp": "2026-08-31T04:09:05.083Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149345078_302",
+      "timestamp": "2026-08-31T04:09:05.078Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149345075_270)",
+      "details": null
+    },
+    {
+      "id": "log_1788149344945_965",
+      "timestamp": "2026-08-31T04:09:04.945Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149344876_12",
+      "timestamp": "2026-08-31T04:09:04.876Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149344873_105",
+      "timestamp": "2026-08-31T04:09:04.873Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149344869_713",
+      "timestamp": "2026-08-31T04:09:04.869Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149344867_558)",
+      "details": null
+    },
+    {
+      "id": "log_1788149344747_920",
+      "timestamp": "2026-08-31T04:09:04.747Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149344689_694",
+      "timestamp": "2026-08-31T04:09:04.689Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149344687_771",
+      "timestamp": "2026-08-31T04:09:04.687Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149344681_878",
+      "timestamp": "2026-08-31T04:09:04.681Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149344678_524)",
+      "details": null
+    },
+    {
+      "id": "log_1788149344527_113",
+      "timestamp": "2026-08-31T04:09:04.527Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149344474_667",
+      "timestamp": "2026-08-31T04:09:04.474Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149344471_431",
+      "timestamp": "2026-08-31T04:09:04.471Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149344465_280",
+      "timestamp": "2026-08-31T04:09:04.465Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149344463_271)",
+      "details": null
+    },
+    {
+      "id": "log_1788149344312_839",
+      "timestamp": "2026-08-31T04:09:04.312Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149344266_358",
+      "timestamp": "2026-08-31T04:09:04.266Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149344264_978",
+      "timestamp": "2026-08-31T04:09:04.264Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149344258_549",
+      "timestamp": "2026-08-31T04:09:04.258Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149344257_128)",
+      "details": null
+    },
+    {
+      "id": "log_1788149344148_590",
+      "timestamp": "2026-08-31T04:09:04.148Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149344089_689",
+      "timestamp": "2026-08-31T04:09:04.089Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149344086_726",
+      "timestamp": "2026-08-31T04:09:04.086Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149344082_204",
+      "timestamp": "2026-08-31T04:09:04.082Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149344071_314)",
+      "details": null
+    },
+    {
+      "id": "log_1788149343943_852",
+      "timestamp": "2026-08-31T04:09:03.943Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149343884_567",
+      "timestamp": "2026-08-31T04:09:03.884Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149343882_144",
+      "timestamp": "2026-08-31T04:09:03.882Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149343877_297",
+      "timestamp": "2026-08-31T04:09:03.877Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149343874_891)",
+      "details": null
+    },
+    {
+      "id": "log_1788149343729_893",
+      "timestamp": "2026-08-31T04:09:03.729Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149343697_251",
+      "timestamp": "2026-08-31T04:09:03.697Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149343695_448",
+      "timestamp": "2026-08-31T04:09:03.695Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149343689_231",
+      "timestamp": "2026-08-31T04:09:03.689Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149343687_392)",
+      "details": null
+    },
+    {
+      "id": "log_1788149343564_947",
+      "timestamp": "2026-08-31T04:09:03.564Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149343529_346",
+      "timestamp": "2026-08-31T04:09:03.529Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149343527_282",
+      "timestamp": "2026-08-31T04:09:03.527Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149343522_733",
+      "timestamp": "2026-08-31T04:09:03.522Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149343519_494)",
+      "details": null
+    },
+    {
+      "id": "log_1788149343380_719",
+      "timestamp": "2026-08-31T04:09:03.380Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149343333_538",
+      "timestamp": "2026-08-31T04:09:03.333Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149343331_431",
+      "timestamp": "2026-08-31T04:09:03.331Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149343325_352",
+      "timestamp": "2026-08-31T04:09:03.325Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149343323_882)",
+      "details": null
+    },
+    {
+      "id": "log_1788149343186_714",
+      "timestamp": "2026-08-31T04:09:03.186Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149343148_616",
+      "timestamp": "2026-08-31T04:09:03.148Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149343146_554",
+      "timestamp": "2026-08-31T04:09:03.146Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149343140_555",
+      "timestamp": "2026-08-31T04:09:03.140Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149343138_447)",
+      "details": null
+    },
+    {
+      "id": "log_1788149343018_5",
+      "timestamp": "2026-08-31T04:09:03.018Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149342967_585",
+      "timestamp": "2026-08-31T04:09:02.967Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149342965_765",
+      "timestamp": "2026-08-31T04:09:02.965Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149342959_147",
+      "timestamp": "2026-08-31T04:09:02.959Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149342957_669)",
+      "details": null
+    },
+    {
+      "id": "log_1788149342812_808",
+      "timestamp": "2026-08-31T04:09:02.812Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149342764_115",
+      "timestamp": "2026-08-31T04:09:02.764Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149342762_106",
+      "timestamp": "2026-08-31T04:09:02.762Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149342757_403",
+      "timestamp": "2026-08-31T04:09:02.757Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149342755_66)",
+      "details": null
+    },
+    {
+      "id": "log_1788149342634_500",
+      "timestamp": "2026-08-31T04:09:02.634Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149342585_856",
+      "timestamp": "2026-08-31T04:09:02.585Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149342583_768",
+      "timestamp": "2026-08-31T04:09:02.583Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149342579_384",
+      "timestamp": "2026-08-31T04:09:02.579Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149342577_701)",
+      "details": null
+    },
+    {
+      "id": "log_1788149342454_194",
+      "timestamp": "2026-08-31T04:09:02.454Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149342376_944",
+      "timestamp": "2026-08-31T04:09:02.376Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149342375_887",
+      "timestamp": "2026-08-31T04:09:02.375Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149342370_562",
+      "timestamp": "2026-08-31T04:09:02.370Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149342369_786)",
+      "details": null
+    },
+    {
+      "id": "log_1788149341349_855",
+      "timestamp": "2026-08-31T04:09:01.349Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149341224_730",
+      "timestamp": "2026-08-31T04:09:01.224Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149341222_720",
+      "timestamp": "2026-08-31T04:09:01.222Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149341218_714",
+      "timestamp": "2026-08-31T04:09:01.218Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149341217_575)",
+      "details": null
+    },
+    {
+      "id": "log_1788149335490_679",
+      "timestamp": "2026-08-31T04:08:55.490Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63970452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149335321_220",
+      "timestamp": "2026-08-31T04:08:55.321Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63970452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149335319_687",
+      "timestamp": "2026-08-31T04:08:55.319Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63970452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149335314_138",
+      "timestamp": "2026-08-31T04:08:55.314Z",
+      "type": "info",
+      "message": "Queued SMS for +63970452584 (ID: sms_1788149335313_200)",
+      "details": null
+    },
+    {
+      "id": "log_1788149195067_173",
+      "timestamp": "2026-08-31T04:06:35.067Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149195000_632",
+      "timestamp": "2026-08-31T04:06:35.000Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149194998_570",
+      "timestamp": "2026-08-31T04:06:34.998Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149194994_855",
+      "timestamp": "2026-08-31T04:06:34.994Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149194992_564)",
+      "details": null
+    },
+    {
+      "id": "log_1788149194869_615",
+      "timestamp": "2026-08-31T04:06:34.869Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149194802_751",
+      "timestamp": "2026-08-31T04:06:34.802Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149194801_637",
+      "timestamp": "2026-08-31T04:06:34.801Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149194797_491",
+      "timestamp": "2026-08-31T04:06:34.797Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149194795_287)",
+      "details": null
+    },
+    {
+      "id": "log_1788149194633_142",
+      "timestamp": "2026-08-31T04:06:34.633Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149194594_136",
+      "timestamp": "2026-08-31T04:06:34.594Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149194592_342",
+      "timestamp": "2026-08-31T04:06:34.592Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149194588_523",
+      "timestamp": "2026-08-31T04:06:34.588Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149194587_329)",
+      "details": null
+    },
+    {
+      "id": "log_1788149194412_687",
+      "timestamp": "2026-08-31T04:06:34.412Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149194384_971",
+      "timestamp": "2026-08-31T04:06:34.384Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149194382_153",
+      "timestamp": "2026-08-31T04:06:34.382Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149194378_530",
+      "timestamp": "2026-08-31T04:06:34.378Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149194377_926)",
+      "details": null
+    },
+    {
+      "id": "log_1788149194175_424",
+      "timestamp": "2026-08-31T04:06:34.175Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149194065_349",
+      "timestamp": "2026-08-31T04:06:34.065Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149194063_536",
+      "timestamp": "2026-08-31T04:06:34.063Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149194059_924",
+      "timestamp": "2026-08-31T04:06:34.059Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149194057_363)",
+      "details": null
+    },
+    {
+      "id": "log_1788149190707_520",
+      "timestamp": "2026-08-31T04:06:30.707Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149190662_877",
+      "timestamp": "2026-08-31T04:06:30.662Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149190661_207",
+      "timestamp": "2026-08-31T04:06:30.661Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149190657_152",
+      "timestamp": "2026-08-31T04:06:30.657Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149190656_971)",
+      "details": null
+    },
+    {
+      "id": "log_1788149190506_43",
+      "timestamp": "2026-08-31T04:06:30.506Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149190457_370",
+      "timestamp": "2026-08-31T04:06:30.457Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149190455_653",
+      "timestamp": "2026-08-31T04:06:30.455Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149190452_576",
+      "timestamp": "2026-08-31T04:06:30.452Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149190451_488)",
+      "details": null
+    },
+    {
+      "id": "log_1788149190305_52",
+      "timestamp": "2026-08-31T04:06:30.305Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149190258_582",
+      "timestamp": "2026-08-31T04:06:30.258Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149190257_814",
+      "timestamp": "2026-08-31T04:06:30.257Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149190253_200",
+      "timestamp": "2026-08-31T04:06:30.253Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149190251_501)",
+      "details": null
+    },
+    {
+      "id": "log_1788149190072_933",
+      "timestamp": "2026-08-31T04:06:30.072Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149190031_151",
+      "timestamp": "2026-08-31T04:06:30.031Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149190029_368",
+      "timestamp": "2026-08-31T04:06:30.029Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149190026_490",
+      "timestamp": "2026-08-31T04:06:30.026Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149190025_652)",
+      "details": null
+    },
+    {
+      "id": "log_1788149189891_326",
+      "timestamp": "2026-08-31T04:06:29.891Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149189842_396",
+      "timestamp": "2026-08-31T04:06:29.842Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149189840_565",
+      "timestamp": "2026-08-31T04:06:29.840Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149189837_165",
+      "timestamp": "2026-08-31T04:06:29.837Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149189836_119)",
+      "details": null
+    },
+    {
+      "id": "log_1788149189715_210",
+      "timestamp": "2026-08-31T04:06:29.715Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149189658_896",
+      "timestamp": "2026-08-31T04:06:29.658Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149189656_512",
+      "timestamp": "2026-08-31T04:06:29.656Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149189651_936",
+      "timestamp": "2026-08-31T04:06:29.651Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149189650_492)",
+      "details": null
+    },
+    {
+      "id": "log_1788149189493_243",
+      "timestamp": "2026-08-31T04:06:29.493Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149189441_827",
+      "timestamp": "2026-08-31T04:06:29.441Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149189440_34",
+      "timestamp": "2026-08-31T04:06:29.440Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149189437_785",
+      "timestamp": "2026-08-31T04:06:29.437Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149189436_137)",
+      "details": null
+    },
+    {
+      "id": "log_1788149189315_605",
+      "timestamp": "2026-08-31T04:06:29.315Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149189239_810",
+      "timestamp": "2026-08-31T04:06:29.239Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149189237_895",
+      "timestamp": "2026-08-31T04:06:29.237Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149189234_523",
+      "timestamp": "2026-08-31T04:06:29.234Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149189233_16)",
+      "details": null
+    },
+    {
+      "id": "log_1788149188959_735",
+      "timestamp": "2026-08-31T04:06:28.959Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149188855_406",
+      "timestamp": "2026-08-31T04:06:28.855Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149188854_707",
+      "timestamp": "2026-08-31T04:06:28.854Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149188851_831",
+      "timestamp": "2026-08-31T04:06:28.851Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149188850_31)",
+      "details": null
+    },
+    {
+      "id": "log_1788149188066_579",
+      "timestamp": "2026-08-31T04:06:28.066Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149187886_911",
+      "timestamp": "2026-08-31T04:06:27.886Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149187885_510",
+      "timestamp": "2026-08-31T04:06:27.885Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149187882_255",
+      "timestamp": "2026-08-31T04:06:27.882Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149187881_82)",
+      "details": null
+    },
+    {
+      "id": "log_1788149175438_182",
+      "timestamp": "2026-08-31T04:06:15.438Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for 09700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788149175342_806",
+      "timestamp": "2026-08-31T04:06:15.342Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to 09700452584 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788149175341_219",
+      "timestamp": "2026-08-31T04:06:15.341Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to 09700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788149175338_928",
+      "timestamp": "2026-08-31T04:06:15.338Z",
+      "type": "info",
+      "message": "Queued SMS for 09700452584 (ID: sms_1788149175337_614)",
+      "details": null
+    },
+    {
+      "id": "log_1788148804489_684",
+      "timestamp": "2026-08-31T04:00:04.489Z",
+      "type": "success",
+      "message": "[Auto-Discovery] Auto-detected GoIP-1 at new IP: 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788148545918_626",
+      "timestamp": "2026-08-31T03:55:45.918Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639700452584",
+      "details": null
+    },
+    {
+      "id": "log_1788148545775_758",
+      "timestamp": "2026-08-31T03:55:45.775Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639700452584 via GoIP at 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788148545774_385",
+      "timestamp": "2026-08-31T03:55:45.774Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639700452584...",
+      "details": null
+    },
+    {
+      "id": "log_1788148545771_511",
+      "timestamp": "2026-08-31T03:55:45.771Z",
+      "type": "info",
+      "message": "Queued SMS for +639700452584 (ID: sms_1788148545770_645)",
+      "details": null
+    },
+    {
+      "id": "log_1788148491774_668",
+      "timestamp": "2026-08-31T03:54:51.774Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639973781381",
+      "details": null
+    },
+    {
+      "id": "log_1788148491589_967",
+      "timestamp": "2026-08-31T03:54:51.589Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639973781381 via GoIP at 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788148491588_595",
+      "timestamp": "2026-08-31T03:54:51.588Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639973781381...",
+      "details": null
+    },
+    {
+      "id": "log_1788148491586_661",
+      "timestamp": "2026-08-31T03:54:51.586Z",
+      "type": "info",
+      "message": "Queued SMS for +639973781381 (ID: sms_1788148491585_352)",
+      "details": null
+    },
+    {
+      "id": "log_1788148011853_264",
+      "timestamp": "2026-08-31T03:46:51.853Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +63973781381",
+      "details": null
+    },
+    {
+      "id": "log_1788148011678_156",
+      "timestamp": "2026-08-31T03:46:51.678Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +63973781381 via GoIP at 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788148011677_962",
+      "timestamp": "2026-08-31T03:46:51.677Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +63973781381...",
+      "details": null
+    },
+    {
+      "id": "log_1788148011674_173",
+      "timestamp": "2026-08-31T03:46:51.674Z",
+      "type": "info",
+      "message": "Queued SMS for +63973781381 (ID: sms_1788148011673_905)",
+      "details": null
+    },
+    {
+      "id": "log_1788147942604_873",
+      "timestamp": "2026-08-31T03:45:42.604Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788147942593_742",
+      "timestamp": "2026-08-31T03:45:42.593Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788145015172_837",
+      "timestamp": "2026-08-31T02:56:55.172Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639368504167",
+      "details": null
+    },
+    {
+      "id": "log_1788145015124_421",
+      "timestamp": "2026-08-31T02:56:55.124Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639368504167 via GoIP at 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788145015123_822",
+      "timestamp": "2026-08-31T02:56:55.123Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639368504167...",
+      "details": null
+    },
+    {
+      "id": "log_1788145015120_208",
+      "timestamp": "2026-08-31T02:56:55.120Z",
+      "type": "info",
+      "message": "Queued SMS for +639368504167 (ID: sms_1788145015119_367)",
+      "details": null
+    },
+    {
+      "id": "log_1788144882367_406",
+      "timestamp": "2026-08-31T02:54:42.367Z",
+      "type": "info",
+      "message": "TextBee GoIP-1 Gateway Server running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788144882360_625",
+      "timestamp": "2026-08-31T02:54:42.360Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788144631309_99",
+      "timestamp": "2026-08-31T02:50:31.309Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639368504167",
+      "details": null
+    },
+    {
+      "id": "log_1788144631261_986",
+      "timestamp": "2026-08-31T02:50:31.261Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639368504167 via GoIP at 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788144631260_24",
+      "timestamp": "2026-08-31T02:50:31.260Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639368504167...",
+      "details": null
+    },
+    {
+      "id": "log_1788144631257_135",
+      "timestamp": "2026-08-31T02:50:31.257Z",
+      "type": "info",
+      "message": "Queued SMS for +639368504167 (ID: sms_1788144631255_330)",
+      "details": null
+    },
+    {
+      "id": "log_1788144296264_498",
+      "timestamp": "2026-08-31T02:44:56.264Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639368504167",
+      "details": null
+    },
+    {
+      "id": "log_1788144292013_693",
+      "timestamp": "2026-08-31T02:44:52.013Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639368504167 via GoIP at 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788144292012_348",
+      "timestamp": "2026-08-31T02:44:52.012Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639368504167...",
+      "details": null
+    },
+    {
+      "id": "log_1788144292009_244",
+      "timestamp": "2026-08-31T02:44:52.009Z",
+      "type": "info",
+      "message": "Queued SMS for +639368504167 (ID: sms_1788144292008_60)",
+      "details": null
+    },
+    {
+      "id": "log_1788144140781_165",
+      "timestamp": "2026-08-31T02:42:20.781Z",
+      "type": "success",
+      "message": "[Auto-Discovery] Auto-detected GoIP-1 at new IP: 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788143233988_357",
+      "timestamp": "2026-08-31T02:27:13.988Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639368504167",
+      "details": null
+    },
+    {
+      "id": "log_1788143233878_52",
+      "timestamp": "2026-08-31T02:27:13.878Z",
+      "type": "hardware",
+      "message": "[Real GoIP-1] Dispatching SMS to +639368504167 via GoIP at 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788143233875_463",
+      "timestamp": "2026-08-31T02:27:13.875Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639368504167...",
+      "details": null
+    },
+    {
+      "id": "log_1788143233871_420",
+      "timestamp": "2026-08-31T02:27:13.871Z",
+      "type": "info",
+      "message": "Queued SMS for +639368504167 (ID: sms_1788143233870_262)",
+      "details": null
+    },
+    {
+      "id": "log_1788139582232_471",
+      "timestamp": "2026-08-31T01:26:22.232Z",
+      "type": "success",
+      "message": "[Auto-Discovery] Auto-detected GoIP-1 at new IP: 192.168.8.50",
+      "details": null
+    },
+    {
+      "id": "log_1788139443220_876",
+      "timestamp": "2026-08-31T01:24:03.220Z",
+      "type": "success",
+      "message": "[Auto-Discovery] Auto-detected GoIP-1 at new IP: 192.168.8.33",
+      "details": null
+    },
+    {
+      "id": "log_1788139428252_915",
+      "timestamp": "2026-08-31T01:23:48.252Z",
+      "type": "info",
+      "message": "GSM DBL GoIP-1 Real Backend Service running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788139428245_294",
+      "timestamp": "2026-08-31T01:23:48.245Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788135084372_82",
+      "timestamp": "2026-08-31T00:11:24.372Z",
+      "type": "info",
+      "message": "GSM DBL GoIP-1 Backend Service running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788135084365_87",
+      "timestamp": "2026-08-31T00:11:24.365Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788135073385_554",
+      "timestamp": "2026-08-31T00:11:13.385Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1788134317891_755",
+      "timestamp": "2026-08-30T23:58:37.891Z",
+      "type": "info",
+      "message": "GSM DBL GoIP-1 Backend Service running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1788134317884_267",
+      "timestamp": "2026-08-30T23:58:37.884Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1787039188012_593",
+      "timestamp": "2026-08-18T07:46:28.012Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639171234567",
+      "details": null
+    },
+    {
+      "id": "log_1787039186197_226",
+      "timestamp": "2026-08-18T07:46:26.197Z",
+      "type": "success",
+      "message": "[Auto Notification] Queued advance SMS reminder to +639171234567 for appointment at Wed, Aug 19, 07:45 AM",
+      "details": null
+    },
+    {
+      "id": "log_1787039186195_859",
+      "timestamp": "2026-08-18T07:46:26.195Z",
+      "type": "hardware",
+      "message": "[Mock GoIP] Dispatching SMS to +639171234567",
+      "details": null
+    },
+    {
+      "id": "log_1787039186194_681",
+      "timestamp": "2026-08-18T07:46:26.194Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639171234567...",
+      "details": null
+    },
+    {
+      "id": "log_1787039186191_927",
+      "timestamp": "2026-08-18T07:46:26.191Z",
+      "type": "info",
+      "message": "Queued SMS for +639171234567 (ID: sms_1787039186190_185)",
+      "details": null
+    },
+    {
+      "id": "log_1787039186160_531",
+      "timestamp": "2026-08-18T07:46:26.160Z",
+      "type": "info",
+      "message": "[Appointment Trigger] Time reached for client Maria Santos (+639171234567)",
+      "details": null
+    },
+    {
+      "id": "log_1787039180253_764",
+      "timestamp": "2026-08-18T07:46:20.253Z",
+      "type": "info",
+      "message": "Scheduled appointment for Maria Santos on 2026-08-18T23:45:00.000Z",
+      "details": null
+    },
+    {
+      "id": "log_1787038265794_288",
+      "timestamp": "2026-08-18T07:31:05.794Z",
+      "type": "info",
+      "message": "GSM DBL GoIP-1 Backend Service running on port 3000",
+      "details": null
+    },
+    {
+      "id": "log_1787038265788_250",
+      "timestamp": "2026-08-18T07:31:05.788Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1787038248911_126",
+      "timestamp": "2026-08-18T07:30:48.911Z",
+      "type": "success",
+      "message": "[Auto Notification] Queued advance SMS reminder to +639189876543 for appointment at Tue, Aug 18, 05:30 PM",
+      "details": null
+    },
+    {
+      "id": "log_1787038248908_426",
+      "timestamp": "2026-08-18T07:30:48.908Z",
+      "type": "info",
+      "message": "Queued SMS for +639189876543 (ID: sms_1787038248908_62)",
+      "details": null
+    },
+    {
+      "id": "log_1787038248907_766",
+      "timestamp": "2026-08-18T07:30:48.907Z",
+      "type": "info",
+      "message": "[Appointment Trigger] Time reached for client Juan Dela Cruz (+639189876543)",
+      "details": null
+    },
+    {
+      "id": "log_1787038248906_748",
+      "timestamp": "2026-08-18T07:30:48.906Z",
+      "type": "success",
+      "message": "[Auto Notification] Queued advance SMS reminder to +639171234567 for appointment at Wed, Aug 19, 03:30 PM",
+      "details": null
+    },
+    {
+      "id": "log_1787038248904_113",
+      "timestamp": "2026-08-18T07:30:48.904Z",
+      "type": "hardware",
+      "message": "[Mock GoIP] Dispatching SMS to +639171234567",
+      "details": null
+    },
+    {
+      "id": "log_1787038248903_767",
+      "timestamp": "2026-08-18T07:30:48.903Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639171234567...",
+      "details": null
+    },
+    {
+      "id": "log_1787038248902_861",
+      "timestamp": "2026-08-18T07:30:48.902Z",
+      "type": "info",
+      "message": "Queued SMS for +639171234567 (ID: sms_1787038248901_563)",
+      "details": null
+    },
+    {
+      "id": "log_1787038248872_103",
+      "timestamp": "2026-08-18T07:30:48.872Z",
+      "type": "info",
+      "message": "[Appointment Trigger] Time reached for client Maria Santos (+639171234567)",
+      "details": null
+    },
+    {
+      "id": "log_1787038248871_483",
+      "timestamp": "2026-08-18T07:30:48.871Z",
+      "type": "info",
+      "message": "Appointment Scheduler Service started.",
+      "details": null
+    },
+    {
+      "id": "log_1787037578729_639",
+      "timestamp": "2026-08-18T07:19:38.729Z",
+      "type": "hardware",
+      "message": "[Mock USSD] Executing *143#",
+      "details": null
+    },
+    {
+      "id": "log_1787037578552_772",
+      "timestamp": "2026-08-18T07:19:38.552Z",
+      "type": "hardware",
+      "message": "[Mock USSD] Executing *143#",
+      "details": null
+    },
+    {
+      "id": "log_1787037578368_375",
+      "timestamp": "2026-08-18T07:19:38.368Z",
+      "type": "hardware",
+      "message": "[Mock USSD] Executing *143#",
+      "details": null
+    },
+    {
+      "id": "log_1787037577086_859",
+      "timestamp": "2026-08-18T07:19:37.086Z",
+      "type": "hardware",
+      "message": "[Mock USSD] Executing *143#",
+      "details": null
+    },
+    {
+      "id": "log_1787037373617_989",
+      "timestamp": "2026-08-18T07:16:13.617Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received message from +639189876543",
+      "details": null
+    },
+    {
+      "id": "log_1787037371169_988",
+      "timestamp": "2026-08-18T07:16:11.169Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received message from +639189876543",
+      "details": null
+    },
+    {
+      "id": "log_1787037357107_41",
+      "timestamp": "2026-08-18T07:15:57.107Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639171234567",
+      "details": null
+    },
+    {
+      "id": "log_1787037355292_313",
+      "timestamp": "2026-08-18T07:15:55.292Z",
+      "type": "hardware",
+      "message": "[Mock GoIP] Dispatching SMS to +639171234567",
+      "details": null
+    },
+    {
+      "id": "log_1787037355291_962",
+      "timestamp": "2026-08-18T07:15:55.291Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639171234567...",
+      "details": null
+    },
+    {
+      "id": "log_1787037355290_969",
+      "timestamp": "2026-08-18T07:15:55.290Z",
+      "type": "info",
+      "message": "Queued SMS for +639171234567 (ID: sms_1787037355289_658)",
+      "details": null
+    },
+    {
+      "id": "log_1787037338659_65",
+      "timestamp": "2026-08-18T07:15:38.659Z",
+      "type": "hardware",
+      "message": "[Mock USSD] Executing *143#",
+      "details": null
+    },
+    {
+      "id": "log_1787037107127_917",
+      "timestamp": "2026-08-18T07:11:47.127Z",
+      "type": "info",
+      "message": "System configuration updated",
+      "details": {
+        "gatewayIp": "192.168.1.150",
+        "username": "admin",
+        "password": "admin",
+        "line": 1,
+        "useMockGateway": true,
+        "minDelaySec": 5,
+        "maxDelaySec": 10,
+        "enableJitter": true,
+        "maxDailyLimit": 200,
+        "carrierName": "Globe Telecom (PH)",
+        "simNumber": "+639171234567"
+      }
+    },
+    {
+      "id": "log_1787036914643_893",
+      "timestamp": "2026-08-18T07:08:34.643Z",
+      "type": "hardware",
+      "message": "[Mock USSD] Executing *143#",
+      "details": null
+    },
+    {
+      "id": "log_1787036910388_684",
+      "timestamp": "2026-08-18T07:08:30.389Z",
+      "type": "success",
+      "message": "[SUCCESS] SMS accepted by GoIP for +639171234567",
+      "details": null
+    },
+    {
+      "id": "log_1787036908579_952",
+      "timestamp": "2026-08-18T07:08:28.579Z",
+      "type": "hardware",
+      "message": "[Mock GoIP] Dispatching SMS to +639171234567",
+      "details": null
+    },
+    {
+      "id": "log_1787036908578_762",
+      "timestamp": "2026-08-18T07:08:28.578Z",
+      "type": "info",
+      "message": "[Attempt 1/3] Dispatching to +639171234567...",
+      "details": null
+    },
+    {
+      "id": "log_1787036908577_637",
+      "timestamp": "2026-08-18T07:08:28.577Z",
+      "type": "info",
+      "message": "Queued SMS for +639171234567 (ID: sms_1787036908576_275)",
+      "details": null
+    },
+    {
+      "id": "log_1787036882295_145",
+      "timestamp": "2026-08-18T07:08:02.296Z",
+      "type": "info",
+      "message": "GSM DBL GoIP-1 Backend Service running on port 3000",
+      "details": null
+    }
+  ]
+}
