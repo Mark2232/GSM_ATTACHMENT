@@ -1241,14 +1241,21 @@
       const ovStatus = document.getElementById('ov-gateway-status');
       const ovSignal = document.getElementById('ov-signal-csq');
       const ovHwSignal = document.getElementById('ov-hw-signal');
+      const ovCarrier = document.getElementById('ov-carrier-name');
+      const ovHwCarrier = document.getElementById('ov-hw-carrier');
 
-      if (s && s.online) {
+      const isOnline = s && (s.online === true || s.status === 'ONLINE' || s.status === 'online');
+
+      if (isOnline) {
         dot.className = 'w-2 h-2 rounded-full bg-emerald-400';
-        text.innerText = s.isMock ? 'Mock Gateway' : `Online (CSQ ${s.signalStrength || 20})`;
+        const signalVal = s.signalStrength || (s.signalBars ? s.signalBars * 6 : 24);
+        text.innerText = s.isMock ? 'Mock Gateway (Online)' : `Online (CSQ ${signalVal})`;
         ovStatus.innerHTML = `<span class="text-emerald-400">${s.isMock ? 'Mock Mode' : 'Connected'}</span>`;
-        const csqText = `CSQ: ${s.signalStrength || '--'}`;
+        const csqText = `CSQ: ${signalVal}`;
         if (ovSignal) ovSignal.innerText = csqText;
-        if (ovHwSignal) ovHwSignal.innerText = `${csqText} (${s.signalQuality || 'Good'})`;
+        if (ovHwSignal) ovHwSignal.innerText = `${csqText} (${s.signalBars ? s.signalBars + ' Bars' : 'Good'})`;
+        if (ovCarrier && s.carrier) ovCarrier.innerText = s.carrier;
+        if (ovHwCarrier && s.carrier) ovHwCarrier.innerText = s.carrier;
       } else {
         setHardwareOffline();
       }

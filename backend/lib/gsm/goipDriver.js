@@ -131,7 +131,9 @@ class GoipDriver {
         signalDbm = -113 + (csq * 2);
       }
 
+      const csqValue = sigMatch ? parseInt(sigMatch[1], 10) : 24;
       return {
+        online: true,
         status: 'ONLINE',
         ip,
         line: config.line || 1,
@@ -140,11 +142,14 @@ class GoipDriver {
         simNumber: config.simNumber,
         signalBars,
         signalDbm,
-        mode: 'HARDWARE_GOIP'
+        signalStrength: csqValue,
+        mode: 'HARDWARE_GOIP',
+        isMock: false
       };
     } catch (err) {
       // Return offline or auto-fallback if configured
       return {
+        online: false,
         status: 'OFFLINE',
         ip: config.gatewayIp,
         error: err.message,
@@ -154,7 +159,9 @@ class GoipDriver {
         simNumber: config.simNumber || 'None',
         signalBars: 0,
         signalDbm: 0,
-        mode: 'DISCONNECTED'
+        signalStrength: 0,
+        mode: 'DISCONNECTED',
+        isMock: false
       };
     }
   }
