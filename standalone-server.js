@@ -26,11 +26,11 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 const publicDir = path.join(__dirname, 'public');
 app.use(express.static(publicDir));
 
-// System Health API Endpoint
-app.get('/api/health', (req, res) => {
+// System Health API Endpoints
+app.get(['/api/health', '/health'], (req, res) => {
   const cfg = db.getConfig();
   res.json({
-    status: 'online',
+    status: 'ok',
     service: 'JARVIS Standalone GSM Gateway & Appointment Reminder System',
     port: PORT,
     uptimeSeconds: Math.floor(process.uptime()),
