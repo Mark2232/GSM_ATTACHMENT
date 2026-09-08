@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JARVIS GSM Gateway & 3-Stage SMS Reminder Hub</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              900: '#164e63',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0b0f19;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 20px -5px rgba(6, 182, 212, 0.3);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- TOP NOTIFICATION TOAST CONTAINER -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Title -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+            <i data-lucide="radio" class="w-5 h-5 text-slate-950 font-bold"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-lg font-bold tracking-tight text-white">JARVIS <span class="text-cyan-400">GSM</span> Hub</span>
+              <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">Standalone Localhost</span>
+            </div>
+            <p class="text-xs text-slate-400 hidden sm:block">GoIP Hardware Gateway & 3-Stage 8:00 AM PHT Reminders</p>
+          </div>
+        </div>
+
+        <!-- Live Status Bar -->
+        <div class="flex items-center space-x-3">
+          <!-- PHT Clock -->
+          <div class="hidden md:flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs">
+            <i data-lucide="clock" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span class="text-slate-400">PHT:</span>
+            <span id="pht-clock" class="font-mono font-medium text-slate-200">--:--:--</span>
+          </div>
+
+          <!-- Hardware Status Pill -->
+          <div id="hw-status-badge" class="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs cursor-pointer" onclick="switchTab('settings')">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse" id="hw-status-dot"></span>
+            <span class="font-medium text-slate-300" id="hw-status-text">Connecting...</span>
+          </div>
+
+          <!-- Quick Refresh Button -->
+          <button onclick="refreshAllData()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white transition-colors" title="Refresh Live Data">
+            <i data-lucide="refresh-cw" class="w-4 h-4" id="refresh-icon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sub Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60 overflow-x-auto">
+      <nav class="flex space-x-1 py-2 text-sm font-medium" id="tab-nav">
+        <button onclick="switchTab('overview')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition" data-tab="overview">
+          <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+          <span>Overview</span>
+        </button>
+        <button onclick="switchTab('dispatcher')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition" data-tab="dispatcher">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>SMS Dispatcher</span>
+        </button>
+        <button onclick="switchTab('appointments')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition relative" data-tab="appointments">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>3-Stage Reminders</span>
+          <span id="badge-appointments-count" class="ml-1.5 px-1.5 py-0.2 text-xs rounded-full bg-cyan-900/60 text-cyan-300 border border-cyan-700/50">0</span>
+        </button>
+        <button onclick="switchTab('inbox')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition relative" data-tab="inbox">
+          <i data-lucide="inbox" class="w-4 h-4"></i>
+          <span>Inbox & SMS Log</span>
+          <span id="badge-unread-count" class="hidden ml-1.5 px-1.5 py-0.2 text-xs rounded-full bg-emerald-900/60 text-emerald-300 border border-emerald-700/50">0</span>
+        </button>
+        <button onclick="switchTab('autoreply')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition" data-tab="autoreply">
+          <i data-lucide="bot" class="w-4 h-4"></i>
+          <span>Smart Auto-Reply</span>
+        </button>
+        <button onclick="switchTab('templates')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition" data-tab="templates">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Templates</span>
+        </button>
+        <button onclick="switchTab('queue')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition" data-tab="queue">
+          <i data-lucide="activity" class="w-4 h-4"></i>
+          <span>Queue & Logs</span>
+        </button>
+        <button onclick="switchTab('settings')" class="tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition" data-tab="settings">
+          <i data-lucide="settings" class="w-4 h-4"></i>
+          <span>Hardware & Config</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 1: OVERVIEW & DASHBOARD -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-overview" class="tab-pane space-y-6">
+      
+      <!-- Top Metrics Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Gateway Card -->
+        <div class="glass-card rounded-xl p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Gateway Status</span>
+            <div class="p-2 rounded-lg bg-cyan-950/60 border border-cyan-800/40 text-cyan-400">
+              <i data-lucide="signal" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h3 class="text-2xl font-bold text-white flex items-center space-x-2" id="ov-gateway-status">
+              <span>Checking...</span>
+            </h3>
+            <p class="text-xs text-slate-400 mt-1" id="ov-gateway-sub">IP: 192.168.8.190 | Line 1</p>
+          </div>
+          <div class="mt-3 flex items-center space-x-2 text-xs text-slate-300">
+            <span class="font-mono text-cyan-400" id="ov-signal-csq">CSQ: --</span>
+            <span class="text-slate-600">•</span>
+            <span id="ov-carrier-name">Globe Postpaid</span>
+          </div>
+        </div>
+
+        <!-- 3-Stage Appointments Card -->
+        <div class="glass-card rounded-xl p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Active Appointments</span>
+            <div class="p-2 rounded-lg bg-violet-950/60 border border-violet-800/40 text-violet-400">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h3 class="text-2xl font-bold text-white" id="ov-appts-count">0</h3>
+            <p class="text-xs text-slate-400 mt-1">3-Stage Reminders Active</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-300">
+            <span class="text-emerald-400" id="ov-stage-ready">Ready Today: 0</span>
+            <button onclick="switchTab('appointments')" class="text-cyan-400 hover:underline">View All &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Outbound Queue Card -->
+        <div class="glass-card rounded-xl p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Outbound Queue</span>
+            <div class="p-2 rounded-lg bg-emerald-950/60 border border-emerald-800/40 text-emerald-400">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h3 class="text-2xl font-bold text-white" id="ov-queue-pending">0 Pending</h3>
+            <p class="text-xs text-slate-400 mt-1" id="ov-queue-sent-today">0 Sent Today</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-300">
+            <span class="text-slate-400">Rate Limit: 5-10s</span>
+            <button onclick="switchTab('queue')" class="text-cyan-400 hover:underline">Inspect Queue &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Inbound SMS Card -->
+        <div class="glass-card rounded-xl p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Inbound Messages</span>
+            <div class="p-2 rounded-lg bg-amber-950/60 border border-amber-800/40 text-amber-400">
+              <i data-lucide="inbox" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h3 class="text-2xl font-bold text-white" id="ov-inbox-total">0</h3>
+            <p class="text-xs text-slate-400 mt-1">Smart Auto-Reply Enabled</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-300">
+            <span class="text-emerald-400 font-medium">Poller: 15s</span>
+            <button onclick="switchTab('inbox')" class="text-cyan-400 hover:underline">Open Inbox &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions & Overview Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left: Quick Send & Quick Appointment -->
+        <div class="lg:col-span-2 space-y-6">
+          
+          <!-- Quick Send SMS Box -->
+          <div class="glass-card rounded-xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="zap" class="w-5 h-5 text-cyan-400"></i>
+                <h2 class="text-base font-semibold text-white">Instant SMS Dispatcher</h2>
+              </div>
+              <span class="text-xs text-slate-400">Direct GoIP Gateway Channel</span>
+            </div>
+            
+            <form onsubmit="handleQuickSend(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1">Recipient Phone Number</label>
+                  <input type="text" id="quick-phone" required placeholder="09171234567 or +639..." class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1">Insert Template (Optional)</label>
+                  <select id="quick-template-select" onchange="applyQuickTemplate()" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500 text-sm">
+                    <option value="">-- Choose Template --</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <label class="block text-xs font-medium text-slate-300">Message Text</label>
+                  <span class="text-xs text-slate-400 font-mono" id="quick-char-count">0 / 160 (1 SMS)</span>
+                </div>
+                <textarea id="quick-message" rows="3" required oninput="updateCharCount('quick-message', 'quick-char-count')" placeholder="Type your SMS message here..." class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm"></textarea>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <div class="flex items-center space-x-2 text-xs text-slate-400">
+                  <input type="checkbox" id="quick-priority" class="rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0">
+                  <label for="quick-priority">High Priority (Bypass Queue Delay)</label>
+                </div>
+                <button type="submit" id="quick-send-btn" class="flex items-center space-x-2 px-5 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold text-sm shadow-md shadow-cyan-500/20 transition">
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <span>Send SMS Now</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- 3-Stage Workflow Visualizer -->
+          <div class="glass-card rounded-xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="clock" class="w-5 h-5 text-violet-400"></i>
+                <h2 class="text-base font-semibold text-white">Automated 3-Stage 8:00 AM PHT Engine</h2>
+              </div>
+              <button onclick="openNewAppointmentModal()" class="px-3 py-1 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-xs font-medium transition flex items-center space-x-1">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                <span>Add Appointment</span>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="flex items-center space-x-2 text-violet-400 font-semibold text-xs uppercase tracking-wider mb-2">
+                  <span class="w-5 h-5 rounded-full bg-violet-950 border border-violet-700 flex items-center justify-center text-xs">1</span>
+                  <span>Stage 1: 3-Day Prior</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Fires automatically at <strong class="text-slate-200">8:00 AM PHT</strong> exactly 3 days before appointment. Bypasses if booked with &le;2 days notice.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="flex items-center space-x-2 text-blue-400 font-semibold text-xs uppercase tracking-wider mb-2">
+                  <span class="w-5 h-5 rounded-full bg-blue-950 border border-blue-700 flex items-center justify-center text-xs">2</span>
+                  <span>Stage 2: 24-Hour Prior</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Fires automatically at <strong class="text-slate-200">8:00 AM PHT</strong> on the day before the appointment (<code class="text-cyan-400">daysDiff === 1</code>).
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="flex items-center space-x-2 text-emerald-400 font-semibold text-xs uppercase tracking-wider mb-2">
+                  <span class="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-700 flex items-center justify-center text-xs">3</span>
+                  <span>Stage 3: Day-Of Morning</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Fires at <strong class="text-slate-200">8:00 AM PHT</strong> on the appointment morning with directions and confirmation instructions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Real-Time Hardware Info & Activity -->
+        <div class="space-y-6">
+          <!-- Hardware Card -->
+          <div class="glass-card rounded-xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-base font-semibold text-white flex items-center space-x-2">
+                <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
+                <span>Hardware Gateway</span>
+              </h2>
+              <span id="ov-hw-mode-tag" class="px-2 py-0.5 text-xs rounded-md bg-slate-800 text-slate-400">Hardware</span>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div class="flex justify-between py-1.5 border-b border-slate-800">
+                <span class="text-slate-400">Gateway IP</span>
+                <span class="font-mono text-slate-200" id="ov-hw-ip">192.168.8.190</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-800">
+                <span class="text-slate-400">Active SIM Line</span>
+                <span class="font-medium text-slate-200" id="ov-hw-line">Line 1</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-800">
+                <span class="text-slate-400">Carrier / Network</span>
+                <span class="font-medium text-slate-200" id="ov-hw-carrier">Globe Postpaid</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-800">
+                <span class="text-slate-400">SIM Number</span>
+                <span class="font-mono text-cyan-400" id="ov-hw-sim">09173079499</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-800">
+                <span class="text-slate-400">Signal Strength</span>
+                <span class="font-mono text-emerald-400" id="ov-hw-signal">CSQ: 24 (Good)</span>
+              </div>
+              <div class="flex justify-between py-1.5">
+                <span class="text-slate-400">System Localhost Port</span>
+                <span class="font-mono text-slate-200" id="ov-hw-port">3310</span>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-800 flex space-x-2">
+              <button onclick="testHardwareConnection()" class="flex-1 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-slate-200 transition text-center">
+                Ping Gateway
+              </button>
+              <button onclick="switchTab('settings')" class="px-3 py-2 rounded-lg bg-cyan-950/60 hover:bg-cyan-900/60 border border-cyan-800/40 text-xs font-medium text-cyan-400 transition">
+                Configure
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Inbound SMS Widget -->
+          <div class="glass-card rounded-xl p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="text-base font-semibold text-white flex items-center space-x-2">
+                <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i>
+                <span>Recent Inbound SMS</span>
+              </h2>
+              <button onclick="switchTab('inbox')" class="text-xs text-cyan-400 hover:underline">View All</button>
+            </div>
+            
+            <div id="ov-recent-inbox" class="space-y-2.5 max-h-60 overflow-y-auto">
+              <p class="text-xs text-slate-500 py-4 text-center">Loading inbound messages...</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 2: SMS DISPATCHER -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-dispatcher" class="tab-pane hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold text-white">Direct SMS Dispatcher</h1>
+          <p class="text-xs text-slate-400">Send individual or broadcast messages via GoIP GSM hardware channel</p>
+        </div>
+        <div class="flex space-x-2">
+          <button onclick="document.getElementById('disp-form').reset(); updateCharCount('disp-message', 'disp-char-count');" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-300 transition">
+            Clear Form
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left: Compose Form -->
+        <div class="lg:col-span-2 glass-card rounded-xl p-6">
+          <form id="disp-form" onsubmit="handleFullSend(event)" class="space-y-4">
+            
+            <!-- Recipient Mode -->
+            <div class="flex items-center space-x-4 pb-2 border-b border-slate-800 text-sm">
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" name="disp-mode" value="single" checked onchange="toggleRecipientMode(this.value)" class="text-cyan-500 focus:ring-0">
+                <span class="text-slate-200 font-medium">Single Recipient</span>
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" name="disp-mode" value="bulk" onchange="toggleRecipientMode(this.value)" class="text-cyan-500 focus:ring-0">
+                <span class="text-slate-200 font-medium">Bulk / Multiple Recipients</span>
+              </label>
+            </div>
+
+            <!-- Single Recipient Input -->
+            <div id="disp-single-box">
+              <label class="block text-xs font-medium text-slate-300 mb-1">Phone Number (09XXXXXXXXX or +639XXXXXXXXX)</label>
+              <input type="text" id="disp-phone" placeholder="09173079499" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm">
+            </div>
+
+            <!-- Bulk Recipients Input -->
+            <div id="disp-bulk-box" class="hidden">
+              <label class="block text-xs font-medium text-slate-300 mb-1">Comma or Newline Separated Phone Numbers</label>
+              <textarea id="disp-bulk-phones" rows="3" placeholder="09171111111&#10;09172222222&#10;09173333333" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm font-mono"></textarea>
+            </div>
+
+            <!-- Templates & Placeholder Shortcuts -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Apply Saved Template</label>
+                <select id="disp-template-select" onchange="applyDispTemplate()" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500 text-sm">
+                  <option value="">-- Select Template --</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Client Name (For {{name}} replacement)</label>
+                <input type="text" id="disp-client-name" placeholder="John Doe" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm">
+              </div>
+            </div>
+
+            <!-- Message Text -->
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="block text-xs font-medium text-slate-300">Message Content</label>
+                <span class="text-xs text-slate-400 font-mono" id="disp-char-count">0 / 160 (1 SMS)</span>
+              </div>
+              <textarea id="disp-message" rows="5" required oninput="updateCharCount('disp-message', 'disp-char-count')" placeholder="Type your message..." class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm"></textarea>
+            </div>
+
+            <!-- Options -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+              <div class="flex items-center space-x-3 text-xs text-slate-400">
+                <label class="flex items-center space-x-1.5 cursor-pointer">
+                  <input type="checkbox" id="disp-priority" class="rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0">
+                  <span>Priority Queue</span>
+                </label>
+              </div>
+
+              <button type="submit" id="disp-send-btn" class="flex items-center space-x-2 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 transition">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Queue & Dispatch Message</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Right: Dynamic Message Preview & Guidelines -->
+        <div class="space-y-6">
+          <div class="glass-card rounded-xl p-6">
+            <h3 class="text-sm font-semibold text-white mb-3 flex items-center space-x-2">
+              <i data-lucide="smartphone" class="w-4 h-4 text-cyan-400"></i>
+              <span>Live Phone Preview</span>
+            </h3>
+            
+            <div class="rounded-2xl bg-slate-950 border border-slate-800 p-4 space-y-3">
+              <div class="flex items-center justify-between text-xs text-slate-500 pb-2 border-b border-slate-900">
+                <span id="preview-sender">From: Globe GSM Gateway</span>
+                <span>Now</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60 text-xs text-slate-200 leading-relaxed min-h-[80px]" id="live-preview-box">
+                Your message preview will appear here in real-time...
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-xl p-5 text-xs text-slate-400 space-y-2">
+            <h4 class="font-semibold text-slate-300 uppercase tracking-wider">SMS Gateway Guidelines</h4>
+            <p>• Standard GSM 7-bit charset allows <strong>160 characters</strong> per single SMS part.</p>
+            <p>• Multi-part concatenated SMS are automatically split and recombined by recipient handsets.</p>
+            <p>• Anti-ban throttling applies a <strong>5 to 10 second jitter delay</strong> between consecutive SMS.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 3: 3-STAGE APPOINTMENT REMINDER HUB -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-appointments" class="tab-pane hidden space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="text-xl font-bold text-white">3-Stage Automated Appointment Reminders</h1>
+            <span class="px-2 py-0.5 text-xs font-semibold rounded-md bg-violet-950 text-violet-300 border border-violet-800/60">8:00 AM PHT Scheduler</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-0.5">Automated 3-Day Prior, 24-Hour Prior, and Day-Of morning SMS dispatches</p>
+        </div>
+        <div class="flex space-x-2">
+          <button onclick="triggerSchedulerManualCheck()" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-slate-300 transition flex items-center space-x-1.5" title="Force evaluation of 8:00 AM reminder rules right now">
+            <i data-lucide="play" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>Run Scheduler Check Now</span>
+          </button>
+          <button onclick="openNewAppointmentModal()" class="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white text-xs font-bold shadow-md shadow-violet-500/20 transition flex items-center space-x-1.5">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>New Appointment</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter / Search Bar -->
+      <div class="glass-card rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="relative w-full sm:w-80">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-slate-500"></i>
+          <input type="text" id="appt-search" oninput="renderAppointmentsTable()" placeholder="Search client name, phone, service..." class="w-full pl-9 pr-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyan-500">
+        </div>
+
+        <div class="flex items-center space-x-2 w-full sm:w-auto">
+          <select id="appt-status-filter" onchange="renderAppointmentsTable()" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+            <option value="ALL">All Statuses</option>
+            <option value="SCHEDULED">Scheduled</option>
+            <option value="CONFIRMED">Confirmed</option>
+            <option value="COMPLETED">Completed</option>
+            <option value="CANCELLED">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Appointments List Table -->
+      <div class="glass-card rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900/90 text-slate-400 uppercase tracking-wider text-[11px] border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">Client & Contact</th>
+                <th class="py-3 px-4">Appointment Date & Time</th>
+                <th class="py-3 px-4">Service Type</th>
+                <th class="py-3 px-4 text-center">Stage 1 (3-Day)</th>
+                <th class="py-3 px-4 text-center">Stage 2 (24-Hr)</th>
+                <th class="py-3 px-4 text-center">Stage 3 (Day-Of)</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="appts-table-body" class="divide-y divide-slate-800/60">
+              <tr>
+                <td colspan="8" class="py-8 text-center text-slate-500">Loading scheduled appointments...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 4: INBOX & SMART AUTO-REPLY LOGS -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-inbox" class="tab-pane hidden space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold text-white">Inbound SMS Inbox & Auto-Reply Log</h1>
+          <p class="text-xs text-slate-400">Incoming messages received from GoIP GSM lines with automated AI/Rule parsing</p>
+        </div>
+        <div class="flex space-x-2">
+          <button onclick="pollInboundNow()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-300 transition flex items-center space-x-1.5">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>Fetch Inbound Now</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900/90 text-slate-400 uppercase tracking-wider text-[11px] border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">Sender / Phone</th>
+                <th class="py-3 px-4">Message Received</th>
+                <th class="py-3 px-4">Timestamp (PHT)</th>
+                <th class="py-3 px-4">Auto-Reply Triggered</th>
+                <th class="py-3 px-4">Intent / AI Reason</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inbox-table-body" class="divide-y divide-slate-800/60">
+              <tr>
+                <td colspan="6" class="py-8 text-center text-slate-500">Loading incoming messages...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 5: SMART AUTO-REPLY & AI CONFIG -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-autoreply" class="tab-pane hidden space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold text-white">Smart Auto-Reply & AI Rules Engine</h1>
+          <p class="text-xs text-slate-400">Configure automated customer inquiries, balance lookups, appointment queries, and weather replies</p>
+        </div>
+        <button onclick="saveAutoReplyConfig()" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-500/20 transition flex items-center space-x-1.5">
+          <i data-lucide="save" class="w-4 h-4"></i>
+          <span>Save Auto-Reply Settings</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left 2 Cols: Form -->
+        <div class="lg:col-span-2 space-y-6">
+          
+          <!-- Master Toggle -->
+          <div class="glass-card rounded-xl p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-sm font-semibold text-white">Enable Automated Replies</h3>
+                <p class="text-xs text-slate-400 mt-0.5">When enabled, the system parses incoming SMS and sends automated answers</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="ar-enabled" class="sr-only peer">
+                <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500"></div>
+              </label>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block font-medium text-slate-300 mb-1">Intelligence Mode</label>
+                <select id="ar-ai-mode" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500 text-xs">
+                  <option value="HYBRID_AI">Hybrid (Rules Fast-Path + AI Fallback)</option>
+                  <option value="RULES_ONLY">Rules Only (Fast Keyword Matching)</option>
+                  <option value="AI_ONLY">AI Only (Full Natural Language)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-medium text-slate-300 mb-1">AI Provider / Model</label>
+                <input type="text" id="ar-model" placeholder="gemini-2.5-flash" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs">
+              </div>
+            </div>
+          </div>
+
+          <!-- Templates for Auto-Replies -->
+          <div class="glass-card rounded-xl p-6 space-y-4">
+            <h3 class="text-sm font-semibold text-white pb-2 border-b border-slate-800">Custom Auto-Reply Response Templates</h3>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Balance & Account Inquiry Template</label>
+              <textarea id="ar-tmpl-balance" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs font-mono"></textarea>
+              <span class="text-[11px] text-slate-500">Available: {{name}}, {{balance}}, {{creditLimit}}</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Appointment Inquiry (Appointment Found)</label>
+              <textarea id="ar-tmpl-appointment" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs font-mono"></textarea>
+              <span class="text-[11px] text-slate-500">Available: {{name}}, {{date}}, {{time}}, {{serviceType}}</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Appointment Inquiry (No Scheduled Appointment)</label>
+              <textarea id="ar-tmpl-no-appointment" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs font-mono"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Unregistered Sender / General Greeting</label>
+              <textarea id="ar-tmpl-not-found" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs font-mono"></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right 1 Col: Test & Simulation Tool -->
+        <div class="space-y-6">
+          <div class="glass-card rounded-xl p-6">
+            <h3 class="text-sm font-semibold text-white mb-3 flex items-center space-x-2">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+              <span>Simulator & Preview</span>
+            </h3>
+            <p class="text-xs text-slate-400 mb-4">Test how the auto-reply engine will react to a simulated incoming SMS without sending actual messages.</p>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Test Phone Number</label>
+                <input type="text" id="sim-phone" value="09173079499" class="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs">
+              </div>
+
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">Incoming Message Text</label>
+                <input type="text" id="sim-msg" value="May appointment ba ako bukas?" placeholder="Type sample inquiry..." class="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs">
+              </div>
+
+              <button onclick="runAutoReplySimulation()" class="w-full py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs transition">
+                Simulate Inbound SMS
+              </button>
+            </div>
+
+            <div id="sim-result-box" class="mt-4 p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-xs space-y-2 hidden">
+              <div class="flex justify-between text-slate-400 text-[11px]">
+                <span>Intent: <strong id="sim-intent" class="text-cyan-400">-</strong></span>
+                <span id="sim-match" class="text-emerald-400">-</span>
+              </div>
+              <div class="p-2 rounded bg-slate-950 border border-slate-800 text-slate-200 text-xs" id="sim-reply-text">
+                -
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 6: TEMPLATES & CONTACTS -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-templates" class="tab-pane hidden space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold text-white">Message Templates & Address Book</h1>
+          <p class="text-xs text-slate-400">Manage standard SMS templates and saved contact phone numbers</p>
+        </div>
+        <button onclick="openNewTemplateModal()" class="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition flex items-center space-x-1.5">
+          <i data-lucide="plus" class="w-4 h-4"></i>
+          <span>Create Template</span>
+        </button>
+      </div>
+
+      <!-- Templates Grid -->
+      <div id="templates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <p class="text-xs text-slate-500 py-6 text-center col-span-3">Loading templates...</p>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 7: QUEUE & LOGS -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-queue" class="tab-pane hidden space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold text-white">Outbound Rate-Limited Queue & Live Logs</h1>
+          <p class="text-xs text-slate-400">Monitors the 5-10s anti-ban jitter dispatcher and live SMS transmissions</p>
+        </div>
+        <div class="flex space-x-2">
+          <button onclick="clearOutboundQueue()" class="px-3 py-1.5 rounded-lg bg-rose-950/60 hover:bg-rose-900/60 border border-rose-800/40 text-xs text-rose-300 transition">
+            Clear Pending Queue
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Queue State -->
+      <div class="glass-card rounded-xl p-5">
+        <h3 class="text-sm font-semibold text-white mb-3 flex items-center space-x-2">
+          <i data-lucide="layers" class="w-4 h-4 text-cyan-400"></i>
+          <span>Pending Queue Items</span>
+        </h3>
+        
+        <div id="queue-items-container" class="space-y-2 max-h-56 overflow-y-auto">
+          <p class="text-xs text-slate-500 py-4 text-center">Queue is currently idle. No pending outbound messages.</p>
+        </div>
+      </div>
+
+      <!-- Transmission Logs Table -->
+      <div class="glass-card rounded-xl overflow-hidden">
+        <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+          <h3 class="text-sm font-semibold text-white">Recent Transmission History</h3>
+          <span class="text-xs text-slate-400" id="logs-total-count">0 Records</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900/90 text-slate-400 uppercase tracking-wider text-[11px] border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">Recipient</th>
+                <th class="py-3 px-4">Message Content</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4">Channel / Line</th>
+                <th class="py-3 px-4">Time</th>
+              </tr>
+            </thead>
+            <tbody id="logs-table-body" class="divide-y divide-slate-800/60">
+              <tr>
+                <td colspan="5" class="py-8 text-center text-slate-500">Loading transmission logs...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- TAB 8: HARDWARE & CONFIG -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tab-content-settings" class="tab-pane hidden space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold text-white">GoIP Hardware & Gateway Settings</h1>
+          <p class="text-xs text-slate-400">Configure the GoIP gateway IP address, authentication, SIM lines, and anti-ban delay</p>
+        </div>
+        <button onclick="saveHardwareConfig()" class="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold shadow-md shadow-cyan-500/20 transition flex items-center space-x-1.5">
+          <i data-lucide="save" class="w-4 h-4"></i>
+          <span>Save Settings</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Hardware Settings Card -->
+        <div class="glass-card rounded-xl p-6 space-y-4">
+          <h3 class="text-sm font-semibold text-white pb-2 border-b border-slate-800 flex items-center space-x-2">
+            <i data-lucide="server" class="w-4 h-4 text-cyan-400"></i>
+            <span>GoIP Gateway Parameters</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">Gateway IP Address</label>
+              <input type="text" id="cfg-ip" placeholder="192.168.8.190" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">SIM Line / Port</label>
+              <select id="cfg-line" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+                <option value="1">Line 1</option>
+                <option value="2">Line 2</option>
+                <option value="3">Line 3</option>
+                <option value="4">Line 4</option>
+                <option value="8">Line 8</option>
+                <option value="16">Line 16</option>
+                <option value="32">Line 32</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">Gateway HTTP Username</label>
+              <input type="text" id="cfg-user" placeholder="admin" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">Gateway HTTP Password</label>
+              <input type="password" id="cfg-pass" placeholder="admin" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">Carrier Label</label>
+              <input type="text" id="cfg-carrier" placeholder="Globe Postpaid" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">SIM Card Mobile Number</label>
+              <input type="text" id="cfg-sim" placeholder="09173079499" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+          </div>
+
+          <!-- Mock Gateway Toggle -->
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-semibold text-slate-200">Mock Hardware Gateway Simulation</span>
+              <p class="text-[11px] text-slate-400">Simulate successful SMS sends without physical hardware connected</p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="cfg-mock" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500"></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Throttling & Anti-Ban Rate Limit -->
+        <div class="glass-card rounded-xl p-6 space-y-4">
+          <h3 class="text-sm font-semibold text-white pb-2 border-b border-slate-800 flex items-center space-x-2">
+            <i data-lucide="shield" class="w-4 h-4 text-emerald-400"></i>
+            <span>Anti-Ban & Jitter Engine</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">Min Delay (Seconds)</label>
+              <input type="number" id="cfg-min-delay" value="5" min="1" max="60" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">Max Delay (Seconds)</label>
+              <input type="number" id="cfg-max-delay" value="10" min="2" max="120" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">Max Daily SMS Cap</label>
+              <input type="number" id="cfg-daily-limit" value="500" min="10" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <label class="block font-medium text-slate-300 mb-1">API Security Key</label>
+              <input type="text" id="cfg-api-key" placeholder="tb_live_goip_admin_master" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500 font-mono">
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800">
+            <button onclick="testHardwareConnection()" class="w-full py-2.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 transition flex items-center justify-center space-x-2">
+              <i data-lucide="wifi" class="w-4 h-4"></i>
+              <span>Test Hardware Gateway Connection</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL: ADD APPOINTMENT -->
+  <div id="modal-appointment" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="glass-card rounded-2xl max-w-lg w-full p-6 border border-slate-700 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <h3 class="text-base font-bold text-white flex items-center space-x-2">
+          <i data-lucide="calendar-plus" class="w-5 h-5 text-violet-400"></i>
+          <span>Schedule New Appointment</span>
+        </h3>
+        <button onclick="closeModal('modal-appointment')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleCreateAppointment(event)" class="space-y-4 mt-4 text-xs">
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Client Full Name *</label>
+          <input type="text" id="appt-name" required placeholder="e.g. Maria Santos" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Client Phone Number *</label>
+            <input type="text" id="appt-phone" required placeholder="09171234567" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Service / Consultation *</label>
+            <input type="text" id="appt-service" required placeholder="e.g. Vehicle Inspection" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Appointment Date (YYYY-MM-DD) *</label>
+            <input type="date" id="appt-date" required class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Appointment Time *</label>
+            <input type="time" id="appt-time" value="09:00" required class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Special Notes (Optional)</label>
+          <input type="text" id="appt-notes" placeholder="e.g. Bring vehicle registration papers" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+
+        <div class="p-3 rounded-lg bg-violet-950/40 border border-violet-900/60 text-slate-300 text-[11px] leading-relaxed">
+          🔔 <strong>Automated 3-Stage Reminder Protection:</strong><br>
+          • <strong>Stage 1 (3-Day)</strong>: Auto-sends 8:00 AM PHT 3 days prior.<br>
+          • <strong>Stage 2 (24-Hr)</strong>: Auto-sends 8:00 AM PHT 1 day prior.<br>
+          • <strong>Stage 3 (Day-Of)</strong>: Auto-sends 8:00 AM PHT on the day of appointment.
+        </div>
+
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="closeModal('modal-appointment')" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-bold">Save Appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: CREATE TEMPLATE -->
+  <div id="modal-template" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="glass-card rounded-2xl max-w-lg w-full p-6 border border-slate-700 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <h3 class="text-base font-bold text-white flex items-center space-x-2">
+          <i data-lucide="file-plus" class="w-5 h-5 text-cyan-400"></i>
+          <span>Create SMS Template</span>
+        </h3>
+        <button onclick="closeModal('modal-template')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleCreateTemplate(event)" class="space-y-4 mt-4 text-xs">
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Template Title *</label>
+          <input type="text" id="tmpl-title" required placeholder="e.g. VIP Promotion" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+        </div>
+
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Category</label>
+          <select id="tmpl-cat" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500">
+            <option value="Appointment">Appointment</option>
+            <option value="Notification">Notification</option>
+            <option value="Finance">Finance / Billing</option>
+            <option value="Security">Security / OTP</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Template Content *</label>
+          <textarea id="tmpl-content" rows="4" required placeholder="Hello {{name}}, your request has been confirmed for {{date}}." class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-cyan-500"></textarea>
+          <span class="text-[11px] text-slate-500">Placeholders: {{name}}, {{date}}, {{time}}, {{serviceType}}, {{notes}}, {{otp}}</span>
+        </div>
+
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="closeModal('modal-template')" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold">Save Template</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- APPLICATION SCRIPTS & CONTROLLERS -->
+  <script>
+    // State Store
+    let state = {
+      activeTab: 'overview',
+      config: {},
+      hwStatus: {},
+      appointments: [],
+      inbox: [],
+      logs: [],
+      templates: [],
+      queue: [],
+      autoReply: {}
+    };
+
+    const API_BASE = '/api/gsm';
+
+    // Initialize App
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      updatePHTClock();
+      setInterval(updatePHTClock, 1000);
+      
+      // Initial Load
+      refreshAllData();
+
+      // Background Polling every 5 seconds
+      setInterval(() => {
+        refreshHardwareStatus();
+        refreshQueueAndLogs();
+      }, 5000);
+
+      // Inbound check every 15s
+      setInterval(() => {
+        refreshInbox();
+      }, 15000);
+
+      // Setup default appointment date to tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const yyyy = tomorrow.getFullYear();
+      const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+      const dd = String(tomorrow.getDate()).padStart(2, '0');
+      const apptDateInput = document.getElementById('appt-date');
+      if (apptDateInput) apptDateInput.value = `${yyyy}-${mm}-${dd}`;
+    });
+
+    // Clock
+    function updatePHTClock() {
+      try {
+        const now = new Date();
+        const phtStr = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Manila', hour12: false });
+        const clockEl = document.getElementById('pht-clock');
+        if (clockEl) clockEl.innerText = phtStr + ' PHT';
+      } catch (e) {}
+    }
+
+    // Tab Navigation
+    function switchTab(tabId) {
+      state.activeTab = tabId;
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      const activePane = document.getElementById(`tab-content-${tabId}`);
+      if (activePane) activePane.classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.className = 'tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-cyan-400 bg-slate-800 border border-cyan-800/40 shadow-sm transition';
+        } else {
+          btn.className = 'tab-btn flex items-center space-x-2 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition';
+        }
+      });
+      lucide.createIcons();
+    }
+
+    // Toast Notification
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const colors = {
+        success: 'bg-emerald-950 border-emerald-700 text-emerald-200',
+        error: 'bg-rose-950 border-rose-700 text-rose-200',
+        info: 'bg-cyan-950 border-cyan-700 text-cyan-200',
+        warning: 'bg-amber-950 border-amber-700 text-amber-200'
+      };
+      toast.className = `pointer-events-auto px-4 py-3 rounded-xl border shadow-xl flex items-center space-x-3 text-xs font-medium animate-slide-in ${colors[type] || colors.info}`;
+      toast.innerHTML = `<span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // Refresh All Data
+    async function refreshAllData() {
+      const icon = document.getElementById('refresh-icon');
+      if (icon) icon.classList.add('animate-spin');
+      try {
+        await Promise.all([
+          refreshConfig(),
+          refreshHardwareStatus(),
+          refreshAppointments(),
+          refreshInbox(),
+          refreshQueueAndLogs(),
+          refreshTemplates(),
+          refreshAutoReplyConfig()
+        ]);
+        showToast('GSM subsystem synchronized', 'info');
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (icon) setTimeout(() => icon.classList.remove('animate-spin'), 500);
+      }
+    }
+
+    // 1. Config
+    async function refreshConfig() {
+      try {
+        const res = await fetch(`${API_BASE}/config`);
+        if (res.ok) {
+          state.config = await res.json();
+          populateConfigForm();
+        }
+      } catch (e) {}
+    }
+
+    function populateConfigForm() {
+      const c = state.config;
+      if (!c) return;
+      document.getElementById('cfg-ip').value = c.gatewayIp || '192.168.8.190';
+      document.getElementById('cfg-line').value = c.line || 1;
+      document.getElementById('cfg-user').value = c.username || 'admin';
+      document.getElementById('cfg-pass').value = c.password || 'admin';
+      document.getElementById('cfg-carrier').value = c.carrierName || 'Globe Postpaid';
+      document.getElementById('cfg-sim').value = c.simNumber || '09173079499';
+      document.getElementById('cfg-mock').checked = !!c.useMockGateway;
+      document.getElementById('cfg-min-delay').value = c.minDelaySec || 5;
+      document.getElementById('cfg-max-delay').value = c.maxDelaySec || 10;
+      document.getElementById('cfg-daily-limit').value = c.maxDailyLimit || 500;
+      document.getElementById('cfg-api-key').value = c.apiKey || 'tb_live_goip_admin_master';
+
+      // Update overview widgets
+      document.getElementById('ov-hw-ip').innerText = c.gatewayIp || '192.168.8.190';
+      document.getElementById('ov-hw-line').innerText = `Line ${c.line || 1}`;
+      document.getElementById('ov-hw-carrier').innerText = c.carrierName || 'Globe Postpaid';
+      document.getElementById('ov-hw-sim').innerText = c.simNumber || '09173079499';
+      document.getElementById('ov-carrier-name').innerText = c.carrierName || 'Globe Postpaid';
+      document.getElementById('ov-gateway-sub').innerText = `IP: ${c.gatewayIp || '192.168.8.190'} | Line ${c.line || 1}`;
+      document.getElementById('ov-hw-mode-tag').innerText = c.useMockGateway ? 'Mock Mode' : 'Hardware';
+    }
+
+    // 2. Hardware Status
+    async function refreshHardwareStatus() {
+      try {
+        const res = await fetch(`${API_BASE}/hardware/status`);
+        if (res.ok) {
+          state.hwStatus = await res.json();
+          renderHardwareBadge();
+        }
+      } catch (e) {
+        setHardwareOffline();
+      }
+    }
+
+    function renderHardwareBadge() {
+      const s = state.hwStatus;
+      const dot = document.getElementById('hw-status-dot');
+      const text = document.getElementById('hw-status-text');
+      const ovStatus = document.getElementById('ov-gateway-status');
+      const ovSignal = document.getElementById('ov-signal-csq');
+      const ovHwSignal = document.getElementById('ov-hw-signal');
+
+      if (s && s.online) {
+        dot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+        text.innerText = s.isMock ? 'Mock Gateway' : `Online (CSQ ${s.signalStrength || 20})`;
+        ovStatus.innerHTML = `<span class="text-emerald-400">${s.isMock ? 'Mock Mode' : 'Connected'}</span>`;
+        const csqText = `CSQ: ${s.signalStrength || '--'}`;
+        if (ovSignal) ovSignal.innerText = csqText;
+        if (ovHwSignal) ovHwSignal.innerText = `${csqText} (${s.signalQuality || 'Good'})`;
+      } else {
+        setHardwareOffline();
+      }
+    }
+
+    function setHardwareOffline() {
+      const dot = document.getElementById('hw-status-dot');
+      const text = document.getElementById('hw-status-text');
+      const ovStatus = document.getElementById('ov-gateway-status');
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-rose-500';
+      if (text) text.innerText = 'Offline / Standby';
+      if (ovStatus) ovStatus.innerHTML = `<span class="text-rose-400">Offline</span>`;
+    }
+
+    async function testHardwareConnection() {
+      showToast('Pinging GoIP Gateway...', 'info');
+      try {
+        const res = await fetch(`${API_BASE}/hardware/status`);
+        const data = await res.json();
+        if (data.online) {
+          showToast(`Gateway responded successfully! CSQ: ${data.signalStrength}`, 'success');
+        } else {
+          showToast(`Gateway is offline: ${data.error || 'Connection refused'}`, 'error');
+        }
+        refreshHardwareStatus();
+      } catch (err) {
+        showToast('Failed to reach gateway API: ' + err.message, 'error');
+      }
+    }
+
+    // 3. Appointments & 3-Stage Tracker
+    async function refreshAppointments() {
+      try {
+        const res = await fetch(`${API_BASE}/appointments`);
+        if (res.ok) {
+          state.appointments = await res.json();
+          renderAppointmentsTable();
+          updateAppointmentMetrics();
+        }
+      } catch (e) {}
+    }
+
+    function updateAppointmentMetrics() {
+      const count = state.appointments.length;
+      document.getElementById('ov-appts-count').innerText = count;
+      document.getElementById('badge-appointments-count').innerText = count;
+
+      // Check ready today
+      const today = new Date().toISOString().split('T')[0];
+      const todayCount = state.appointments.filter(a => a.appointmentDate === today).length;
+      document.getElementById('ov-stage-ready').innerText = `Today's Appts: ${todayCount}`;
+    }
+
+    function renderAppointmentsTable() {
+      const tbody = document.getElementById('appts-table-body');
+      const search = (document.getElementById('appt-search')?.value || '').toLowerCase();
+      const statusFilter = document.getElementById('appt-status-filter')?.value || 'ALL';
+
+      const filtered = state.appointments.filter(a => {
+        const matchSearch = (a.clientName || '').toLowerCase().includes(search) ||
+                            (a.clientPhone || '').includes(search) ||
+                            (a.serviceType || '').toLowerCase().includes(search);
+        const matchStatus = statusFilter === 'ALL' || a.status === statusFilter;
+        return matchSearch && matchStatus;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-slate-500">No scheduled appointments match the filter.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(a => {
+        const s1 = (a.reminders && a.reminders.threeDays) || a.stage1_3day || {};
+        const s2 = (a.reminders && a.reminders.twentyFourHours) || a.stage2_24hr || {};
+        const s3 = (a.reminders && a.reminders.dayOf) || a.stage3_dayof || {};
+        const apptDate = a.date || a.appointmentDate || 'N/A';
+        const apptTime = a.time || a.appointmentTime || 'N/A';
+
+        const stageBadge = (info) => {
+          if (info.sent) return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800/50">Sent 8:00 AM</span>`;
+          if (info.bypassed) return `<span class="px-2 py-0.5 rounded text-[10px] bg-slate-800 text-slate-400" title="Bypassed (short notice booking)">Bypassed</span>`;
+          if (info.lastError) return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-950 text-rose-400 border border-rose-800/50">Failed</span>`;
+          return `<span class="px-2 py-0.5 rounded text-[10px] bg-slate-800 text-slate-400">Pending</span>`;
+        };
+
+        return `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-3 px-4">
+              <div class="font-semibold text-slate-200">${a.clientName}</div>
+              <div class="text-[11px] font-mono text-cyan-400">${a.clientPhone}</div>
+            </td>
+            <td class="py-3 px-4">
+              <div class="font-medium text-slate-200">${apptDate}</div>
+              <div class="text-[11px] text-slate-400">${apptTime}</div>
+            </td>
+            <td class="py-3 px-4 text-slate-300">${a.serviceType}</td>
+            <td class="py-3 px-4 text-center">${stageBadge(s1)}</td>
+            <td class="py-3 px-4 text-center">${stageBadge(s2)}</td>
+            <td class="py-3 px-4 text-center">${stageBadge(s3)}</td>
+            <td class="py-3 px-4">
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-cyan-950 text-cyan-300 border border-cyan-800/40">${a.status || 'SCHEDULED'}</span>
+            </td>
+            <td class="py-3 px-4 text-right space-x-1">
+              <button onclick="triggerManualReminder('${a.id}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px]" title="Send instant reminder now">Send SMS</button>
+              <button onclick="deleteAppointment('${a.id}')" class="px-2 py-1 rounded bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 text-[11px]">Delete</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    async function handleCreateAppointment(e) {
+      e.preventDefault();
+      const d = document.getElementById('appt-date').value;
+      const t = document.getElementById('appt-time').value;
+      const payload = {
+        clientName: document.getElementById('appt-name').value,
+        clientPhone: document.getElementById('appt-phone').value,
+        serviceType: document.getElementById('appt-service').value,
+        date: d,
+        appointmentDate: d,
+        time: t,
+        appointmentTime: t,
+        sendAutoReminder: true,
+        notes: document.getElementById('appt-notes').value
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/appointments`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          showToast('Appointment scheduled with 3-Stage 8:00 AM PHT automation!', 'success');
+          closeModal('modal-appointment');
+          refreshAppointments();
+        } else {
+          showToast('Failed to save appointment', 'error');
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, 'error');
+      }
+    }
+
+    async function triggerSchedulerManualCheck() {
+      showToast('Evaluating 3-Stage 8:00 AM PHT reminder triggers...', 'info');
+      try {
+        const res = await fetch(`${API_BASE}/appointments/process-reminders`, { method: 'POST' });
+        const data = await res.json();
+        showToast(`Scheduler finished: Dispatched ${data.dispatched || 0} reminders`, 'success');
+        refreshAppointments();
+        refreshQueueAndLogs();
+      } catch (err) {
+        showToast('Error running scheduler check: ' + err.message, 'error');
+      }
+    }
+
+    async function triggerManualReminder(id) {
+      if (!confirm('Send an instant appointment reminder SMS now?')) return;
+      try {
+        const res = await fetch(`${API_BASE}/appointments/${id}/send-reminder`, { method: 'POST' });
+        if (res.ok) {
+          showToast('Reminder queued for dispatch!', 'success');
+          refreshQueueAndLogs();
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, 'error');
+      }
+    }
+
+    async function deleteAppointment(id) {
+      if (!confirm('Delete this appointment record?')) return;
+      try {
+        await fetch(`${API_BASE}/appointments/${id}`, { method: 'DELETE' });
+        showToast('Appointment removed', 'info');
+        refreshAppointments();
+      } catch (e) {}
+    }
+
+    // 4. Inbound Inbox
+    async function refreshInbox() {
+      try {
+        const res = await fetch(`${API_BASE}/inbound`);
+        if (res.ok) {
+          state.inbox = await res.json();
+          renderInboxTable();
+          renderOverviewRecentInbox();
+        }
+      } catch (e) {}
+    }
+
+    function renderOverviewRecentInbox() {
+      const container = document.getElementById('ov-recent-inbox');
+      const totalEl = document.getElementById('ov-inbox-total');
+      if (totalEl) totalEl.innerText = state.inbox.length;
+
+      if (state.inbox.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-500 py-4 text-center">No inbound SMS received yet.</p>`;
+        return;
+      }
+
+      const recent = state.inbox.slice(-3).reverse();
+      container.innerHTML = recent.map(m => `
+        <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-xs">
+          <div class="flex justify-between items-center text-slate-400 text-[11px] mb-1">
+            <span class="font-semibold text-slate-200">${m.senderName || m.from}</span>
+            <span>${new Date(m.receivedAt).toLocaleTimeString()}</span>
+          </div>
+          <p class="text-slate-300 line-clamp-2">${m.message}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderInboxTable() {
+      const tbody = document.getElementById('inbox-table-body');
+      if (state.inbox.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-500">Inbox is empty. Poller checks GoIP gateway every 15s.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = state.inbox.slice().reverse().map(m => {
+        const ar = m.autoReply || {};
+        const intentBadge = ar.intent ? `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-violet-950 text-violet-300 border border-violet-800/40">${ar.intent}</span>` : `<span class="text-slate-500 text-[11px]">-</span>`;
+        const autoSentBadge = ar.dispatchResult ? `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-950 text-emerald-400">Replied</span>` : `<span class="text-slate-500 text-[11px]">-</span>`;
+
+        return `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-3 px-4">
+              <div class="font-semibold text-slate-200">${m.senderName || 'Unknown Sender'}</div>
+              <div class="text-[11px] font-mono text-cyan-400">${m.from}</div>
+            </td>
+            <td class="py-3 px-4 text-slate-200 max-w-xs">${m.message}</td>
+            <td class="py-3 px-4 text-slate-400">${new Date(m.receivedAt).toLocaleString('en-US', { timeZone: 'Asia/Manila' })}</td>
+            <td class="py-3 px-4">${autoSentBadge}</td>
+            <td class="py-3 px-4">${intentBadge}</td>
+            <td class="py-3 px-4 text-right">
+              <button onclick="replyToSender('${m.from}')" class="px-2 py-1 rounded bg-cyan-950/60 text-cyan-400 hover:bg-cyan-900/60 text-[11px]">Reply</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function replyToSender(phone) {
+      switchTab('dispatcher');
+      document.getElementById('disp-phone').value = phone;
+      document.getElementById('disp-message').focus();
+    }
+
+    async function pollInboundNow() {
+      showToast('Polling GoIP Gateway for new SMS...', 'info');
+      try {
+        const res = await fetch(`${API_BASE}/inbound/poll-now`, { method: 'POST' });
+        const data = await res.json();
+        showToast(`Poller complete: ${data.fetchedCount || 0} messages processed`, 'success');
+        refreshInbox();
+      } catch (err) {
+        showToast('Error polling gateway: ' + err.message, 'error');
+      }
+    }
+
+    // 5. Outbound Queue & Logs
+    async function refreshQueueAndLogs() {
+      try {
+        const [queueRes, logsRes] = await Promise.all([
+          fetch(`${API_BASE}/queue/status`),
+          fetch(`${API_BASE}/logs`)
+        ]);
+        if (queueRes.ok) {
+          state.queue = await queueRes.json();
+          renderQueue();
+        }
+        if (logsRes.ok) {
+          state.logs = await logsRes.json();
+          renderLogs();
+        }
+      } catch (e) {}
+    }
+
+    function renderQueue() {
+      const q = state.queue;
+      const pendingEl = document.getElementById('ov-queue-pending');
+      const sentEl = document.getElementById('ov-queue-sent-today');
+      if (pendingEl) pendingEl.innerText = `${q.pendingCount || 0} Pending`;
+      if (sentEl) sentEl.innerText = `${q.sentTodayCount || 0} Sent Today`;
+
+      const container = document.getElementById('queue-items-container');
+      const items = q.items || [];
+      if (items.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-500 py-4 text-center">Queue is empty. Ready for outgoing messages.</p>`;
+        return;
+      }
+
+      container.innerHTML = items.map(item => `
+        <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 flex justify-between items-center text-xs">
+          <div>
+            <span class="font-mono text-cyan-400 font-semibold">${item.phone}</span>
+            <p class="text-slate-300 text-[11px] truncate max-w-sm mt-0.5">${item.message}</p>
+          </div>
+          <div class="text-right">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-300 border border-amber-800/40">${item.status || 'QUEUED'}</span>
+            <div class="text-[10px] text-slate-500 mt-1">${item.priority ? 'Priority' : 'Standard'}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderLogs() {
+      const tbody = document.getElementById('logs-table-body');
+      const totalEl = document.getElementById('logs-total-count');
+      if (totalEl) totalEl.innerText = `${state.logs.length} Records`;
+
+      if (state.logs.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-500">No transmission history yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = state.logs.slice().reverse().slice(0, 50).map(l => `
+        <tr class="hover:bg-slate-800/40 transition">
+          <td class="py-2.5 px-4 font-mono text-cyan-400 font-semibold">${l.to || l.phone}</td>
+          <td class="py-2.5 px-4 text-slate-300 max-w-md">${l.message || l.text}</td>
+          <td class="py-2.5 px-4">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${l.status === 'SENT' ? 'bg-emerald-950 text-emerald-400' : 'bg-rose-950 text-rose-400'}">${l.status}</span>
+          </td>
+          <td class="py-2.5 px-4 text-slate-400">Line ${l.line || 1}</td>
+          <td class="py-2.5 px-4 text-slate-400">${new Date(l.sentAt || l.timestamp).toLocaleTimeString()}</td>
+        </tr>
+      `).join('');
+    }
+
+    async function clearOutboundQueue() {
+      if (!confirm('Clear all pending queued messages?')) return;
+      try {
+        await fetch(`${API_BASE}/queue/clear`, { method: 'POST' });
+        showToast('Outbound queue cleared', 'info');
+        refreshQueueAndLogs();
+      } catch (e) {}
+    }
+
+    // 6. Templates
+    async function refreshTemplates() {
+      try {
+        const res = await fetch(`${API_BASE}/templates`);
+        if (res.ok) {
+          state.templates = await res.json();
+          renderTemplates();
+          populateTemplateSelects();
+        }
+      } catch (e) {}
+    }
+
+    function renderTemplates() {
+      const grid = document.getElementById('templates-grid');
+      if (state.templates.length === 0) {
+        grid.innerHTML = `<p class="text-xs text-slate-500 py-6 text-center col-span-3">No templates created yet.</p>`;
+        return;
+      }
+
+      grid.innerHTML = state.templates.map(t => `
+        <div class="glass-card rounded-xl p-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold text-slate-200 text-xs">${t.title}</span>
+              <span class="px-2 py-0.5 rounded text-[10px] bg-slate-800 text-slate-400">${t.category || 'General'}</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed font-sans bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">${t.content}</p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-slate-800/60 flex justify-between items-center text-xs">
+            <button onclick="useTemplateInDispatcher('${t.id}')" class="text-cyan-400 hover:underline">Use in Dispatcher &rarr;</button>
+            <button onclick="deleteTemplate('${t.id}')" class="text-rose-400 hover:underline text-[11px]">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function populateTemplateSelects() {
+      const qSelect = document.getElementById('quick-template-select');
+      const dSelect = document.getElementById('disp-template-select');
+      const options = state.templates.map(t => `<option value="${t.id}">${t.title} (${t.category || 'General'})</option>`).join('');
+      if (qSelect) qSelect.innerHTML = `<option value="">-- Choose Template --</option>` + options;
+      if (dSelect) dSelect.innerHTML = `<option value="">-- Select Template --</option>` + options;
+    }
+
+    function useTemplateInDispatcher(tmplId) {
+      switchTab('dispatcher');
+      document.getElementById('disp-template-select').value = tmplId;
+      applyDispTemplate();
+    }
+
+    function applyQuickTemplate() {
+      const id = document.getElementById('quick-template-select').value;
+      const tmpl = state.templates.find(t => t.id === id);
+      if (tmpl) {
+        document.getElementById('quick-message').value = tmpl.content;
+        updateCharCount('quick-message', 'quick-char-count');
+      }
+    }
+
+    function applyDispTemplate() {
+      const id = document.getElementById('disp-template-select').value;
+      const tmpl = state.templates.find(t => t.id === id);
+      const clientName = document.getElementById('disp-client-name').value || 'Customer';
+      if (tmpl) {
+        let msg = tmpl.content.replace(/\{\{name\}\}/g, clientName);
+        document.getElementById('disp-message').value = msg;
+        updateCharCount('disp-message', 'disp-char-count');
+      }
+    }
+
+    async function handleCreateTemplate(e) {
+      e.preventDefault();
+      const payload = {
+        title: document.getElementById('tmpl-title').value,
+        category: document.getElementById('tmpl-cat').value,
+        content: document.getElementById('tmpl-content').value
+      };
+      try {
+        await fetch(`${API_BASE}/templates`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        showToast('Template saved', 'success');
+        closeModal('modal-template');
+        refreshTemplates();
+      } catch (e) {}
+    }
+
+    async function deleteTemplate(id) {
+      if (!confirm('Delete this template?')) return;
+      try {
+        await fetch(`${API_BASE}/templates/${id}`, { method: 'DELETE' });
+        showToast('Template removed', 'info');
+        refreshTemplates();
+      } catch (e) {}
+    }
+
+    // 7. Auto-Reply Config
+    async function refreshAutoReplyConfig() {
+      try {
+        const res = await fetch(`${API_BASE}/auto-reply/config`);
+        if (res.ok) {
+          state.autoReply = await res.json();
+          const ar = state.autoReply;
+          document.getElementById('ar-enabled').checked = !!ar.enabled;
+          document.getElementById('ar-ai-mode').value = ar.aiMode || 'HYBRID_AI';
+          document.getElementById('ar-model').value = ar.geminiModel || 'gemini-2.5-flash';
+          document.getElementById('ar-tmpl-balance').value = ar.balanceInquiryTemplate || 'Hi {{name}}, your remaining charge account balance is PHP {{balance}}.';
+          document.getElementById('ar-tmpl-appointment').value = ar.appointmentInquiryTemplate || 'Hi {{name}}, you have an appointment for {{serviceType}} on {{date}} at {{time}}.';
+          document.getElementById('ar-tmpl-no-appointment').value = ar.noAppointmentTemplate || 'Hi {{name}}, you currently have no scheduled appointments.';
+          document.getElementById('ar-tmpl-not-found').value = ar.customerNotFoundTemplate || 'Hello! Thank you for reaching out to JARVIS. How may we assist you today?';
+        }
+      } catch (e) {}
+    }
+
+    async function saveAutoReplyConfig() {
+      const payload = {
+        enabled: document.getElementById('ar-enabled').checked,
+        aiMode: document.getElementById('ar-ai-mode').value,
+        geminiModel: document.getElementById('ar-model').value,
+        balanceInquiryTemplate: document.getElementById('ar-tmpl-balance').value,
+        appointmentInquiryTemplate: document.getElementById('ar-tmpl-appointment').value,
+        noAppointmentTemplate: document.getElementById('ar-tmpl-no-appointment').value,
+        customerNotFoundTemplate: document.getElementById('ar-tmpl-not-found').value
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/auto-reply/config`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          showToast('Smart Auto-Reply settings saved!', 'success');
+          refreshAutoReplyConfig();
+        }
+      } catch (err) {
+        showToast('Error saving auto-reply: ' + err.message, 'error');
+      }
+    }
+
+    async function runAutoReplySimulation() {
+      const from = document.getElementById('sim-phone').value;
+      const message = document.getElementById('sim-msg').value;
+      const resultBox = document.getElementById('sim-result-box');
+
+      try {
+        const res = await fetch(`${API_BASE}/auto-reply/simulate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ from, message })
+        });
+        const data = await res.json();
+        resultBox.classList.remove('hidden');
+        document.getElementById('sim-intent').innerText = data.intent || 'GENERAL_INQUIRY';
+        document.getElementById('sim-match').innerText = data.customerFound ? `Matched: ${data.matchedCustomer?.name}` : 'Unregistered Contact';
+        document.getElementById('sim-reply-text').innerText = data.replyText || 'No reply generated.';
+      } catch (err) {
+        showToast('Simulation error: ' + err.message, 'error');
+      }
+    }
+
+    // 8. Dispatch Handlers
+    async function handleQuickSend(e) {
+      e.preventDefault();
+      const phone = document.getElementById('quick-phone').value;
+      const message = document.getElementById('quick-message').value;
+      const priority = document.getElementById('quick-priority').checked;
+
+      await executeSend([phone], message, priority);
+      document.getElementById('quick-message').value = '';
+      updateCharCount('quick-message', 'quick-char-count');
+    }
+
+    async function handleFullSend(e) {
+      e.preventDefault();
+      const isBulk = document.querySelector('input[name="disp-mode"]:checked').value === 'bulk';
+      let phones = [];
+
+      if (isBulk) {
+        const raw = document.getElementById('disp-bulk-phones').value;
+        phones = raw.split(/[\n,;]/).map(p => p.trim()).filter(Boolean);
+      } else {
+        const single = document.getElementById('disp-phone').value.trim();
+        if (single) phones = [single];
+      }
+
+      if (phones.length === 0) {
+        showToast('Please specify at least one recipient phone number.', 'error');
+        return;
+      }
+
+      const message = document.getElementById('disp-message').value;
+      const priority = document.getElementById('disp-priority').checked;
+
+      await executeSend(phones, message, priority);
+    }
+
+    async function executeSend(phones, message, priority = false) {
+      try {
+        const res = await fetch(`${API_BASE}/send`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phones, message, priority })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          showToast(`Queued ${phones.length} message(s) for rate-limited dispatch`, 'success');
+          refreshQueueAndLogs();
+        } else {
+          showToast(`Failed: ${data.error || 'Gateway dispatch error'}`, 'error');
+        }
+      } catch (err) {
+        showToast('Send error: ' + err.message, 'error');
+      }
+    }
+
+    // Hardware Config Save
+    async function saveHardwareConfig() {
+      const payload = {
+        gatewayIp: document.getElementById('cfg-ip').value,
+        line: parseInt(document.getElementById('cfg-line').value, 10),
+        username: document.getElementById('cfg-user').value,
+        password: document.getElementById('cfg-pass').value,
+        carrierName: document.getElementById('cfg-carrier').value,
+        simNumber: document.getElementById('cfg-sim').value,
+        useMockGateway: document.getElementById('cfg-mock').checked,
+        minDelaySec: parseInt(document.getElementById('cfg-min-delay').value, 10),
+        maxDelaySec: parseInt(document.getElementById('cfg-max-delay').value, 10),
+        maxDailyLimit: parseInt(document.getElementById('cfg-daily-limit').value, 10),
+        apiKey: document.getElementById('cfg-api-key').value
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/config`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          showToast('Hardware settings saved successfully!', 'success');
+          refreshConfig();
+          refreshHardwareStatus();
+        }
+      } catch (err) {
+        showToast('Failed to save settings: ' + err.message, 'error');
+      }
+    }
+
+    // Helpers
+    function updateCharCount(inputId, labelId) {
+      const val = document.getElementById(inputId).value || '';
+      const len = val.length;
+      const count = len === 0 ? 1 : Math.ceil(len / 160);
+      document.getElementById(labelId).innerText = `${len} / 160 (${count} SMS)`;
+      
+      const liveBox = document.getElementById('live-preview-box');
+      if (liveBox && inputId === 'disp-message') {
+        liveBox.innerText = val || 'Your message preview will appear here in real-time...';
+      }
+    }
+
+    function toggleRecipientMode(mode) {
+      if (mode === 'bulk') {
+        document.getElementById('disp-single-box').classList.add('hidden');
+        document.getElementById('disp-bulk-box').classList.remove('hidden');
+      } else {
+        document.getElementById('disp-single-box').classList.remove('hidden');
+        document.getElementById('disp-bulk-box').classList.add('hidden');
+      }
+    }
+
+    function openNewAppointmentModal() {
+      document.getElementById('modal-appointment').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function openNewTemplateModal() {
+      document.getElementById('modal-template').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

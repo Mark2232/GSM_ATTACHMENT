@@ -1,0 +1,1125 @@
+{
+  "config": {
+    "gatewayIp": "192.168.8.190",
+    "username": "admin",
+    "password": "admin",
+    "line": 1,
+    "useMockGateway": false,
+    "minDelaySec": 5,
+    "maxDelaySec": 10,
+    "enableJitter": true,
+    "maxDailyLimit": 500,
+    "carrierName": "Globe Postpaid",
+    "simNumber": "09173079499",
+    "webhookUrl": "",
+    "apiKey": "tb_live_goip_admin_master"
+  },
+  "apiKeys": [
+    {
+      "id": "key_master",
+      "name": "Master Gateway API Key",
+      "key": "tb_live_goip_admin_master",
+      "createdAt": "2026-09-01T04:07:16.243Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "cnt_1788242713515_912",
+      "createdAt": "2026-09-01T06:05:13.515Z",
+      "name": "Mark Joseph Borantes",
+      "phone": "09368504167",
+      "group": "General",
+      "notes": ""
+    },
+    {
+      "id": "cnt_1788502245019_432",
+      "createdAt": "2026-09-04T06:10:45.019Z",
+      "name": "Mark Joseph Borantes",
+      "phone": "09368504167",
+      "group": "VIP Clients",
+      "notes": ""
+    }
+  ],
+  "groups": [
+    "VIP Clients",
+    "General",
+    "Leads",
+    "Staff",
+    "JARVIS Customers"
+  ],
+  "templates": [
+    {
+      "id": "tmpl_1",
+      "title": "Appointment Reminder",
+      "category": "Appointment",
+      "content": "Hello {{name}}! This is a reminder for your upcoming appointment on {{date}} at {{time}}. Please reply to confirm."
+    },
+    {
+      "id": "tmpl_2",
+      "title": "Verification OTP Code",
+      "category": "Security",
+      "content": "Your secure verification code is {{otp}}. This code will expire in 5 minutes. Do not share it with anyone."
+    },
+    {
+      "id": "tmpl_3",
+      "title": "Customer Notification",
+      "category": "Notification",
+      "content": "Hi {{name}}, your order/invoice has been processed at JARVIS Auto Supply. Thank you for choosing us!"
+    },
+    {
+      "id": "tmpl_4",
+      "title": "Payment Reminder",
+      "category": "Finance",
+      "content": "Greetings {{name}}, this is a friendly reminder regarding your statement of account from JARVIS. Thank you!"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "apt_1788829101061_110",
+      "createdAt": "2026-09-08T00:58:21.061Z",
+      "status": "SCHEDULED",
+      "reminders": {
+        "threeDays": {
+          "sent": false
+        },
+        "twentyFourHours": {
+          "sent": false
+        },
+        "dayOf": {
+          "sent": false
+        }
+      },
+      "clientName": "Test Client",
+      "clientPhone": "09179998888",
+      "serviceType": "Battery Test",
+      "date": "2026-09-12",
+      "time": "09:00 AM",
+      "notes": "",
+      "sendAutoReminder": true
+    },
+    {
+      "id": "apt_1788827305532_390",
+      "createdAt": "2026-09-08T00:28:25.532Z",
+      "status": "SCHEDULED",
+      "reminders": {
+        "threeDays": {
+          "sent": true,
+          "sentAt": "2026-09-08T00:28:32.663Z",
+          "msgId": "msg_appt_3days_1788827312367",
+          "status": "DELIVERED"
+        },
+        "twentyFourHours": {
+          "sent": false
+        },
+        "dayOf": {
+          "sent": false
+        }
+      },
+      "clientName": "Jerome Villahermosa",
+      "clientPhone": "09171483396",
+      "serviceType": "Parts & Battery Pickup",
+      "date": "2026-09-11",
+      "time": "10:00 AM",
+      "notes": "in Jarvis Auto Parts Supply",
+      "sendAutoReminder": true
+    }
+  ],
+  "appointmentReminderTemplates": {
+    "threeDays": "Hello {{name}}! Advance reminder from JARVIS: Your appointment for \"{{serviceType}}\" is scheduled in 3 days on {{date}} at {{time}}. Reply to confirm or reschedule.",
+    "twentyFourHours": "Hello {{name}}! Reminder: Your appointment for \"{{serviceType}}\" at JARVIS is tomorrow, {{date}} at {{time}}. See you!",
+    "dayOf8Am": "Good morning {{name}}! Your appointment for \"{{serviceType}}\" at JARVIS is scheduled for today ({{date}}) at {{time}}. We look forward to serving you!"
+  },
+  "autoReply": {
+    "enabled": true,
+    "customerFoundTemplate": "Hello {{name}}! Thank you for reaching JARVIS. Your customer account (#{{accountId}}) is active. Reply BALANCE for your charge balance or APPT for your appointment details.",
+    "balanceInquiryTemplate": "Hello {{name}}! Your current JARVIS charge account (#{{accountId}}) balance is PHP {{balance}} (Credit Limit: PHP {{creditLimit}}). Thank you!",
+    "appointmentInquiryTemplate": "Hello {{name}}! You have an upcoming appointment for \"{{serviceType}}\" on {{date}} at {{time}}.",
+    "noAppointmentTemplate": "Hello {{name}}! You do not have any pending appointments scheduled with us. Reply with your preferred date to book a service.",
+    "customerNotFoundTemplate": "Greetings from JARVIS! Your number ({{phone}}) is not yet registered in our customer records. Please visit our office or contact our support desk to register.",
+    "keywords": {
+      "balance": [
+        "balance",
+        "bal",
+        "bill",
+        "due",
+        "utang",
+        "magkano",
+        "account",
+        "bayad"
+      ],
+      "appointment": [
+        "appointment",
+        "appt",
+        "sched",
+        "schedule",
+        "booking",
+        "oras",
+        "petsa",
+        "kelan",
+        "service"
+      ]
+    }
+  },
+  "messages": [
+    {
+      "id": "msg_appt_3days_1788827312367",
+      "recipient": "09171483396",
+      "message": "Hello Jerome Villahermosa! Advance reminder from JARVIS: Your appointment for \"Parts & Battery Pickup\" is scheduled in 3 days on 2026-09-11 at 10:00 AM. Reply to confirm or reschedule.",
+      "status": "SENT",
+      "createdAt": "2026-09-08T00:28:32.656Z",
+      "metadata": {
+        "appointmentId": "apt_1788827305532_390",
+        "clientName": "Jerome Villahermosa",
+        "reminderStage": "3days"
+      }
+    },
+    {
+      "id": "msg_appt_1788827305816",
+      "recipient": "09171483396",
+      "message": "Hello Jerome Villahermosa! Your appointment for \"Parts & Battery Pickup\" at JARVIS is confirmed for 2026-09-11 at 10:00 AM. Please reply to confirm.",
+      "status": "SENT",
+      "createdAt": "2026-09-08T00:28:25.816Z",
+      "metadata": {
+        "appointmentId": "apt_1788827305532_390",
+        "clientName": "Jerome Villahermosa"
+      }
+    },
+    {
+      "id": "msg_appt_3days_1788827141033",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! Advance reminder from JARVIS: Your appointment for \"Parts & Battery Pickup\" is scheduled in 3 days on 2026-09-02 at 10:00 AM. Reply to confirm or reschedule.",
+      "status": "SENT",
+      "createdAt": "2026-09-08T00:25:41.708Z",
+      "metadata": {
+        "appointmentId": "apt_1788243993090_389",
+        "clientName": "Mark Joseph Borantes",
+        "reminderStage": "3days"
+      }
+    },
+    {
+      "id": "msg_appt_3days_1788826626579",
+      "recipient": "09189876543",
+      "message": "Hello Maria Santos! Advance reminder from JARVIS: Your appointment for \"Battery Replacement\" is scheduled in 3 days on 2026-09-11 at 08:00 AM. Reply to confirm or reschedule.",
+      "status": "SENT",
+      "createdAt": "2026-09-08T00:17:06.958Z",
+      "metadata": {
+        "appointmentId": "apt_1788826626577_535",
+        "clientName": "Maria Santos",
+        "reminderStage": "3days"
+      }
+    },
+    {
+      "line": 1,
+      "recipient": "GLOBE",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! JARVIS Auto Supply offers professional automotive services:\n✅ Express Change Oil & Lube Service\n✅ Computerized Battery Health & Alternator Test (FREE)\n✅ Brake Cleaning, Pad Replacement & Rotor Care\n✅ Tire Mounting, Wheel Balancing & Vulcanizing\n✅ Preventive Maintenance Service (PMS) & Tune-Up\nVisit our service bay or reply APPT to schedule a service slot!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "id": "msg_1788502302040_528",
+      "recipient": "09368504167",
+      "message": "Hello Valued Costumer! Here are the requested appointment details for Mark Joseph Borantes: \"Parts & Battery Pickup\" scheduled on 2026-09-02 at 10:00 AM. (Status: SCHEDULED).",
+      "status": "SENT",
+      "createdAt": "2026-09-04T06:11:42.597Z",
+      "metadata": {
+        "recipientName": "Valued Costumer"
+      }
+    },
+    {
+      "line": 1,
+      "recipient": "GLOBE",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! We accept multiple convenient payment options at JARVIS Auto Supply:\n💵 Cash at Counter\n📱 GCash & Maya QR Transfer\n🏦 Bank Transfer (BDO / BPI / Landbank)\n📝 Charge Account Terms (for approved registered commercial clients)\nAll transactions are issued official receipts/sales invoices.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "22565917",
+      "name": "Unregistered Caller",
+      "message": "You're very welcome! Thank you for contacting JARVIS Auto Supply. Feel free to message us anytime you need auto parts, service, or assistance.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "22565917",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS Auto Supply! We are located at Sayre Highway, Valencia City, Bukidnon (Mon-Sat 8AM-5PM). We provide genuine auto parts, batteries, lubricants, and vehicle maintenance. Feel free to ask about our location, store hours, available parts, or call 0917-307-9499!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "22565917",
+      "name": "Unregistered Caller",
+      "message": "You're very welcome! Thank you for contacting JARVIS Auto Supply. Feel free to message us anytime you need auto parts, service, or assistance.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "id": "msg_1788422586220_280",
+      "recipient": "09171483396",
+      "message": "Hello Valued Costumer! Here is the requested charge account balance for VILLAHERMOSA, RENE  (Acc #71): PHP 23,270.00 (Credit Limit: PHP 0.00). Thank you!",
+      "status": "SENT",
+      "createdAt": "2026-09-03T08:03:06.823Z",
+      "metadata": {
+        "recipientName": "Valued Costumer"
+      }
+    },
+    {
+      "id": "msg_1788420970152_103",
+      "recipient": "09173079499",
+      "message": "[JARVIS GSM Gateway] Direct ping SMS sent at 3:36:09 PM. Line is active.",
+      "status": "FAILED",
+      "error": "connect EACCES 192.168.8.190:80",
+      "createdAt": "2026-09-03T07:36:10.154Z",
+      "metadata": {
+        "recipientName": "Valued Costumer"
+      }
+    },
+    {
+      "id": "msg_1788339083561_523",
+      "recipient": "09171483396",
+      "message": "Hello Valued Costumer! Here is the requested charge account balance for VILLAHERMOSA, RENE  (Acc #71): PHP 23,270.00 (Credit Limit: PHP 0.00). Thank you!",
+      "status": "SENT",
+      "createdAt": "2026-09-02T08:51:39.358Z",
+      "metadata": {
+        "recipientName": "Jerome . Villahermosa"
+      }
+    },
+    {
+      "id": "msg_1788335283343_160",
+      "recipient": "09171483396",
+      "message": "Hello Valued Costumer! Here is the requested charge account balance for Mark Joseph Borantes (Acc N/A): PHP 0.00 (Credit Limit: PHP 0.00). Thank you!",
+      "status": "SENT",
+      "createdAt": "2026-09-02T07:48:03.914Z",
+      "metadata": {
+        "recipientName": "Valued Costumer"
+      }
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hi Mark Joseph Borantes! JARVIS Auto Supply is located at Sayre National Highway, Poblacion, Valencia City, 8709 Bukidnon (near City Mall Valencia & Public Market area).\n📍 Map & Landmarks: Along the main national highway.\n🕒 Hours: Mon-Sat 8:00 AM - 5:00 PM\n📞 Hotline: 0917-307-9499. You are always welcome to visit us!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hello Mark Joseph Borantes! You have a confirmed appointment for \"Parts & Battery Pickup\" on 2026-09-02 at 10:00 AM. Please arrive 10 minutes early at our service bay. See you!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hello Mark Joseph Borantes! Thank you for messaging JARVIS Auto Supply. How may we assist you today? You can text BALANCE to check your charge account, APPT for scheduled services, or ask about store location, parts availability, and today's weather!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hello Mark Joseph Borantes! Thank you for reaching JARVIS. Your customer account (#cnt_1788242713515_912) is active. Reply BALANCE for your charge balance or APPT for your appointment details.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! JARVIS Auto Supply is located at Sayre National Highway, Poblacion, Valencia City, 8709 Bukidnon (near City Mall Valencia & Public Market area).\n📍 Map & Landmarks: Along the main national highway.\n🕒 Hours: Mon-Sat 8:00 AM - 5:00 PM\n📞 Hotline: 0917-307-9499. You are always welcome to visit us!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! We accept multiple convenient payment options at JARVIS Auto Supply:\n💵 Cash at Counter\n📱 GCash & Maya QR Transfer\n🏦 Bank Transfer (BDO / BPI / Landbank)\n📝 Charge Account Terms (for approved registered commercial clients)\nAll transactions are issued official receipts/sales invoices.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! We carry 100% genuine auto parts & supplies in stock at JARVIS Auto Supply:\n🔋 Batteries: Motolite (Gold, Enduro, Excel), GS Yuasa (Free testing & install)\n🛢️ Oils & Lubes: Shell Rimula, Castrol, Mobil, Pertua, Delo\n🛑 Brakes & Filters: Bendix brake pads, oil/air filters, Denso spark plugs\nReply with your car model & specific part needed or visit our parts counter for instant pricing!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! We carry 100% genuine auto parts & supplies in stock at JARVIS Auto Supply:\n🔋 Batteries: Motolite (Gold, Enduro, Excel), GS Yuasa (Free testing & install)\n🛢️ Oils & Lubes: Shell Rimula, Castrol, Mobil, Pertua, Delo\n🛑 Brakes & Filters: Bendix brake pads, oil/air filters, Denso spark plugs\nReply with your car model & specific part needed or visit our parts counter for instant pricing!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! Our store hours at JARVIS Auto Supply are:\n• Monday to Saturday: 8:00 AM – 5:00 PM (Open)\n• Sunday: Closed (Special on-call deliveries by arrangement)\nFeel free to visit us during business hours or call 0917-307-9499 for urgent parts inquiries.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! Current Weather in Valencia City, Bukidnon:\n🌡️ Temperature: 30°C (Feels like 34°C)\n☁️ Sky Condition: Partly Cloudy to Overcast ⛅\n💧 Humidity: 60%\n🚗 Road Tip: Comfortable weather for vehicle maintenance & parts pickup.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! JARVIS Auto Supply is located at Sayre National Highway, Poblacion, Valencia City, 8709 Bukidnon (near City Mall Valencia & Public Market area).\n📍 Map & Landmarks: Along the main national highway.\n🕒 Hours: Mon-Sat 8:00 AM - 5:00 PM\n📞 Hotline: 0917-307-9499. You are always welcome to visit us!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hello Mark Joseph Borantes! Thank you for messaging JARVIS Auto Supply. How may we assist you today? You can text BALANCE to check your charge account, APPT for scheduled services, or ask about store location, parts availability, and today's weather!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hi Mark Joseph Borantes! We accept multiple convenient payment options at JARVIS Auto Supply:\n💵 Cash at Counter\n📱 GCash & Maya QR Transfer\n🏦 Bank Transfer (BDO / BPI / Landbank)\n📝 Charge Account Terms (for approved registered commercial clients)\nAll transactions are issued official receipts/sales invoices.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! We accept multiple convenient payment options at JARVIS Auto Supply:\n💵 Cash at Counter\n📱 GCash & Maya QR Transfer\n🏦 Bank Transfer (BDO / BPI / Landbank)\n📝 Charge Account Terms (for approved registered commercial clients)\nAll transactions are issued official receipts/sales invoices.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! We carry 100% genuine auto parts & supplies in stock at JARVIS Auto Supply:\n🔋 Batteries: Motolite (Gold, Enduro, Excel), GS Yuasa (Free testing & install)\n🛢️ Oils & Lubes: Shell Rimula, Castrol, Mobil, Pertua, Delo\n🛑 Brakes & Filters: Bendix brake pads, oil/air filters, Denso spark plugs\nReply with your car model & specific part needed or visit our parts counter for instant pricing!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! We carry 100% genuine auto parts & supplies in stock at JARVIS Auto Supply:\n🔋 Batteries: Motolite (Gold, Enduro, Excel), GS Yuasa (Free testing & install)\n🛢️ Oils & Lubes: Shell Rimula, Castrol, Mobil, Pertua, Delo\n🛑 Brakes & Filters: Bendix brake pads, oil/air filters, Denso spark plugs\nReply with your car model & specific part needed or visit our parts counter for instant pricing!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! Our store hours at JARVIS Auto Supply are:\n• Monday to Saturday: 8:00 AM – 5:00 PM (Open)\n• Sunday: Closed (Special on-call deliveries by arrangement)\nFeel free to visit us during business hours or call 0917-307-9499 for urgent parts inquiries.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! JARVIS Auto Supply is located at Sayre National Highway, Poblacion, Valencia City, 8709 Bukidnon (near City Mall Valencia & Public Market area).\n📍 Map & Landmarks: Along the main national highway.\n🕒 Hours: Mon-Sat 8:00 AM - 5:00 PM\n📞 Hotline: 0917-307-9499. You are always welcome to visit us!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! Current Weather in Valencia City, Bukidnon:\n🌡️ Temperature: 31°C (Feels like 34°C)\n☁️ Sky Condition: Partly Cloudy to Overcast ⛅\n💧 Humidity: 59%\n🚗 Road Tip: Comfortable weather for vehicle maintenance & parts pickup.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! Current Weather in Valencia City, Bukidnon:\n🌡️ Temperature: 31°C (Feels like 34°C)\n☁️ Sky Condition: Partly Cloudy to Overcast ⛅\n💧 Humidity: 59%\n🚗 Road Tip: Comfortable weather for vehicle maintenance & parts pickup.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "You're always welcome, Mark Joseph Borantes! Thank you for trusting JARVIS Auto Supply. Have a wonderful and safe day!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hi Mark Joseph Borantes! Current Weather in Valencia City, Bukidnon:\n🌡️ Temperature: 31°C (Feels like 34°C)\n☁️ Sky Condition: Partly Cloudy to Overcast ⛅\n💧 Humidity: 59%\n🚗 Road Tip: Comfortable weather for vehicle maintenance & parts pickup.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hello Mark Joseph Borantes! Thank you for reaching JARVIS. Your customer account (#cnt_1788242713515_912) is active. Reply BALANCE for your charge balance or APPT for your appointment details.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hello Mark Joseph Borantes! Thank you for reaching JARVIS. Your customer account (#cnt_1788242713515_912) is active. Reply BALANCE for your charge balance or APPT for your appointment details.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings! JARVIS Auto Supply & Service is located at Main Highway, Valencia City, Bukidnon (Mon-Sat 8AM-5PM). Feel free to visit us or call 0917-307-9499.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "+639368504167",
+      "name": "Mark Joseph Borantes",
+      "message": "Hello Mark Joseph Borantes! As of today, your JARVIS charge account (#cnt_1788242713515_912) balance is PHP 0.00. Thank you for doing business with us!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "0917-704-7140",
+      "name": "CHARL'Z COMMERCIAL",
+      "message": "Hello CHARL'Z COMMERCIAL! You currently have no pending appointment scheduled with JARVIS. Reply with your preferred date and service if you would like to book a slot.",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "0917-704-7140",
+      "name": "CHARL'Z COMMERCIAL",
+      "message": "Hello CHARL'Z COMMERCIAL! As of today, your JARVIS charge account (#19) balance is PHP 0.00. Thank you for doing business with us!",
+      "status": "SENT",
+      "type": "SMART_AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "0917-704-7140",
+      "name": "CHARL'Z COMMERCIAL",
+      "message": "Hello CHARL'Z COMMERCIAL! Your current JARVIS charge account (#19) balance is PHP 0.00 (Credit Limit: PHP 0.00). Thank you!",
+      "status": "SENT",
+      "type": "AUTO_REPLY"
+    },
+    {
+      "line": 1,
+      "recipient": "09173079499",
+      "name": "Unregistered Caller",
+      "message": "Greetings from JARVIS! Your number (09173079499) is not yet registered in our customer records. Please visit our office or contact our support desk to register.",
+      "status": "SENT",
+      "type": "AUTO_REPLY"
+    },
+    {
+      "id": "msg_appt_rem_1788243997082",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! This is a reminder for your upcoming appointment for \"Parts & Battery Pickup\" at JARVIS on 2026-09-02 at 10:00 AM. Thank you!",
+      "status": "SENT",
+      "createdAt": "2026-09-01T06:26:37.082Z",
+      "metadata": {
+        "appointmentId": "apt_1788243993090_389",
+        "clientName": "Mark Joseph Borantes"
+      }
+    },
+    {
+      "id": "msg_appt_1788243993377",
+      "recipient": "09368504167",
+      "message": "Hello Mark Joseph Borantes! Your appointment for \"Parts & Battery Pickup\" at JARVIS is confirmed for 2026-09-02 at 10:00 AM. Please reply to confirm.",
+      "status": "SENT",
+      "createdAt": "2026-09-01T06:26:33.377Z",
+      "metadata": {
+        "appointmentId": "apt_1788243993090_389",
+        "clientName": "Mark Joseph Borantes"
+      }
+    },
+    {
+      "id": "msg_1788242775421_826",
+      "recipient": "09368504167",
+      "message": "Hello {{name}}! This is a reminder for your upcoming appointment on {{date}} at {{time}}. Please reply to confirm.",
+      "status": "SENT",
+      "createdAt": "2026-09-01T06:06:15.704Z",
+      "metadata": {
+        "recipientName": "Mark Joseph Borantes"
+      }
+    },
+    {
+      "id": "msg_1788237232084_156",
+      "recipient": "09173079499",
+      "message": "[JARVIS GSM Gateway] Direct ping SMS sent at 12:33:52 PM. Line is active.",
+      "status": "SENT",
+      "createdAt": "2026-09-01T04:33:52.380Z",
+      "metadata": {
+        "recipientName": "Valued Costumer"
+      }
+    },
+    {
+      "id": "sms_1788237090406_349",
+      "recipient": "09368504167",
+      "message": "Your secure verification code is {{otp}}. This code will expire in 5 minutes. Do not share it with anyone.",
+      "status": "SENT",
+      "attempts": 1,
+      "maxAttempts": 3,
+      "createdAt": "2026-09-01T04:31:30.406Z",
+      "updatedAt": "2026-09-01T04:31:30.905Z",
+      "metadata": {
+        "recipientName": "Valued Customer"
+      },
+      "response": {
+        "success": true,
+        "raw": "HTTP/1.0 200 OK\nCache-Control: no-cache\nDate: Tue, 01 Sep 2026 04:31:29 GMT\nConnection: close\nConten",
+        "timestamp": "2026-09-01T04:31:30.905Z"
+      }
+    }
+  ],
+  "inbox": [
+    {
+      "id": "inb_1788577742324_360",
+      "from": "GLOBE",
+      "senderName": null,
+      "message": "Make the most of your postpaid account with the GlobeOne app! Easily view your account and subscription details, pay bills, view previous bill statements, and download official receipts.\n\nYou can also personalize your plan by swapping your GBs for services, content subscriptions, or vouchers that match your lifestyle. \n\nDownload GlobeOne from the Google Play Store or Apple App Store to get started.",
+      "line": 1,
+      "receivedAt": "2026-09-05T03:09:02.324Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-05 11:03:14",
+        "from": "GLOBE",
+        "message": "Make the most of your postpaid account with the GlobeOne app! Easily view your account and subscription details, pay bills, view previous bill statements, and download official receipts.\n\nYou can also personalize your plan by swapping your GBs for services, content subscriptions, or vouchers that match your lifestyle. \n\nDownload GlobeOne from the Google Play Store or Apple App Store to get started."
+      }
+    },
+    {
+      "id": "inb_1788498296263_44",
+      "from": "GLOBE",
+      "senderName": null,
+      "message": "Thank you for renewing your Globe Postpaid plan and getting the All-New GPlan PLUS 599 Flex.\n\nTo view your account information, plan details, track your data usage, and pay your bill, download the GlobeOne app from Google Play or Apple App Store.",
+      "line": 1,
+      "receivedAt": "2026-09-04T05:04:56.263Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-04 13:04:51",
+        "from": "GLOBE",
+        "message": "Thank you for renewing your Globe Postpaid plan and getting the All-New GPlan PLUS 599 Flex.\n\nTo view your account information, plan details, track your data usage, and pay your bill, download the GlobeOne app from Google Play or Apple App Store."
+      }
+    },
+    {
+      "id": "inb_1788496862450_643",
+      "from": "22565917",
+      "senderName": null,
+      "message": "Thank you for the feedback! Can you please share with us why you gave this rating?",
+      "line": 1,
+      "receivedAt": "2026-09-04T04:41:02.450Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-04 12:40:58",
+        "from": "22565917",
+        "message": "Thank you for the feedback! Can you please share with us why you gave this rating?"
+      }
+    },
+    {
+      "id": "inb_1788496837335_118",
+      "from": "22565917",
+      "senderName": null,
+      "message": "Based on your experience using our mobile network, how likely are you to recommend Globe to others, from 0 (not at all likely) to 10 (extremely likely)?",
+      "line": 1,
+      "receivedAt": "2026-09-04T04:40:37.335Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-04 12:40:32",
+        "from": "22565917",
+        "message": "Based on your experience using our mobile network, how likely are you to recommend Globe to others, from 0 (not at all likely) to 10 (extremely likely)?"
+      }
+    },
+    {
+      "id": "inb_1788496309714_588",
+      "from": "22565917",
+      "senderName": null,
+      "message": "Thanks for using Globe mobile network! We'd like to ask a few questions about your network experience for the past 2 weeks.\nReplies to this survey are free.",
+      "line": 1,
+      "receivedAt": "2026-09-04T04:31:49.714Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-04 12:31:46",
+        "from": "22565917",
+        "message": "Thanks for using Globe mobile network! We'd like to ask a few questions about your network experience for the past 2 weeks.\nReplies to this survey are free."
+      }
+    },
+    {
+      "id": "inb_1788250858638_568",
+      "from": "+639368504167",
+      "senderName": null,
+      "message": "where is the jarvis located?",
+      "line": 1,
+      "receivedAt": "2026-09-01T08:20:58.638Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-01 16:20:53",
+        "from": "+639368504167",
+        "message": "where is the jarvis located?"
+      }
+    },
+    {
+      "id": "inb_1788250818565_232",
+      "from": "+639368504167",
+      "senderName": null,
+      "message": "APPT",
+      "line": 1,
+      "receivedAt": "2026-09-01T08:20:18.565Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-01 16:20:13",
+        "from": "+639368504167",
+        "message": "APPT"
+      }
+    },
+    {
+      "id": "inb_1788247735651_66",
+      "from": "+639368504167",
+      "senderName": null,
+      "message": "aha na locate ang Jarvis Auto supply.",
+      "line": 1,
+      "receivedAt": "2026-09-01T07:28:55.651Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-01 15:28:51",
+        "from": "+639368504167",
+        "message": "aha na locate ang Jarvis Auto supply."
+      }
+    },
+    {
+      "id": "inb_1788247659464_834",
+      "from": "+639368504167",
+      "senderName": null,
+      "message": "hello",
+      "line": 1,
+      "receivedAt": "2026-09-01T07:27:39.464Z",
+      "read": true,
+      "raw": {
+        "hwTime": "09-01 15:27:34",
+        "from": "+639368504167",
+        "message": "hello"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "id": "log_1788827312660_502",
+      "timestamp": "2026-09-08T00:28:32.660Z",
+      "type": "info",
+      "message": "[3-Stage Reminder] Sent 3days reminder to Jerome Villahermosa (09171483396)"
+    },
+    {
+      "id": "log_1788827305818_123",
+      "timestamp": "2026-09-08T00:28:25.818Z",
+      "type": "info",
+      "message": "[Appointment SMS] Confirmation dispatched to Jerome Villahermosa (09171483396)"
+    },
+    {
+      "id": "log_1788827141710_179",
+      "timestamp": "2026-09-08T00:25:41.710Z",
+      "type": "info",
+      "message": "[3-Stage Reminder] Sent 3days reminder to Mark Joseph Borantes (09368504167)"
+    },
+    {
+      "id": "log_1788826626960_932",
+      "timestamp": "2026-09-08T00:17:06.960Z",
+      "type": "info",
+      "message": "[3-Stage Reminder] Sent 3days reminder to Maria Santos (09189876543)"
+    },
+    {
+      "id": "log_1788577742325_726",
+      "timestamp": "2026-09-05T03:09:02.325Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from GLOBE: \"Make the most of your postpaid account w...\""
+    },
+    {
+      "id": "log_1788502302600_112",
+      "timestamp": "2026-09-04T06:11:42.600Z",
+      "type": "success",
+      "message": "Direct SMS sent to 09368504167"
+    },
+    {
+      "id": "log_1788498296263_21",
+      "timestamp": "2026-09-04T05:04:56.263Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from GLOBE: \"Thank you for renewing your Globe Postpa...\""
+    },
+    {
+      "id": "log_1788496862450_892",
+      "timestamp": "2026-09-04T04:41:02.450Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 22565917: \"Thank you for the feedback! Can you plea...\""
+    },
+    {
+      "id": "log_1788496837335_75",
+      "timestamp": "2026-09-04T04:40:37.335Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 22565917: \"Based on your experience using our mobil...\""
+    },
+    {
+      "id": "log_1788496309714_171",
+      "timestamp": "2026-09-04T04:31:49.714Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 22565917: \"Thanks for using Globe mobile network! W...\""
+    },
+    {
+      "id": "log_1788422586826_454",
+      "timestamp": "2026-09-03T08:03:06.826Z",
+      "type": "success",
+      "message": "Direct SMS sent to 09171483396"
+    },
+    {
+      "id": "log_1788420970156_966",
+      "timestamp": "2026-09-03T07:36:10.156Z",
+      "type": "error",
+      "message": "Failed to send SMS to 09173079499: connect EACCES 192.168.8.190:80"
+    },
+    {
+      "id": "log_1788339099361_856",
+      "timestamp": "2026-09-02T08:51:39.361Z",
+      "type": "success",
+      "message": "Direct SMS sent to 09171483396"
+    },
+    {
+      "id": "log_1788335283919_364",
+      "timestamp": "2026-09-02T07:48:03.919Z",
+      "type": "success",
+      "message": "Direct SMS sent to 09171483396"
+    },
+    {
+      "id": "log_1788250858638_612",
+      "timestamp": "2026-09-01T08:20:58.638Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"where is the jarvis located?...\""
+    },
+    {
+      "id": "log_1788250818565_941",
+      "timestamp": "2026-09-01T08:20:18.565Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"APPT...\""
+    },
+    {
+      "id": "log_1788247735651_864",
+      "timestamp": "2026-09-01T07:28:55.651Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"aha na locate ang Jarvis Auto supply....\""
+    },
+    {
+      "id": "log_1788247659464_584",
+      "timestamp": "2026-09-01T07:27:39.464Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"hello...\""
+    },
+    {
+      "id": "log_1788247511625_512",
+      "timestamp": "2026-09-01T07:25:11.625Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639173079499: \"Greetings from JARVIS! JARVIS Auto Suppl...\""
+    },
+    {
+      "id": "log_1788247486789_877",
+      "timestamp": "2026-09-01T07:24:46.789Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"pwede ba gcash...\""
+    },
+    {
+      "id": "log_1788247486547_789",
+      "timestamp": "2026-09-01T07:24:46.547Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"magkano change oil...\""
+    },
+    {
+      "id": "log_1788247486305_520",
+      "timestamp": "2026-09-01T07:24:46.305Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"do you have motolite battery...\""
+    },
+    {
+      "id": "log_1788247486057_389",
+      "timestamp": "2026-09-01T07:24:46.057Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"what are your store hours...\""
+    },
+    {
+      "id": "log_1788247485760_147",
+      "timestamp": "2026-09-01T07:24:45.760Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"ulan ba sa valencia ron?...\""
+    },
+    {
+      "id": "log_1788247483165_809",
+      "timestamp": "2026-09-01T07:24:43.165Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"where is jarvis auto supply located...\""
+    },
+    {
+      "id": "log_1788247085352_911",
+      "timestamp": "2026-09-01T07:18:05.352Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"what are the payments?...\""
+    },
+    {
+      "id": "log_1788247057043_854",
+      "timestamp": "2026-09-01T07:17:37.043Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"magbayad kos Jarvis pwede gcash payment?...\""
+    },
+    {
+      "id": "log_1788246870118_583",
+      "timestamp": "2026-09-01T07:14:30.118Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"pwede gcash payment...\""
+    },
+    {
+      "id": "log_1788246869897_992",
+      "timestamp": "2026-09-01T07:14:29.897Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"pila change oil service...\""
+    },
+    {
+      "id": "log_1788246867846_38",
+      "timestamp": "2026-09-01T07:14:27.846Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"do you have motolite battery in stock...\""
+    },
+    {
+      "id": "log_1788246867623_453",
+      "timestamp": "2026-09-01T07:14:27.623Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"what time do you close...\""
+    },
+    {
+      "id": "log_1788246867390_500",
+      "timestamp": "2026-09-01T07:14:27.390Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"where is jarvis auto supply located...\""
+    },
+    {
+      "id": "log_1788246867373_265",
+      "timestamp": "2026-09-01T07:14:27.373Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639173079499: \"Greetings from JARVIS! Current Weather i...\""
+    },
+    {
+      "id": "log_1788246854725_503",
+      "timestamp": "2026-09-01T07:14:14.725Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"ulan ba sa Valencia Ron?...\""
+    },
+    {
+      "id": "log_1788246826943_580",
+      "timestamp": "2026-09-01T07:13:46.943Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"yes what is it?...\""
+    },
+    {
+      "id": "log_1788246784328_134",
+      "timestamp": "2026-09-01T07:13:04.328Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"what is the weather today?...\""
+    },
+    {
+      "id": "log_1788246526143_226",
+      "timestamp": "2026-09-01T07:08:46.143Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"ulan ba sa Valencia Ron?...\""
+    },
+    {
+      "id": "log_1788245563927_240",
+      "timestamp": "2026-09-01T06:52:43.927Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"where is the Jarvis Auto supply located?...\""
+    },
+    {
+      "id": "log_1788245475599_661",
+      "timestamp": "2026-09-01T06:51:15.599Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639173079499: \"Greetings from JARVIS! Your number (0917...\""
+    },
+    {
+      "id": "log_1788245475367_415",
+      "timestamp": "2026-09-01T06:51:15.367Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from +639368504167: \"do I have balance account in your system...\""
+    },
+    {
+      "id": "log_1788245097450_11",
+      "timestamp": "2026-09-01T06:44:57.450Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 0917-704-7140: \"kailan po next schedule ko para sa PMS n...\""
+    },
+    {
+      "id": "log_1788245091460_247",
+      "timestamp": "2026-09-01T06:44:51.460Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 0917-704-7140: \"paki check naman po kung magkano pa baba...\""
+    },
+    {
+      "id": "log_1788244706424_253",
+      "timestamp": "2026-09-01T06:38:26.424Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 0917-704-7140: \"Hi, what is my current balance?...\""
+    },
+    {
+      "id": "log_1788244684837_285",
+      "timestamp": "2026-09-01T06:38:04.837Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"BALANCE...\""
+    },
+    {
+      "id": "log_1788243997084_670",
+      "timestamp": "2026-09-01T06:26:37.084Z",
+      "type": "info",
+      "message": "[Manual Reminder] Dispatched to Mark Joseph Borantes (09368504167)"
+    },
+    {
+      "id": "log_1788243993378_48",
+      "timestamp": "2026-09-01T06:26:33.378Z",
+      "type": "info",
+      "message": "[Appointment SMS] Confirmation dispatched to Mark Joseph Borantes (09368504167)"
+    },
+    {
+      "id": "log_1788242775705_83",
+      "timestamp": "2026-09-01T06:06:15.705Z",
+      "type": "success",
+      "message": "Direct SMS sent to 09368504167"
+    },
+    {
+      "id": "log_1788237248442_482",
+      "timestamp": "2026-09-01T04:34:08.442Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"Yes, received! Please prepare our invoic...\""
+    },
+    {
+      "id": "log_1788237246138_173",
+      "timestamp": "2026-09-01T04:34:06.138Z",
+      "type": "info",
+      "message": "[Inbound SMS] Received reply from 09173079499: \"Yes, received! Please prepare our invoic...\""
+    },
+    {
+      "id": "log_1788237232381_572",
+      "timestamp": "2026-09-01T04:33:52.381Z",
+      "type": "success",
+      "message": "Direct SMS sent to 09173079499"
+    },
+    {
+      "id": "log_1788237090907_607",
+      "timestamp": "2026-09-01T04:31:30.907Z",
+      "type": "success",
+      "message": "SMS sent successfully to 09368504167"
+    },
+    {
+      "id": "log_1788237090407_917",
+      "timestamp": "2026-09-01T04:31:30.407Z",
+      "type": "info",
+      "message": "Queued SMS for 09368504167 (Valued Customer)"
+    }
+  ],
+  "ussdLogs": [
+    {
+      "id": "ussd_bal_1788503406137",
+      "command": "*222#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-04T06:30:06.137Z"
+    },
+    {
+      "id": "ussd_bal_1788332372816",
+      "command": "*222#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-02T06:59:32.816Z"
+    },
+    {
+      "id": "ussd_bal_1788332012575",
+      "command": "*222#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-02T06:53:32.575Z"
+    },
+    {
+      "id": "ussd_bal_1788242749045",
+      "command": "*222#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T06:05:49.045Z"
+    },
+    {
+      "id": "ussd_bal_1788238273605",
+      "command": "*222#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T04:51:13.605Z"
+    },
+    {
+      "id": "ussd_1788238034854",
+      "command": "*143*4#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T04:47:14.854Z"
+    },
+    {
+      "id": "ussd_1788238029674",
+      "command": "*143*2#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T04:47:09.674Z"
+    },
+    {
+      "id": "ussd_1788238025551",
+      "command": "*143#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T04:47:05.551Z"
+    },
+    {
+      "id": "ussd_1788238021181",
+      "command": "*222#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T04:47:01.181Z"
+    },
+    {
+      "id": "ussd_1788238014352",
+      "command": "*143*1*1#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T04:46:54.352Z"
+    },
+    {
+      "id": "ussd_1788237781997",
+      "command": "*222#",
+      "response": "USSD Response: Your remaining prepaid balance is P524.50, valid until 30 days. Active Promo: UNLI ALLNET TXT + 10GB Data.",
+      "timestamp": "2026-09-01T04:43:01.997Z"
+    },
+    {
+      "id": "ussd_1788237417496",
+      "command": "BAL",
+      "response": "HTTP/1.0 404 Not Found\nDate: Tue, 01 Sep 2026 04:36:55 GMT\nConnection: close\nContent-Type: text/html\n\n<HTML><HEAD><TITLE>404 Not Found</TITLE></HEAD>\n<BODY><H1>The request URL was not found!</H1>\n</BODY></HTML>\n",
+      "timestamp": "2026-09-01T04:36:57.496Z"
+    },
+    {
+      "id": "ussd_1788237409529",
+      "command": "*123#",
+      "response": "HTTP/1.0 404 Not Found\nDate: Tue, 01 Sep 2026 04:36:47 GMT\nConnection: close\nContent-Type: text/html\n\n<HTML><HEAD><TITLE>404 Not Found</TITLE></HEAD>\n<BODY><H1>The request URL was not found!</H1>\n</BODY></HTML>\n",
+      "timestamp": "2026-09-01T04:36:49.530Z"
+    }
+  ]
+}
